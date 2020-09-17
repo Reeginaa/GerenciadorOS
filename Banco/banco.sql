@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12-Set-2020 às 14:03
+-- Tempo de geração: 17-Set-2020 às 04:27
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.9
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `projetointegrador`
 --
-
-CREATE DATABASE projetointegrador;
 
 -- --------------------------------------------------------
 
@@ -91,6 +89,7 @@ CREATE TABLE `ordemservico` (
 --
 
 CREATE TABLE `ospeca` (
+  `idOsPeca` int(11) NOT NULL,
   `codigoOS` int(11) DEFAULT NULL,
   `codigoPeca` int(11) DEFAULT NULL,
   `valorPeca` double DEFAULT NULL
@@ -103,6 +102,7 @@ CREATE TABLE `ospeca` (
 --
 
 CREATE TABLE `osservico` (
+  `idOsServico` int(11) NOT NULL,
   `codigoOS` int(11) DEFAULT NULL,
   `codigoServico` int(11) DEFAULT NULL,
   `valorServico` double DEFAULT NULL
@@ -223,6 +223,7 @@ ALTER TABLE `ordemservico`
 -- Índices para tabela `ospeca`
 --
 ALTER TABLE `ospeca`
+  ADD PRIMARY KEY (`idOsPeca`),
   ADD KEY `codigoOS` (`codigoOS`),
   ADD KEY `codigoPeca` (`codigoPeca`);
 
@@ -230,6 +231,7 @@ ALTER TABLE `ospeca`
 -- Índices para tabela `osservico`
 --
 ALTER TABLE `osservico`
+  ADD PRIMARY KEY (`idOsServico`),
   ADD KEY `codigoOS` (`codigoOS`),
   ADD KEY `codigoServico` (`codigoServico`);
 
@@ -268,6 +270,76 @@ ALTER TABLE `statusservico`
 ALTER TABLE `tipopessoa`
   ADD PRIMARY KEY (`idTipoPessoa`),
   ADD UNIQUE KEY `tipo` (`tipo`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `anexoorcamento`
+--
+ALTER TABLE `anexoorcamento`
+  MODIFY `idAnexoOrcamento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `equipamento`
+--
+ALTER TABLE `equipamento`
+  MODIFY `idEquipamento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `marca`
+--
+ALTER TABLE `marca`
+  MODIFY `idMarca` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `ordemservico`
+--
+ALTER TABLE `ordemservico`
+  MODIFY `idOrdemServico` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `ospeca`
+--
+ALTER TABLE `ospeca`
+  MODIFY `idOsPeca` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `osservico`
+--
+ALTER TABLE `osservico`
+  MODIFY `idOsServico` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `peca`
+--
+ALTER TABLE `peca`
+  MODIFY `idPeca` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `pessoa`
+--
+ALTER TABLE `pessoa`
+  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `servico`
+--
+ALTER TABLE `servico`
+  MODIFY `idServico` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `statusservico`
+--
+ALTER TABLE `statusservico`
+  MODIFY `idStatusServico` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `tipopessoa`
+--
+ALTER TABLE `tipopessoa`
+  MODIFY `idTipoPessoa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas

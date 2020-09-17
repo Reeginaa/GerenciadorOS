@@ -61,9 +61,9 @@ INSERT INTO anexoorcamento (idAnexoOrcamento, descricaoAnexo, arquivo, codigoOS)
 --
 -- inserir dados na tabela OS PECA
 --
-INSERT INTO ospeca (codigoOS, codigoPeca, valorPeca) VALUES (71, 62, '25.00');
+INSERT INTO ospeca (idOsPeca, codigoOS, codigoPeca, valorPeca) VALUES (90, 71, 62, '25.00');
 
 --
 -- inserir dados na tabela OS SERVICO
 --
-INSERT INTO osservico (codigoOS, codigoServico, valorServico) VALUES (71, 50, '50.00');
+INSERT INTO osservico (idOsServico, codigoOS, codigoServico, valorServico) VALUES (100, 71, 50, '50.00');
