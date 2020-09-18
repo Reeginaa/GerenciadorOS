@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `anexoorcamento` (
-  `idAnexoOrcamento` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `descricaoAnexo` varchar(150) DEFAULT NULL,
   `arquivo` varchar(500) DEFAULT NULL,
   `codigoOS` int(11) DEFAULT NULL
@@ -41,7 +41,7 @@ CREATE TABLE `anexoorcamento` (
 --
 
 CREATE TABLE `equipamento` (
-  `idEquipamento` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nomeEquipamento` varchar(45) NOT NULL,
   `modelo` varchar(50) DEFAULT NULL,
   `numeroSerie` varchar(50) DEFAULT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `equipamento` (
 --
 
 CREATE TABLE `marca` (
-  `idMarca` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nomeMarca` varchar(20) NOT NULL,
   `observacaoMarca` varchar(350) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -68,7 +68,7 @@ CREATE TABLE `marca` (
 --
 
 CREATE TABLE `ordemservico` (
-  `idOrdemServico` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `dataInicio` date NOT NULL,
   `dataTermino` date DEFAULT NULL,
   `defeito` varchar(250) NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE `ordemservico` (
 --
 
 CREATE TABLE `ospeca` (
-  `idOsPeca` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `codigoOS` int(11) DEFAULT NULL,
   `codigoPeca` int(11) DEFAULT NULL,
   `valorPeca` double DEFAULT NULL
@@ -102,7 +102,7 @@ CREATE TABLE `ospeca` (
 --
 
 CREATE TABLE `osservico` (
-  `idOsServico` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `codigoOS` int(11) DEFAULT NULL,
   `codigoServico` int(11) DEFAULT NULL,
   `valorServico` double DEFAULT NULL
@@ -115,7 +115,7 @@ CREATE TABLE `osservico` (
 --
 
 CREATE TABLE `peca` (
-  `idPeca` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `item` varchar(100) NOT NULL,
   `quantidade` int(11) NOT NULL,
   `valorCompra` double NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE `peca` (
 --
 
 CREATE TABLE `pessoa` (
-  `idPessoa` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(250) NOT NULL,
   `cpf` varchar(14) NOT NULL,
   `rg` varchar(10) NOT NULL,
@@ -155,7 +155,7 @@ CREATE TABLE `pessoa` (
 --
 
 CREATE TABLE `servico` (
-  `idServico` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `servico` varchar(200) NOT NULL,
   `valor` double NOT NULL,
   `desconto` double DEFAULT NULL
@@ -168,7 +168,7 @@ CREATE TABLE `servico` (
 --
 
 CREATE TABLE `statusservico` (
-  `idStatusServico` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `status` varchar(50) NOT NULL,
   `descricaoStatus` varchar(350) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -180,7 +180,7 @@ CREATE TABLE `statusservico` (
 --
 
 CREATE TABLE `tipopessoa` (
-  `idTipoPessoa` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `tipo` varchar(25) NOT NULL,
   `descricao` varchar(350) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -193,28 +193,28 @@ CREATE TABLE `tipopessoa` (
 -- Índices para tabela `anexoorcamento`
 --
 ALTER TABLE `anexoorcamento`
-  ADD PRIMARY KEY (`idAnexoOrcamento`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `codigoOS` (`codigoOS`);
 
 --
 -- Índices para tabela `equipamento`
 --
 ALTER TABLE `equipamento`
-  ADD PRIMARY KEY (`idEquipamento`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `codigoMarca` (`codigoMarca`);
 
 --
 -- Índices para tabela `marca`
 --
 ALTER TABLE `marca`
-  ADD PRIMARY KEY (`idMarca`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nomeMarca` (`nomeMarca`);
 
 --
 -- Índices para tabela `ordemservico`
 --
 ALTER TABLE `ordemservico`
-  ADD PRIMARY KEY (`idOrdemServico`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `codigoStatusServico` (`codigoStatusServico`),
   ADD KEY `codigoPessoa` (`codigoPessoa`),
   ADD KEY `codigoEquipamento` (`codigoEquipamento`);
@@ -223,7 +223,7 @@ ALTER TABLE `ordemservico`
 -- Índices para tabela `ospeca`
 --
 ALTER TABLE `ospeca`
-  ADD PRIMARY KEY (`idOsPeca`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `codigoOS` (`codigoOS`),
   ADD KEY `codigoPeca` (`codigoPeca`);
 
@@ -231,7 +231,7 @@ ALTER TABLE `ospeca`
 -- Índices para tabela `osservico`
 --
 ALTER TABLE `osservico`
-  ADD PRIMARY KEY (`idOsServico`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `codigoOS` (`codigoOS`),
   ADD KEY `codigoServico` (`codigoServico`);
 
@@ -239,13 +239,13 @@ ALTER TABLE `osservico`
 -- Índices para tabela `peca`
 --
 ALTER TABLE `peca`
-  ADD PRIMARY KEY (`idPeca`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  ADD PRIMARY KEY (`idPessoa`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `cpf` (`cpf`),
   ADD UNIQUE KEY `rg` (`rg`),
   ADD KEY `codigoTipoPessoa` (`codigoTipoPessoa`);
@@ -254,21 +254,21 @@ ALTER TABLE `pessoa`
 -- Índices para tabela `servico`
 --
 ALTER TABLE `servico`
-  ADD PRIMARY KEY (`idServico`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `servico` (`servico`);
 
 --
 -- Índices para tabela `statusservico`
 --
 ALTER TABLE `statusservico`
-  ADD PRIMARY KEY (`idStatusServico`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `status` (`status`);
 
 --
 -- Índices para tabela `tipopessoa`
 --
 ALTER TABLE `tipopessoa`
-  ADD PRIMARY KEY (`idTipoPessoa`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `tipo` (`tipo`);
 
 --
@@ -279,67 +279,67 @@ ALTER TABLE `tipopessoa`
 -- AUTO_INCREMENT de tabela `anexoorcamento`
 --
 ALTER TABLE `anexoorcamento`
-  MODIFY `idAnexoOrcamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `equipamento`
 --
 ALTER TABLE `equipamento`
-  MODIFY `idEquipamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `idMarca` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `ordemservico`
 --
 ALTER TABLE `ordemservico`
-  MODIFY `idOrdemServico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `ospeca`
 --
 ALTER TABLE `ospeca`
-  MODIFY `idOsPeca` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `osservico`
 --
 ALTER TABLE `osservico`
-  MODIFY `idOsServico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `peca`
 --
 ALTER TABLE `peca`
-  MODIFY `idPeca` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `servico`
 --
 ALTER TABLE `servico`
-  MODIFY `idServico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `statusservico`
 --
 ALTER TABLE `statusservico`
-  MODIFY `idStatusServico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tipopessoa`
 --
 ALTER TABLE `tipopessoa`
-  MODIFY `idTipoPessoa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas
@@ -349,41 +349,41 @@ ALTER TABLE `tipopessoa`
 -- Limitadores para a tabela `anexoorcamento`
 --
 ALTER TABLE `anexoorcamento`
-  ADD CONSTRAINT `anexoorcamento_ibfk_1` FOREIGN KEY (`codigoOS`) REFERENCES `ordemservico` (`idOrdemServico`);
+  ADD CONSTRAINT `anexoorcamento_ibfk_1` FOREIGN KEY (`codigoOS`) REFERENCES `ordemservico` (`id`);
 
 --
 -- Limitadores para a tabela `equipamento`
 --
 ALTER TABLE `equipamento`
-  ADD CONSTRAINT `equipamento_ibfk_1` FOREIGN KEY (`codigoMarca`) REFERENCES `marca` (`idMarca`);
+  ADD CONSTRAINT `equipamento_ibfk_1` FOREIGN KEY (`codigoMarca`) REFERENCES `marca` (`id`);
 
 --
 -- Limitadores para a tabela `ordemservico`
 --
 ALTER TABLE `ordemservico`
-  ADD CONSTRAINT `ordemservico_ibfk_1` FOREIGN KEY (`codigoStatusServico`) REFERENCES `statusservico` (`idStatusServico`),
-  ADD CONSTRAINT `ordemservico_ibfk_2` FOREIGN KEY (`codigoPessoa`) REFERENCES `pessoa` (`idPessoa`),
-  ADD CONSTRAINT `ordemservico_ibfk_3` FOREIGN KEY (`codigoEquipamento`) REFERENCES `equipamento` (`idEquipamento`);
+  ADD CONSTRAINT `ordemservico_ibfk_1` FOREIGN KEY (`codigoStatusServico`) REFERENCES `statusservico` (`id`),
+  ADD CONSTRAINT `ordemservico_ibfk_2` FOREIGN KEY (`codigoPessoa`) REFERENCES `pessoa` (`id`),
+  ADD CONSTRAINT `ordemservico_ibfk_3` FOREIGN KEY (`codigoEquipamento`) REFERENCES `equipamento` (`id`);
 
 --
 -- Limitadores para a tabela `ospeca`
 --
 ALTER TABLE `ospeca`
-  ADD CONSTRAINT `ospeca_ibfk_1` FOREIGN KEY (`codigoOS`) REFERENCES `ordemservico` (`idOrdemServico`),
-  ADD CONSTRAINT `ospeca_ibfk_2` FOREIGN KEY (`codigoPeca`) REFERENCES `peca` (`idPeca`);
+  ADD CONSTRAINT `ospeca_ibfk_1` FOREIGN KEY (`codigoOS`) REFERENCES `ordemservico` (`id`),
+  ADD CONSTRAINT `ospeca_ibfk_2` FOREIGN KEY (`codigoPeca`) REFERENCES `peca` (`id`);
 
 --
 -- Limitadores para a tabela `osservico`
 --
 ALTER TABLE `osservico`
-  ADD CONSTRAINT `osservico_ibfk_1` FOREIGN KEY (`codigoOS`) REFERENCES `ordemservico` (`idOrdemServico`),
-  ADD CONSTRAINT `osservico_ibfk_2` FOREIGN KEY (`codigoServico`) REFERENCES `servico` (`idServico`);
+  ADD CONSTRAINT `osservico_ibfk_1` FOREIGN KEY (`codigoOS`) REFERENCES `ordemservico` (`id`),
+  ADD CONSTRAINT `osservico_ibfk_2` FOREIGN KEY (`codigoServico`) REFERENCES `servico` (`id`);
 
 --
 -- Limitadores para a tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  ADD CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`codigoTipoPessoa`) REFERENCES `tipopessoa` (`idTipoPessoa`);
+  ADD CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`codigoTipoPessoa`) REFERENCES `tipopessoa` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
