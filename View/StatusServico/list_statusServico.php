@@ -1,46 +1,159 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Lista de Status de Serviço</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="../../img/eletronica_raio.png" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="../../css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- Barra de Navegação -->
+    <header>
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark peach-gradient fixed-top">
+        <div class="container">
+          <!-- Navbar brand -->
+          <a class="navbar-brand" href="#">
+            <img src="../../img/eletronica_NomeSemBorda.png" height="30" alt="mdb logo">
+          </a>
 
-    <title>Lista de Status de Serviço!</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Lista de Status de Serviço!</h1>
-      <a class="btn btn-info" href="../../Controller/statusServico.php?acao=cadastrar">Novo</a>
-      <table class="table table-hover table-striped"><!--cria tabela-->
-          <thead><!--Cabeçalho da tabela-->
-            <th>#</th>
-            <th>Status Serviço</th>
-            <th>Descrição</th>
-            <th>Ações</th>
-          </thead>
-          <tbody><!--Corpo da tabela-->
-            <?php foreach ($lista as $linha): ?>
-              <tr>
-                <td><?php echo $linha['idStatusServico']; ?></td>
-                <td><?php echo $linha['status']; ?></td>
-                <td><?php echo $linha['descricaoStatus']; ?></td>
-                <td>
-                  <a class="btn btn-warning btn-sm" href="../Controller/statusServico.php?acao=cadastrar&idStatusServico=<?php echo $linha['idStatusServico']; ?>">Editar</a>
-                  <a class="btn btn-danger btn-sm" href="../Controller/statusServico.php?acao=remover&idStatusServico=<?php echo $linha['idStatusServico']; ?>">Excluir</a>
-                </td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-      </table>
+          <!-- Collapse button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="basicExampleNav">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="../indexAdministrador.html">
+                  <i class="fas fa-home"></i>Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-desktop"></i> Ordem de Serviço</a>
+                <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Cadastrar</a>
+                  <a class="dropdown-item" href="#">Consultar</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <i class="far fa-file-alt"></i> Cadastros</a>
+                <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="../Marca/form_marca.php">Marca</a>
+                  <a class="dropdown-item" href="../Servico/form_servico.php">Serviço</a>
+                  <a class="dropdown-item" href="../Peca/form_peca.php">Peça</a>
+                  <a class="dropdown-item" href="../StatusServico/form_statusServico.php">Status Serviço</a>
+                  <a class="dropdown-item" href="../TipoPessoa/form_tipoPessoa.php">Tipo Pessoa</a>
+                  <a class="dropdown-item" href="#">Equipamento</a>
+                  <a class="dropdown-item" href="#">Pessoa</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <i class="far fa-file-alt"></i> Consulta</a>
+                <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="../Marca/list_marca.php">Marca</a>
+                  <a class="dropdown-item" href="../Servico/list_servico.php">Serviço</a>
+                  <a class="dropdown-item" href="../Peca/list_peca.php">Peça</a>
+                  <a class="dropdown-item" href="../StatusServico/list_statusServico.php">Status Serviço</a>
+                  <a class="dropdown-item" href="../TipoPessoa/list_tipoPessoa.php">Tipo Pessoa</a>
+                  <a class="dropdown-item" href="#">Equipamento</a>
+                  <a class="dropdown-item" href="#">Pessoa</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <i class="far fa-file-alt"></i> Relatórios</a>
+                <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Marca</a>
+                  <a class="dropdown-item" href="#">Serviço</a>
+                  <a class="dropdown-item" href="#">Peça</a>
+                  <a class="dropdown-item" href="#">Status Serviço</a>
+                  <a class="dropdown-item" href="#">Tipo Pessoa</a>
+                  <a class="dropdown-item" href="#">Equipamento</a>
+                  <a class="dropdown-item" href="#">Pessoa</a>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">
+                  <i class="fas fa-sign-out-alt"></i>Sair
+                </a>
+              </li>
+
+            </ul>
+            <!-- Links -->
+          </div>
+          <!-- Collapsible content -->
+
+        </div>
+      </nav>
+      <!--/.Navbar-->
+
+      <!-- Mask -->
+        <div id="intro" class="view">
+          <div class="container-fluid full-bg-img mask rgba-black-strong d-flex align-items-center
+            justify-content-center">
+
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-10 text-center">  
+                <h2 class="display-3 font-bold white-text mb-2">Lista de Status de Serviço</h2>              
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- Mask -->
+    </header>
+  <!-- Barra de Navegação -->
+
+  <!-- Footer -->
+  <footer class="page-footer font-small peach-gradient">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="#"> Maria Regina Cerbaro</a>
     </div>
+    <!-- Copyright -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
+  </footer>
+  <!-- Footer -->
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="../../js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="../../js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="../../js/mdb.min.js"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript"></script>
+
+</body>
 </html>
