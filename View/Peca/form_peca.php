@@ -1,3 +1,7 @@
+<?php
+  $acao = "../../controller/peca.php?acao=gravar";
+  if(isset($registro)) $acao .= "&id=".$registro['id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,7 +127,39 @@
 
             <div class="row d-flex justify-content-center">
               <div class="col-md-10 text-center">
-                <h2 class="display-3 font-bold white-text mb-2">Cadastro de Peças</h2>                
+                <div class="container border white">
+                    <h1>Cadastro de Peça</h1>
+
+                    <form class="form" action="<?php echo $acao; ?>" method="post">
+                      <div class="form-group">
+                        <label for="">Item</label>
+                        <input class="form-control" type="text" name="item"
+                          value="<?php if(isset($registro)) echo $registro['item']; ?>" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="">Quantidade </label>
+                        <input class="form-control" type="number" name="quantidade"
+                          value="<?php if(isset($registro)) echo $registro['quantidade']; ?>">
+                      </div>
+                      <div class="form-group">
+                        <label for="">Valor Compra </label>
+                        <input class="form-control" type="double" name="valorCompra"
+                          value="<?php if(isset($registro)) echo $registro['valorCompra']; ?>">
+                      </div>
+                      <div class="form-group">
+                        <label for="">Valor Venda </label>
+                        <input class="form-control" type="double" name="valorVenda"
+                          value="<?php if(isset($registro)) echo $registro['valorVenda']; ?>">
+                      </div>
+                      <div class="form-group">
+                        <label for="">Desconto </label>
+                        <input class="form-control" type="double" name="desconto"
+                          value="<?php if(isset($registro)) echo $registro['desconto']; ?>">
+                      </div>
+                      <button class="btn btn-info" type="submit">Enviar</button>
+                    </form>
+                  </div>
+                <!-- <h2 class="display-3 font-bold white-text mb-2">Cadastro de Peças</h2>                 -->
               </div>
             </div>
           </div>

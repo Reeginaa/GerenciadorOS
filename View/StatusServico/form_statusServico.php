@@ -1,3 +1,7 @@
+<?php
+  $acao = "../../controller/statusServico.php?acao=gravar";
+  if(isset($registro)) $acao .= "&id=".$registro['id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,7 +127,24 @@
 
             <div class="row d-flex justify-content-center">
               <div class="col-md-10 text-center">  
-                <h2 class="display-3 font-bold white-text mb-2">Cadastro de Status de Serviço</h2>              
+                <div class="container border white">
+                    <h1>Cadastro de Status Serviço</h1>
+
+                    <form class="form" action="<?php echo $acao; ?>" method="post">
+                      <div class="form-group">
+                        <label for="">Status</label>
+                        <input class="form-control" type="text" name="status"
+                          value="<?php if(isset($registro)) echo $registro['status']; ?>" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="">Descrição </label>
+                        <input class="form-control" type="text" name="descricaoStatus"
+                          value="<?php if(isset($registro)) echo $registro['descricaoStatus']; ?>">
+                      </div>
+                      <button class="btn btn-info" type="submit">Enviar</button>
+                    </form>
+                  </div>
+                <!-- <h2 class="display-3 font-bold white-text mb-2">Cadastro de Status de Serviço</h2>               -->
               </div>
             </div>
           </div>
