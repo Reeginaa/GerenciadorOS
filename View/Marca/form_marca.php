@@ -1,3 +1,7 @@
+<?php
+  $acao = "../../controller/marca.php?acao=gravar";
+  if (isset($registro)) $acao .= "&id=".$registro['id']
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,11 +67,11 @@
                   aria-haspopup="true" aria-expanded="false">
                   <i class="far fa-file-alt"></i> Cadastros</a>
                 <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="../Marca/form_marca.php">Marca</a>
-                  <a class="dropdown-item" href="../Servico/form_servico.php">Serviço</a>
-                  <a class="dropdown-item" href="../Peca/form_peca.php">Peça</a>
-                  <a class="dropdown-item" href="../StatusServico/form_statusServico.php">Status Serviço</a>
-                  <a class="dropdown-item" href="../TipoPessoa/form_tipoPessoa.php">Tipo Pessoa</a>
+                  <a class="dropdown-item" href="../marca/form_marca.php">Marca</a>
+                  <a class="dropdown-item" href="../servico/form_servico.php">Serviço</a>
+                  <a class="dropdown-item" href="../peca/form_peca.php">Peça</a>
+                  <a class="dropdown-item" href="../statusServico/form_statusServico.php">Status Serviço</a>
+                  <a class="dropdown-item" href="../tipoPessoa/form_tipoPessoa.php">Tipo Pessoa</a>
                   <a class="dropdown-item" href="#">Equipamento</a>
                   <a class="dropdown-item" href="#">Pessoa</a>
                 </div>
@@ -77,11 +81,11 @@
                   aria-haspopup="true" aria-expanded="false">
                   <i class="far fa-file-alt"></i> Consulta</a>
                 <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="../Marca/list_marca.php">Marca</a>
-                  <a class="dropdown-item" href="../Servico/list_servico.php">Serviço</a>
-                  <a class="dropdown-item" href="../Peca/list_peca.php">Peça</a>
-                  <a class="dropdown-item" href="../StatusServico/list_statusServico.php">Status Serviço</a>
-                  <a class="dropdown-item" href="../TipoPessoa/list_tipoPessoa.php">Tipo Pessoa</a>
+                  <a class="dropdown-item" href="../marca/list_marca.php">Marca</a>
+                  <a class="dropdown-item" href="../servico/list_servico.php">Serviço</a>
+                  <a class="dropdown-item" href="../peca/list_peca.php">Peça</a>
+                  <a class="dropdown-item" href="../statusServico/list_statusServico.php">Status Serviço</a>
+                  <a class="dropdown-item" href="../tipoPessoa/list_tipoPessoa.php">Tipo Pessoa</a>
                   <a class="dropdown-item" href="#">Equipamento</a>
                   <a class="dropdown-item" href="#">Pessoa</a>
                 </div>
@@ -122,8 +126,25 @@
             justify-content-center">
 
             <div class="row d-flex justify-content-center">
-              <div class="col-md-10 text-center">   
-                <h2 class="display-3 font-bold white-text mb-2">Cadastro de Marcas</h2>             
+              <div class="col-md-10 text-center">
+                <div class="container border white">
+                  <h1>Cadastro de Marcas</h1>
+
+                  <form class="form" action="<?php echo $acao; ?>" method="post">
+                    <div class="form-group">
+                      <label for="">Nome</label>
+                      <input class="form-control" type="text" name="nomeMarca"
+                        value="<?php if(isset($registro)) echo $registro['nomeMarca']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Observação </label>
+                      <input class="form-control" type="text" name="observacaoMarca"
+                        value="<?php if(isset($registro)) echo $registro['observacaoMarca']; ?>">
+                    </div>
+                    <button class="btn btn-info" type="submit">Enviar</button>
+                  </form>
+                </div>
+                <!-- <h2 class="display-3 font-bold white-text mb-2">Cadastro de Marcas</h2>              -->
               </div>
             </div>
           </div>
