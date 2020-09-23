@@ -1,53 +1,46 @@
 <?php
 
-    require_once '../model/marca_model.php';
-    /**
-     * O que essa manutenção vai fazer, controla, REGRA DE NEGÓCIO
-     */
-    class Marca{
-        private $modelo;
+  /**
+   *
+   */
+  class Marca extends Controller_Base{
 
-        function __construct() {
-            $this->modelo = new Marca_Model();
-        }
+    private $nome;
+    private $link;
 
-        //função para listar
-        public function listar(){
-            $lista = $this->modelo->get();
-            require '../view/marca/list_marca.php';
-        }
-
-        //função para cadastrar
-        public function cadastrar($id = null){
-            if($id != null){
-                $registro = $this->modelo->getById($id);
-            }
-            require '../view/marca/form_marca.php';
-        }
-
-        //função para gravar
-        public function gravar(){
-            $dados = $_POST;
-            if ($_REQUEST['id']) {
-                $dados['id'] = $_REQUEST['id'];
-            }
-            //print_r($dados); die();
-            $r = $this->modelo->inserir($dados);
-            header('location: ./marca.php');
-        }
-
-        //função para remover
-        public function remover($id){
-            $r = $this->modelo->remover($id);
-            header('location: ./marca.php');
-        }
+    function __construct() {
+      $this->nome = "marca";
+      $this->link = '?controller=' . $this->nome;
+      $this->loadModel('Marca_Model');
     }
 
-    //instância do objeto
-    $marca = new Marca();
+    public function index(){
+      $link = $this->link;
+      $lista = $this->modelo->get();
+      require $GLOBALS['APPPATH'] . '/view/'.$this->nome.'/list_'.$this->nome.'.php';
+    }
 
-    $acao = isset($_REQUEST['acao'])? $_REQUEST['acao'] : 'listar';
-    $id = isset($_REQUEST['id'])? $_REQUEST['id'] : null;
-    $marca->{$acao}($id);
+    public function cadastrar($id=null){
+      $acao = $this->link . '&acao=gravar';
+      if ($id != null) {
+        $registro = $this->modelo->getById($id);
+      }
+      require $GLOBALS['APPPATH']. '/view/'.$this->nome.'/form_'.$this->nome.'.php';
+    }
 
- ?>
+    public function gravar(){
+      $dados = $_POST;
+      if ($_REQUEST['id']) {
+        $dados['id'] = $_REQUEST['id'];
+      }
+      $r = $this->modelo->inserir($dados);
+      $this->redirect('?controller='.$this->nome);
+    }
+
+    public function remover($id){
+      $r = $this->modelo->remover($id);
+      $this->redirect('?controller='.$this->nome);
+    }
+  }
+
+?>

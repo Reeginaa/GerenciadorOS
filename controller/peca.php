@@ -3,15 +3,15 @@
   /**
    *
    */
-  class Servico extends Controller_Base{
+  class Peca extends Controller_Base{
 
     private $nome;
     private $link;
 
     function __construct() {
-      $this->nome = "servico";
+      $this->nome = "peca";
       $this->link = '?controller=' . $this->nome;
-      $this->loadModel('Servico_Model');
+      $this->loadModel('Peca_Model');
     }
 
     public function index(){

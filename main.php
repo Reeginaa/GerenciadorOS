@@ -13,7 +13,7 @@
         public function dispatcher($rota) {
 
             if(FILE_EXISTS($GLOBALS['APPPATH'] . '/controller/'.$rota.'.php')){
-                //faz o import do controladr
+                //faz o import do controlador
                 require_once($GLOBALS['APPPATH'] . '/controller/'.$rota.'.php');
 
                 $str_controlador = ucfirst($rota);
