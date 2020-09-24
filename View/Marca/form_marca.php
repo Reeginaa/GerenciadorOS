@@ -15,9 +15,6 @@
     <title>Manutenção de Marca</title>
   </head>
   <body>
-    <nav>
-      <a href="../home.php">Home</a>
-    </nav>
     <div class="container">
       <h1>Manutenção de Marca</h1>
 
