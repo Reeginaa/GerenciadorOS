@@ -6,17 +6,17 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Gerenciador de Ordem de Serviço</title>
   <!-- MDB icon -->
-  <link rel="icon" href="../img/eletronica_raio.png" type="image/x-icon">
+  <link rel="icon" href="./interface/img/eletronica_raio.png" type="image/x-icon">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Google Fonts Roboto -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="./interface/css/bootstrap.min.css">
   <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="../css/mdb.min.css">
+  <link rel="stylesheet" href="./interface/css/mdb.min.css">
   <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="./interface/css/style.css">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
         <div class="container">
           <!-- Navbar brand -->
           <a class="navbar-brand" href="#">
-            <img src="../img/eletronica_NomeSemBorda.png" height="30" alt="mdb logo">
+            <img src="./interface/img/eletronica_NomeSemBorda.png" height="30" alt="mdb logo">
           </a>
 
           <!-- Collapse button -->
@@ -50,7 +50,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="indexSobre.php">
+                <a class="nav-link" href="view/homeSobre.php">
                   <i class="fas fa-info-circle"></i>Sobre
                 </a>
               </li>
@@ -70,38 +70,3 @@
 
             <div class="row d-flex justify-content-center">
               <div class="col-md-10 text-center">
-
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      <!-- Mask -->
-    </header>
-  <!-- Barra de Navegação -->
-
-  <!-- Footer -->
-    <footer class="page-footer font-small peach-gradient">
-
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="#"> Maria Regina Cerbaro</a>
-      </div>
-    <!-- Copyright -->
-
-    </footer>
-  <!-- Footer -->
-
-  <!-- jQuery -->
-  <script type="text/javascript" src="../js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="../js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="../js/mdb.min.js"></script>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript"></script>
-
-</body>
-</html>
