@@ -1,5 +1,7 @@
 <?php require('header.php'); ?>
 
+<title>Sobre</title>
+
 <!-- Título -->
 <h2 class="display-3 font-bold white-text mb-2">Sobre</h2>
 <!-- Divisor -->

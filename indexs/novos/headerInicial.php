@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Gerenciador de Ordem de Serviço</title>
   <!-- MDB icon -->
   <link rel="icon" href="./interface/img/eletronica_raio.png" type="image/x-icon">
   <!-- Font Awesome -->

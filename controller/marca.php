@@ -17,7 +17,7 @@
     public function index(){
       $link = $this->link;
       $lista = $this->modelo->get();
-      require $GLOBALS['APPPATH'] . '/view/headerAdmin.php';
+      require $GLOBALS['APPPATH'] . '/view/header.php';
       require $GLOBALS['APPPATH'] . '/view/'.$this->nome.'/list_'.$this->nome.'.php';
       require $GLOBALS['APPPATH'] . '/view/footer.php';
     }
@@ -27,7 +27,7 @@
       if ($id != null) {
         $registro = $this->modelo->getById($id);
       }
-      require $GLOBALS['APPPATH'] . '/view/headerAdmin.php';
+      require $GLOBALS['APPPATH'] . '/view/header.php';
       require $GLOBALS['APPPATH']. '/view/'.$this->nome.'/form_'.$this->nome.'.php';
       require $GLOBALS['APPPATH'] . '/view/footer.php';
     }

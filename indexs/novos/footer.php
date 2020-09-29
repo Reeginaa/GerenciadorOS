@@ -1,4 +1,5 @@
-   </header>
+
+    </header>
   <!-- Barra de Navegação -->
 
   <!-- Footer -->
@@ -20,16 +21,8 @@
   <script type="text/javascript" src="./interface/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="./interface/js/mdb.min.js"></script>
-  <!-- MDBootstrap Datatables  -->
-  <script type="text/javascript" src="./interface/js/addons/datatables.min.js"></script>
-
   <!-- Your custom scripts (optional) -->
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('#dtBasicExample').DataTable();
-      $('.dataTables_length').addClass('bs-select');
-    });
-  </script>
+  <script type="text/javascript"></script>
 
   </body>
 </html>

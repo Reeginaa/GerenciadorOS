@@ -1,15 +1,14 @@
-<?php require('headerInicial.php'); ?>
+<?php require('header.php'); ?>
 
-<!-- Título -->
-<h2 class="display-3 font-bold white-text mb-2">Gerenciador de O.S.</h2>
-<!-- Divisor -->
-<hr class="hr-light">
-<!-- Descrição -->
-<h4 class="white-text my-4">Um sistema prático e fácil para gerenciar e armazenar dados de seus serviços.</h4>
-<a href="view/homeLogin.php">
-    <button type="button" class="btn btn-outline-white">Entrar
-        <i class="fa fa-user-shield ml-2"></i>
-    </button>
-</a>
+<title>Página Inicial</title>
+
+<div id="intro" class="view">
+        <div class="container-fluid full-bg-img mask rgba-black-strong d-flex align-items-center justify-content-center">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 text-center">
+                </div>
+            </div>
+        </div>
+</div>
 
 <?php require('footer.php'); ?>
