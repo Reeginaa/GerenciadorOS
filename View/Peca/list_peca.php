@@ -7,12 +7,12 @@
       <div class="col-md-14 text-center">
         <div class="card">
           <h5 class="card-header info-color white-text text-center py-4 peach-gradient">
-            <strong>Lista de Status Serviço</strong>
+            <strong>Lista de Peças</strong>
           </h5>
         </div>
         <div class="container border white">
           <a class="btn btn-primary" href="<?= $link ?>&acao=cadastrar">Novo</a>
-          <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+          <table id="dtBasicExample" class="table table-striped table-bordered table-sm table-responsive" cellspacing="0" width="100%">
 
             <thead>
               <th>#</th>

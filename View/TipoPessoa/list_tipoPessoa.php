@@ -4,11 +4,15 @@
 <div id="intro" class="view">
   <div class="container-fluid full-bg-img mask rgba-black-strong d-flex align-items-center justify-content-center">
     <div class="row d-flex justify-content-center">
-      <div class="col-md-10 text-center">
+      <div class="col-md-14 text-center">
+        <div class="card">
+          <h5 class="card-header info-color white-text text-center py-4 peach-gradient">
+            <strong>Lista de Tipo Pessoa</strong>
+          </h5>
+        </div>
         <div class="container border white">
-          <h1>Lista de Tipo Pessoa!</h1>
-          <a class="btn btn-info" href="<?= $link ?>&acao=cadastrar">Novo</a>
-          <table class="table table-hover table-striped">
+          <a class="btn btn-primary" href="<?= $link ?>&acao=cadastrar">Novo</a>
+          <table id="dtBasicExample" class="table table-striped table-bordered table-sm table-responsive" cellspacing="0" width="100%">
             <thead>
               <th>#</th>
               <th>Tipo</th>

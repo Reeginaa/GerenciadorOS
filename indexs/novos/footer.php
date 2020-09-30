@@ -1,4 +1,8 @@
-
+<!-- </div>
+</div>
+    </div>
+    </div>  -->
+    
     </header>
   <!-- Barra de Navegação -->
 
@@ -14,13 +18,13 @@
   <!-- Footer -->
 
   <!-- jQuery -->
-  <script type="text/javascript" src="./interface/js/jquery.min.js"></script>
+  <script type="text/javascript" src="../../interface/js/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="./interface/js/popper.min.js"></script>
+  <script type="text/javascript" src="../../interface/js/popper.min.js"></script>
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="./interface/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../interface/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="./interface/js/mdb.min.js"></script>
+  <script type="text/javascript" src="../../interface/js/mdb.min.js"></script>
   <!-- Your custom scripts (optional) -->
   <script type="text/javascript"></script>
 

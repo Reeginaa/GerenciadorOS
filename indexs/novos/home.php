@@ -8,7 +8,7 @@
 <hr class="hr-light">
 <!-- Descrição -->
 <h4 class="white-text my-4">Um sistema prático e fácil para gerenciar e armazenar dados de seus serviços.</h4>
-<a href="view/homeLogin.php">
+<a href="homeLogin.php">
     <button type="button" class="btn btn-outline-white">Entrar
         <i class="fa fa-user-shield ml-2"></i>
     </button>

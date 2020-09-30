@@ -12,7 +12,7 @@
         </div>
         <div class="container border white">
           <a class="btn btn-primary" href="<?= $link ?>&acao=cadastrar">Novo</a>
-          <table id="datatable" class="table table-bordered table-sm text-center" cellspacing="0" width="100%">
+          <table id="dtBasicExample" class="table table-striped table-bordered table-sm table-responsive" cellspacing="0" width="100%">
             <thead>
               <th>#</th>
               <th>Status</th>

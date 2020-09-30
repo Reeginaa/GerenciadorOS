@@ -53,16 +53,13 @@
                 </a>
               </li>
               
-              <!-- Dropdown -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-desktop"></i> Ordem de Serviço</a>
-                <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Cadastrar</a>
-                  <a class="dropdown-item" href="#">Consultar</a>
-                </div>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fas fa-desktop"></i>Ordem de Serviço
+                </a>
               </li>
+
+              <!-- Dropdown -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">

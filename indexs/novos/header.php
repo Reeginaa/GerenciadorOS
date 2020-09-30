@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <!-- MDB icon -->
-  <link rel="icon" href="../interface/img/eletronica_raio.png" type="image/x-icon">
+  <link rel="icon" href="../../interface/img/eletronica_raio.png" type="image/x-icon">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Google Fonts Roboto -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="../interface/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../interface/css/bootstrap.min.css">
   <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="../interface/css/mdb.min.css">
+  <link rel="stylesheet" href="../../interface/css/mdb.min.css">
   <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="../interface/css/style.css">
+  <link rel="stylesheet" href="../../interface/css/style.css">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
         <div class="container">
           <!-- Navbar brand -->
           <a class="navbar-brand" href="#">
-            <img src="../interface/img/eletronica_NomeSemBorda.png" height="30" alt="mdb logo">
+            <img src="../../interface/img/eletronica_NomeSemBorda.png" height="30" alt="mdb logo">
           </a>
 
           <!-- Collapse button -->
@@ -39,7 +39,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../index.php">
+                    <a class="nav-link" href="home.php">
                         <i class="fas fa-home"></i>Home
                         <span class="sr-only">(current)</span>
                     </a>
@@ -54,6 +54,12 @@
                         <i class="fab fa-instagram"></i> Instagram
                     </a>
                 </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="homeSobre.php">
+                  <i class="fas fa-info-circle"></i>Sobre
+                </a>
+              </li>
               
             </ul>
             <!-- Links -->
@@ -63,5 +69,13 @@
         </div>
       </nav>
       <!--/.Navbar-->
+
+      <!-- Mask -->
+      <!-- <div id="intro" class="view">
+          <div class="container-fluid full-bg-img mask rgba-black-strong d-flex align-items-center
+            justify-content-center">
+
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-10 text-center"> -->
 
       
