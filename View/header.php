@@ -3,29 +3,28 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <!-- MDB icon -->
-  <link rel="icon" href="./interface/img/eletronica_raio.png" type="image/x-icon">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="./interface/css/bootstrap.min.css">
-  <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="./interface/css/mdb.min.css">
-  <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="./interface/css/style.css">
-  <!-- MDBootstrap Datatables  -->
-  <link href="./interface/css/addons/datatables.min.css" rel="stylesheet">
-  
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- MDB icon -->
+    <link rel="icon" href="./interface/img/eletronica_raio.png" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="./interface/css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="./interface/css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="./interface/css/style.css">
+    <!-- MDBootstrap Datatables  -->
+    <link href="./interface/css/addons/datatables.min.css" rel="stylesheet">
+  </head>
+  <body>
 
-  <!-- Barra de Navegação -->
+    <!-- Barra de Navegação -->
     <header>
       <!--Navbar-->
       <nav class="navbar navbar-expand-lg navbar-dark peach-gradient fixed-top">
@@ -70,8 +69,8 @@
                   <a class="dropdown-item" href="index.php?controller=peca">Peça</a>
                   <a class="dropdown-item" href="index.php?controller=statusServico">Status Serviço</a>
                   <a class="dropdown-item" href="index.php?controller=tipoPessoa">Tipo Pessoa</a>
-                  <!-- <a class="dropdown-item" href="#">Equipamento</a>
-                  <a class="dropdown-item" href="#">Pessoa</a> -->
+                  <a class="dropdown-item" href="index.php?controller=equipamento">Equipamento</a>
+                  <a class="dropdown-item" href="index.php?controller=pessoa">Pessoa</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -96,7 +95,5 @@
         </div>
       </nav>
       <!--/.Navbar-->
-
-      
-                     
-              
+    </header>
+    <!-- Barra de Navegação -->

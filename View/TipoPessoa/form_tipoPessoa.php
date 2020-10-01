@@ -1,17 +1,15 @@
 
 <title>Manutenção de Tipo Pessoa</title>
 
-<div id="intro" class="view">
-  <div class="container-fluid full-bg-img mask rgba-black-strong d-flex align-items-center justify-content-center">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-14 text-center">
-        <div class="card">
-          <h5 class="card-header info-color white-text text-center py-4 peach-gradient">
-            <strong>Manutenção de Tipo Pessoa</strong>
-          </h5>
-        </div>
-        <div class="container border white">
-          <form class="form" action="<?php echo $acao; ?>" method="post">
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <div id="ui">
+        <h1 class="text-center">Cadastro de Tipo Pessoa</h1>
+        <hr class="hr-light">
+        <form class="form-group text-center" action="<?php echo $acao; ?>" method="post">
             <div class="form-group">
               <label for="">Tipo Pessoa</label>
               <input class="form-control" type="text" name="tipo"
@@ -25,9 +23,9 @@
             <button class="btn btn-success" type="submit">Enviar</button>
             <button class="btn btn-warning" type="reset">Limpar</button>
           </form>
-        </div>
       </div>
     </div>
+    <div class="col-lg-3"></div>
   </div>
 </div>
-    
+<br><br><br><br>        
