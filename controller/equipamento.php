@@ -9,7 +9,7 @@
     private $link;
 
     function __construct() {
-      $this->nome = "equipamento";
+      $this->nome = "equipamento"; //nome da classe genérico
       $this->link = '?controller=' . $this->nome;
       $this->loadModel('Equipamento_Model');
     }
@@ -23,6 +23,8 @@
     }
 
     public function cadastrar($id=null){
+      $listaMarcas = $this->modelo->getLista('marca'); //Receber dados da tabela marca
+
       $acao = $this->link . '&acao=gravar';
       if ($id != null) {
         $registro = $this->modelo->getById($id);

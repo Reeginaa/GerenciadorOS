@@ -4,8 +4,8 @@
 <br><br><br>
 <div class="container">
   <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
+    <div class="col-lg-0"></div>
+    <div class="col-lg-12">
       <div id="ui">
         <h1 class="text-center">Lista de Pessoas</h1>
         <hr class="hr-light">
@@ -15,6 +15,7 @@
         <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
           <thead>
             <th>#</th>
+            <th>Tipo Pessoa</th>
             <th>Nome</th>
             <th>CPF</th>
             <th>Cidade</th>
@@ -26,6 +27,7 @@
             <?php foreach ($lista as $linha): ?>
               <tr>
                 <td><?php echo $linha['id']; ?></td>
+                <th><?php echo $linha['tipoPessoa']?></th>
                 <td><?php echo $linha['nome']; ?></td>
                 <td><?php echo $linha['cpf']; ?></td>
                 <td><?php echo $linha['cidade']; ?></td>
@@ -45,7 +47,7 @@
         </table>
       </div>
     </div>
-    <div class="col-lg-1"></div>
+    <div class="col-lg-0"></div>
   </div>
 </div>   
 <br><br><br>  

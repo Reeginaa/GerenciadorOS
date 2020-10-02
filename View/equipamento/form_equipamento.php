@@ -38,10 +38,13 @@
             </div>
             <div class="form-group">
               <label for="">Marca</label>
-              <select class="browser-default custom-select">
-                <option selected>Selecione a Marca</option>
-                <option value="1">LG</option>
-                <option value="2">Xiaomi</option>
+              <select class="browser-default custom-select" name="codigoMarca" required>
+                <option value="">Selecione a marca</option>
+                <?php foreach ($listaMarcas as $item): ?>
+                  <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoMarca']==$item['id']) echo "selected";?> >
+                    <?= $item['nomeMarca']; ?>
+                  </option>
+                <?php endforeach; ?>
               </select>
             </div>
             <button class="btn btn-success" type="submit">Enviar</button>

@@ -4,8 +4,8 @@
 <br><br><br><br>
 <div class="container">
   <div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
       <div id="ui">
         <h1 class="text-center">Cadastro de Pessoa</h1>
         <hr class="hr-light">
@@ -14,9 +14,11 @@
             <label for="">Tipo Pessoa</label>
             <select class="browser-default custom-select">
               <option selected>Selecione o Tipo Pessoa</option>
-              <option value="1">Administrador</option>
-              <option value="2">Cliente</option>
-              <option value="3">Atendente</option>
+              <?php foreach ($listaTipoPessoas as $item): ?>
+                  <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoTipoPessoa']==$item['id']) echo "selected";?> >
+                    <?= $item['tipo']; ?>
+                  </option>
+                <?php endforeach; ?>
             </select>
           </div>
           <div class="form-group">
@@ -101,7 +103,7 @@
         </form>
       </div>
     </div>
-    <div class="col-lg-3"></div>
+    <div class="col-lg-2"></div>
   </div>
 </div>
 <br><br><br><br>        

@@ -9,7 +9,7 @@
     private $link;
 
     function __construct() {
-      $this->nome = "pessoa";
+      $this->nome = "pessoa"; //nome da classe genérico
       $this->link = '?controller=' . $this->nome;
       $this->loadModel('Pessoa_Model');
     }
@@ -23,6 +23,8 @@
     }
 
     public function cadastrar($id=null){
+      $listaTipoPessoas = $this->modelo->getLista('tipoPessoa'); //recebe os dados da tabela tipo pessoa
+
       $acao = $this->link . '&acao=gravar';
       if ($id != null) {
         $registro = $this->modelo->getById($id);

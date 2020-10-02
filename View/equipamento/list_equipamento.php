@@ -30,7 +30,7 @@
                 <td><?php echo $linha['modelo']; ?></td>
                 <td><?php echo $linha['numeroSerie']; ?></td>
                 <td><?php echo $linha['observacoesEquipamento']; ?></td>
-                <td><?php echo $linha['codigoMarca']; ?></td>
+                <td><?php echo $linha['marca']; ?></td>
                 <td>
                   <a class="btn btn-warning btn-sm" href="<?= $link ?>&acao=cadastrar&id=<?php echo $linha['id']; ?>">
                     <i class="far fa-edit"></i> Editar
