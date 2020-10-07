@@ -21,10 +21,10 @@ INSERT INTO tipopessoa(id, tipo, descricao) VALUES (21, "Administrador", "Realiz
 --
 -- inserir dados na tabela PESSOA
 --
-INSERT INTO pessoa (id, nome, cpf, rg, dataNascimento, sexo, logradouro, numero, complemento, bairro, cidade, email, senha, telefone, termos, codigoTipoPessoa) 
-	VALUES (30, "Maria Regina Cerbaro", "025.458.997-88", "4587632982", '2000-08-30', "Feminino", "Rua das Hortências", 552, "Casa azul", "Centro", "São Domingos do Sul", "admin@admin.com", "admin", "+55 (54) 98425-6655", '1', 21);
-INSERT INTO pessoa (id, nome, cpf, rg, dataNascimento, sexo, logradouro, numero, complemento, bairro, cidade, email, senha, telefone, termos, codigoTipoPessoa) 
-    VALUES (31, "Leonardo Vicenzi", "032.558.996-52", "1478652302", '1999-11-03', "Masculino", "Rua 15 de Novembro", 1142, "Estrada de Chão", "Consoladora", "Guaporé", "leonardo@gmail.com", "leonardo", "+55 (54) 98154-6652", '1', 20);
+INSERT INTO pessoa (id, nome, cpf, rg, dataNascimento, sexo, logradouro, numero, complemento, bairro, cidade, email, senha, telefone, codigoTipoPessoa) 
+	VALUES (30, "Maria Regina Cerbaro", "025.458.997-88", "4587632982", '2000-08-30', "Feminino", "Rua das Hortências", 552, "Casa azul", "Centro", "São Domingos do Sul", "admin@admin.com", "admin", "+55 (54) 98425-6655", 21);
+INSERT INTO pessoa (id, nome, cpf, rg, dataNascimento, sexo, logradouro, numero, complemento, bairro, cidade, email, senha, telefone, codigoTipoPessoa) 
+    VALUES (31, "Leonardo Vicenzi", "032.558.996-52", "1478652302", '1999-11-03', "Masculino", "Rua 15 de Novembro", 1142, "Estrada de Chão", "Consoladora", "Guaporé", "leonardo@gmail.com", "leonardo", "+55 (54) 98154-6652", 20);
     
 --
 -- inserir dados na tabela STATUS SERVIÇO

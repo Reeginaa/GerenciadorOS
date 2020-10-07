@@ -22,11 +22,16 @@
 
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript">
+      // JavaScript para paginação e ordenação de tabelas
       $(document).ready(function () {
         $('#dtBasicExample').DataTable();
         $('.dataTables_length').addClass('bs-select');
+        $('#dtBasicExample').mdbEditor({
+mdbEditor: true
+});
       });
-    </script>
 
+      
+    </script>
   </body>
 </html>

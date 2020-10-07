@@ -15,10 +15,10 @@
             <select class="browser-default custom-select">
               <option selected>Selecione o Tipo Pessoa</option>
               <?php foreach ($listaTipoPessoas as $item): ?>
-                  <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoTipoPessoa']==$item['id']) echo "selected";?> >
-                    <?= $item['tipo']; ?>
-                  </option>
-                <?php endforeach; ?>
+                <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoTipoPessoa']==$item['id']) echo "selected";?> >
+                   <?= $item['tipo']; ?>
+                </option>
+              <?php endforeach; ?>
             </select>
           </div>
           <div class="form-group">

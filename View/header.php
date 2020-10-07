@@ -53,7 +53,7 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="index.php?controller=ordemServico">
                   <i class="fas fa-desktop"></i>Ordem de Serviço
                 </a>
               </li>

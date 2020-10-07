@@ -144,7 +144,6 @@ CREATE TABLE `pessoa` (
   `email` varchar(400) DEFAULT NULL,
   `senha` varchar(20) DEFAULT NULL,
   `telefone` varchar(20) NOT NULL,
-  `termos` tinyint(1) DEFAULT NULL,
   `codigoTipoPessoa` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
