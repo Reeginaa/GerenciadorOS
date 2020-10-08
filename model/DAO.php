@@ -90,6 +90,7 @@
         public function getLista($tabela) {
             $query = $this->bd->query("select * from " . $tabela);
             $lista = $query->fetchAll();
+            
 
             return $lista;
         }

@@ -16,6 +16,7 @@
 
     public function index(){
       $link = $this->link;
+      //print_r(10); exit();
       $lista = $this->modelo->get();
       require $GLOBALS['APPPATH'] . '/view/header.php';
       require $GLOBALS['APPPATH'] . '/view/'.$this->nome.'/list_'.$this->nome.'.php';
@@ -23,7 +24,10 @@
     }
 
     public function cadastrar($id=null){
-      //$listaTipoPessoas = $this->modelo->getLista('tipoPessoa'); //recebe os dados da tabela tipo pessoa
+      //print_r(10); exit;
+      $listaCliente = $this->modelo->getLista('pessoa'); //recebe os dados da tabela tipo pessoa
+      $listaEquipamento = $this->modelo->getLista('equipamento'); 
+      $listaStatus = $this->modelo->getLista('statusServico'); 
 
       $acao = $this->link . '&acao=gravar';
       if ($id != null) {

@@ -3,8 +3,8 @@
 <br><br><br><br>
 <div class="container">
     <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
             <div id="ui">
                 <h1 class="text-center">Cadastro de Ordem de Serviço</h1>
                 <hr class="hr-light">
@@ -13,9 +13,9 @@
                         <label for="">Cliente</label>
                         <select class="browser-default custom-select">
                             <option selected>Selecione o Cliente</option>
-                            <?php foreach ($listaClientes as $item): ?>
+                            <?php foreach ($listaCliente as $item): ?>
                                 <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoPessoa']==$item['id']) echo "selected";?>>
-                                    <?= $item['cliente']; ?>
+                                    <?= $item['nome']; ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -37,9 +37,9 @@
                         <label for="">Equipamento</label>
                         <select class="browser-default custom-select">
                             <option selected>Selecione o Equipamento</option>
-                            <?php foreach ($listaClientes as $item): ?>
+                            <?php foreach ($listaEquipamento as $item): ?>
                                 <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoEquipamento']==$item['id']) echo "selected";?>>
-                                    <?= $item['equipamento']; ?>
+                                    <?= $item['nomeEquipamento']; ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -55,9 +55,9 @@
                             <label for="">Status</label>
                             <select class="browser-default custom-select">
                                 <option selected>Selecione o Status</option>
-                                <?php foreach ($listaClientes as $item): ?>
+                                <?php foreach ($listaStatus as $item): ?>
                                     <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoStatusServico']==$item['id']) echo "selected";?>>
-                                        <?= $item['statusServico']; ?>
+                                        <?= $item['status']; ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
@@ -95,13 +95,11 @@
                             </tr>
                         </tbody>
                     </table>
-                    
-                        
                     <hr class="hr-light">
                 </form>
             </div>
         </div>
-        <div class="col-lg-2"></div>
+        <div class="col-lg-1"></div>
     </div>
 </div>
 <br><br><br><br>
