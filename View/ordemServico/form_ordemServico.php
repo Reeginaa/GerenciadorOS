@@ -73,18 +73,13 @@
                     <a class="btn btn-success btn-sm" href="#">
                         <i class="far fa-file-alt"></i> Adicionar
                     </a>
-                    <a class="btn btn-warning btn-sm" href="#">
-                        <i class="far fa-file-alt"></i> Editar
-                    </a>
-                    <a class="btn btn-danger btn-sm" href="#">
-                        <i class="far fa-file-alt"></i> Excluir
-                    </a>
                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
                         <thead>
                             <th>Qtd</th>
                             <th>Serviço</th>
                             <th>Peça</th>
                             <th>Valor Unitário</th>
+                            <th>Ações</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -92,10 +87,20 @@
                                 <td>Troca</td>
                                 <td>Placa</td>
                                 <td>50,00</td>
+                                <td>
+                                    <a class="btn btn-warning btn-sm" href="#">
+                                        <i class="far fa-edit"></i> Editar
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="far fa-trash-alt"></i> Excluir
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                     <hr class="hr-light">
+                    <button class="btn btn-success" type="submit">Enviar</button>
+                    <button class="btn btn-warning" type="reset">Limpar</button>
                 </form>
             </div>
         </div>

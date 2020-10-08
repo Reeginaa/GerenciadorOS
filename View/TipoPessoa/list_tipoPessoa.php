@@ -9,7 +9,7 @@
       <div id="ui">
         <h1 class="text-center">Lista de Tipo Pessoa</h1>
         <hr class="hr-light">
-        <a class="btn btn-primary" href="<?= $link ?>&acao=cadastrar">
+        <a class="btn btn-success" href="<?= $link ?>&acao=cadastrar">
           <i class="far fa-file-alt"></i> Novo
         </a>
         <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
