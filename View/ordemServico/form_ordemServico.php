@@ -69,14 +69,63 @@
                         </div>
                     </div>
                     <hr class="hr-light">
-                    <h4 class="text-center text-white">Peças/Serviço</h4>
+
+                    <!-- Orçamento -->
+                    <form action="<?php echo $acao; ?>">
+                        <h4 class="text-center text-white">Adicionar Orçamento</h4>
+                        <div class="row">
+                            <div class="form-group col-lg-6 text-white">
+                                <input type="file" name="arquivo" 
+                                    value="<?php if(isset($registro)) echo $registro['arquivo'];?>">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <input type="text" class="form-control" name="descricaoAnexo" placeholder="Descrição"
+                                value="<?php if(isset($registro)) echo $registro['descricaoAnexo'];?>">
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-sm" type="submit">Salvar</button>
+                        <button class="btn btn-warning btn-sm" type="reset">Limpar</button>
+                    </form>
+                    <!-- Orçamento -->
+
+                    <hr class="hr-light">
+
+                    <!-- Serviço -->
+                    <h4 class="text-center text-white">Serviço</h4>
                     <a class="btn btn-success btn-sm" href="#">
                         <i class="far fa-file-alt"></i> Adicionar
                     </a>
                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
                         <thead>
-                            <th>Qtd</th>
                             <th>Serviço</th>
+                            <th>Valor Unitário</th>
+                            <th>Ações</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Troca</td>
+                                <td>50,00</td>
+                                <td>
+                                    <a class="btn btn-warning btn-sm" href="#">
+                                        <i class="far fa-edit"></i> Editar
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="far fa-trash-alt"></i> Excluir
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Serviço -->
+
+                    <!-- Peça -->
+                    <h4 class="text-center text-white">Peça</h4>
+                    <a class="btn btn-success btn-sm" href="#">
+                        <i class="far fa-file-alt"></i> Adicionar
+                    </a>
+                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
+                        <thead>
+                            <th>Quantidade</th>
                             <th>Peça</th>
                             <th>Valor Unitário</th>
                             <th>Ações</th>
@@ -84,7 +133,6 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Troca</td>
                                 <td>Placa</td>
                                 <td>50,00</td>
                                 <td>
@@ -98,6 +146,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <!-- Peça -->
                     <hr class="hr-light">
                     <button class="btn btn-success" type="submit">Enviar</button>
                     <button class="btn btn-warning" type="reset">Limpar</button>
