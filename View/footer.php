@@ -11,6 +11,8 @@
 
     <!-- jQuery -->
     <script type="text/javascript" src="./interface/js/jquery.min.js"></script>
+    <!-- Mascara -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="./interface/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
@@ -26,9 +28,11 @@
       $(document).ready(function () {
         $('#dtBasicExample').DataTable();
         $('.dataTables_length').addClass('bs-select');
-        $('#dtBasicExample').mdbEditor({
-mdbEditor: true
-});
+        $custom-file-text: (
+          en: "Browse",
+          es: "Elegir",
+          pt: "Procurar"
+        );
       });
 
       

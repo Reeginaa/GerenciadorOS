@@ -12,29 +12,31 @@
         <form class="form-group text-center" action="<?php echo $acao; ?>" method="post">
             <div class="row">
               <div class="form-group col-lg-8">
-                <label for="">Item</label>
+                <label for="">Item: *</label>
                 <input class="form-control" type="text" name="item"
                   value="<?php if(isset($registro)) echo $registro['item']; ?>" required>
               </div>
               <div class="form-group col-lg-4">
-                <label for="">Quantidade</label>
+                <label for="">Quantidade: *</label>
                 <input class="form-control" type="number" name="quantidade"
                   value="<?php if(isset($registro)) echo $registro['quantidade']; ?>" required>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-lg-4">
-                <label for="">Valor Compra</label>
+                <label for="">Valor Compra: *</label>
                 <input class="form-control" type="real" name="valorCompra"
-                  value="<?php if(isset($registro)) echo $registro['valorCompra']; ?>" required>
+                  value="<?php if(isset($registro)) echo $registro['valorCompra']; ?>" required
+                  onkeypress="$(this).mask('R$ 9.990,00')">
               </div>
               <div class="form-group col-lg-4">
-                <label for="">Valor Venda</label>
+                <label for="">Valor Venda: *</label>
                 <input class="form-control" type="real" name="valorVenda"
-                  value="<?php if(isset($registro)) echo $registro['valorVenda']; ?>" required>
+                  value="<?php if(isset($registro)) echo $registro['valorVenda']; ?>" required
+                  onkeypress="$(this).mask('R$ 9.990,00')">
               </div>
               <div class="form-group col-lg-4">
-                <label for="">Desconto</label>
+                <label for="">Desconto:</label>
                 <input class="form-control" type="real" name="desconto"
                   value="<?php if(isset($registro)) echo $registro['desconto']; ?>">
               </div>

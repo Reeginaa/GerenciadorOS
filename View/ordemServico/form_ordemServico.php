@@ -10,8 +10,8 @@
                 <hr class="hr-light">
                 <form class="form-group text-center" action="<?php echo $acao; ?>" method="post">
                     <div class="form-group">
-                        <label for="">Cliente</label>
-                        <select class="browser-default custom-select">
+                        <label for="">Cliente: *</label>
+                        <select class="browser-default custom-select" required>
                             <option selected>Selecione o Cliente</option>
                             <?php foreach ($listaCliente as $item): ?>
                                 <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoPessoa']==$item['id']) echo "selected";?>>
@@ -22,20 +22,20 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <label for="">Data Início</label>
-                            <input class="form-control" type="date" name="dataInicio"
+                            <label for="">Data Início: *</label>
+                            <input class="form-control" type="date" name="dataInicio" required
                                 value="<?php if(isset($registro)) echo $registro['dataInicio']; ?>">
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="">Data Término</label>
-                            <input class="form-control" type="date" name="dataInicio"
-                                value="<?php if(isset($registro)) echo $registro['dataInicio']; ?>">
+                            <label for="">Data Término:</label>
+                            <input class="form-control" type="date" name="dataTermino" 
+                                value="<?php if(isset($registro)) echo $registro['dataTermino']; ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-5">
-                        <label for="">Equipamento</label>
-                        <select class="browser-default custom-select">
+                        <label for="">Equipamento: *</label>
+                        <select class="browser-default custom-select" required>
                             <option selected>Selecione o Equipamento</option>
                             <?php foreach ($listaEquipamento as $item): ?>
                                 <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoEquipamento']==$item['id']) echo "selected";?>>
@@ -45,15 +45,15 @@
                         </select>
                         </div>
                         <div class="form-group col-lg-7">
-                            <label for="">Defeito</label>
+                            <label for="">Defeito: *</label>
                             <input class="form-control" type="text" name="defeito" placeholder="Descreva o Defeito"
-                                value="<?php if(isset($registro)) echo $registro['defeito']; ?>">
+                                value="<?php if(isset($registro)) echo $registro['defeito']; ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-5">
-                            <label for="">Status</label>
-                            <select class="browser-default custom-select">
+                            <label for="">Status: *</label>
+                            <select class="browser-default custom-select" required>
                                 <option selected>Selecione o Status</option>
                                 <?php foreach ($listaStatus as $item): ?>
                                     <option value="<?= $item['id'] ?>" <?php if(isset($registro) && $registro['codigoStatusServico']==$item['id']) echo "selected";?>>
@@ -63,35 +63,27 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-7">
-                            <label for="">Observaçoes</label>
+                            <label for="">Observaçoes:</label>
                             <textarea class="form-control" type="text" name="observacoesOS" placeholder="Escreva as observações"
                                 value="<?php if(isset($registro)) echo $registro['observacoesOS']; ?>"></textarea>
                         </div>
                     </div>
                     <hr class="hr-light">
-
-                    <!-- Orçamento -->
-                    <form action="<?php echo $acao; ?>">
-                        <h4 class="text-center text-white">Adicionar Orçamento</h4>
-                        <div class="row">
-                            <div class="form-group col-lg-6 text-white">
-                                <input type="file" name="arquivo" 
-                                    value="<?php if(isset($registro)) echo $registro['arquivo'];?>">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" class="form-control" name="descricaoAnexo" placeholder="Descrição"
-                                value="<?php if(isset($registro)) echo $registro['descricaoAnexo'];?>">
-                            </div>
+                    <h4 class="text-center text-white"><b><u>Orçamento</u></b></h4>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Anexo Orçamento:</span>
                         </div>
-                        <button class="btn btn-success btn-sm" type="submit">Salvar</button>
-                        <button class="btn btn-warning btn-sm" type="reset">Limpar</button>
-                    </form>
-                    <!-- Orçamento -->
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" value="<?php if(isset($registro)) echo $registro['anexoOrcamento']; ?>">
+                            <label class="custom-file-label">Escolher arquivo</label>
+                        </div>
+                    </div>
 
                     <hr class="hr-light">
 
                     <!-- Serviço -->
-                    <h4 class="text-center text-white">Serviço</h4>
+                    <h4 class="text-center text-white"><b><u>Serviço</u></b></h4>
                     <a class="btn btn-success btn-sm" href="#">
                         <i class="far fa-file-alt"></i> Adicionar
                     </a>
@@ -119,7 +111,7 @@
                     <!-- Serviço -->
 
                     <!-- Peça -->
-                    <h4 class="text-center text-white">Peça</h4>
+                    <h4 class="text-center text-white"><b><u>Peça</u></b></h4>
                     <a class="btn btn-success btn-sm" href="#">
                         <i class="far fa-file-alt"></i> Adicionar
                     </a>
@@ -146,6 +138,15 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="row">
+                        <div class="col-lg-9"></div>
+                        <div class="col-lg-3">
+                            <label for=""><u>Valor Total:</u></label>
+                            <input type="int" class="form-control" disabled
+                             value="<?php if(isset($registro)) echo $registro['anexoOrcamento']; ?>" >
+                        </div>
+                        <div class="col-lg-0"></div>
+                    </div>
                     <!-- Peça -->
                     <hr class="hr-light">
                     <button class="btn btn-success" type="submit">Enviar</button>

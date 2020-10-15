@@ -11,33 +11,33 @@
           <hr class="hr-light">
           <form class="form-group text-center" action="<?php echo $acao; ?>" method="post">
             <div class="form-group">
-              <label for="">Equipamento</label>
+              <label for="">Equipamento: *</label>
               <input class="form-control" type="text" name="nomeEquipamento"
                   value="<?php if(isset($registro)) echo $registro['nomeEquipamento']; ?>" required 
                   placeholder="Escreva o nome do Equipamento">
             </div>
             <div class="row">
               <div class="form-group col-lg-6">
-                <label for="">Modelo</label>
+                <label for="">Modelo:</label>
                 <input class="form-control" type="text" name="modelo"
                     value="<?php if(isset($registro)) echo $registro['modelo']; ?>" 
                     placeholder="Escreva o modelo">
               </div>
               <div class="form-group col-lg-6">
-                <label for="">Número de Série</label>
+                <label for="">Número de Série:</label>
                 <input class="form-control" type="text" name="numeroSerie"
                     value="<?php if(isset($registro)) echo $registro['numeroSerie']; ?>" 
                     placeholder="Escreva o número de série">
               </div>
             </div>
             <div class="form-group">
-              <label for="">Observações</label>
+              <label for="">Observações:</label>
               <textarea class="form-control" type="text" name="observacoesEquipamento"
                   value="<?php if(isset($registro)) echo $registro['observacoesEquipamento']; ?>" 
                   placeholder="Escreva observações sobre o equipamento"></textarea>
             </div>
             <div class="form-group">
-              <label for="">Marca</label>
+              <label for="">Marca: *</label>
               <select class="browser-default custom-select" name="codigoMarca" required>
                 <option value="">Selecione a marca</option>
                 <?php foreach ($listaMarcas as $item): ?>
