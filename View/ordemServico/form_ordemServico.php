@@ -95,8 +95,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Troca</td>
-                                <td>50,00</td>
+                                <td></td>
+                                <td></td>
                                 <td>
                                     <a class="btn btn-warning btn-sm" href="#">
                                         <i class="far fa-edit"></i> Editar
@@ -124,9 +124,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Placa</td>
-                                <td>50,00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>
                                     <a class="btn btn-warning btn-sm" href="#">
                                         <i class="far fa-edit"></i> Editar
@@ -143,7 +143,7 @@
                         <div class="col-lg-3">
                             <label for=""><u>Valor Total:</u></label>
                             <input type="int" class="form-control" disabled
-                             value="<?php if(isset($registro)) echo $registro['anexoOrcamento']; ?>" >
+                             value="<?php if(isset($registro)) echo $registro['valorTotal']; ?>" >
                         </div>
                         <div class="col-lg-0"></div>
                     </div>
@@ -151,6 +151,10 @@
                     <hr class="hr-light">
                     <button class="btn btn-success" type="submit">Enviar</button>
                     <button class="btn btn-warning" type="reset">Limpar</button>
+                    <button class="btn btn-primary" type="reset">Fechar</button>
+                    <button class="btn btn-primary" type="reset">Faturar</button>
+                    <button class="btn btn-primary" type="reset">Imprimir OS.</button>
+                    <button class="btn btn-primary" type="reset">Imprimir Nº</button>
                 </form>
             </div>
         </div>

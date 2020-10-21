@@ -28,11 +28,6 @@
       $(document).ready(function () {
         $('#dtBasicExample').DataTable();
         $('.dataTables_length').addClass('bs-select');
-        $custom-file-text: (
-          en: "Browse",
-          es: "Elegir",
-          pt: "Procurar"
-        );
       });
 
       
