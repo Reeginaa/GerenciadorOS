@@ -14,9 +14,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $marcas = Marca::all();
-
-        return view('marcas.listMarca', compact('marcas'));
+        $lista = Marca::all();
+        return view('marcas.listMarca', ['lista'=>$lista]);
     }
 
     /**
@@ -38,16 +37,11 @@ class MarcaController extends Controller
     public function store(Request $request)
     {
         $request->validate ([
-            'nomeMarca' => 'required'
+            'nomeMarca' => 'required|max:40'
         ]);
 
-        $marca = new Marca ([
-            'nomeMarca' => $request->get('nomeMarca'),
-            'observacaoMarca' => $request->get('observacaoMarca')
-        ]);
-
-        $marca->save();
-        return redirect('/marcas')->with('success', 'Marca Inserida!!!');
+        Marca::create($request->all());
+        return redirect('marcas');
     }
 
     /**
@@ -70,7 +64,7 @@ class MarcaController extends Controller
     public function edit($id)
     {
         $marca = Marca::find($id);
-        return view('marcas.editMarca', compact('marca'));
+        return view('marcas.editMarca', ['registro'=>$marca]);
     }
 
     /**
@@ -83,15 +77,13 @@ class MarcaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validade([
-            'nomeMarca' => 'required'
+            'nomeMarca' => 'required|max:40'
         ]);
 
-        $marca->Marca::find($id);
-        $marca->nomeMarca = $request->get('nomeMarca');
-        $marca->observacaoMarca = $request->get('observacaoMarca');
-        $marca->save();
+        $marca = Marca::find($id);
+        $marca->update($request->all());
 
-        return redirect('/marcas')->with('success', 'Marca Alterada!!');
+        return redirect('marcas');
     }
 
     /**
@@ -105,6 +97,6 @@ class MarcaController extends Controller
         $marca = Marca::find($id);
         $marca->delete();
 
-        return redirect('/marcas')->with('success', 'Marca Excluida!!!');
+        return redirect('marcas');
     }
 }

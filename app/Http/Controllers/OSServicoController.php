@@ -14,8 +14,8 @@ class OSServicoController extends Controller
      */
     public function index()
     {
-        $osServicos = OSServico::all();
-        return view('osServicos.listOSServico', compact('osServicos'));
+        $lista = OSServico::all();
+        return view('osServicos.listOSServico', ['lista'=>$lista]);
     }
 
     /**
@@ -36,7 +36,12 @@ class OSServicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'valorServico' => 'required'
+        ]);
+
+        OSServico::create($request->all());
+        return redirect('osServicos');
     }
 
     /**
@@ -59,7 +64,7 @@ class OSServicoController extends Controller
     public function edit($id)
     {
         $osServico = OSServico::find($id);
-        return view('osServicos.editOSServico', compact('osServico'));
+        return view('osServicos.editOSServico', ['registro'=>$osServico]);
     }
 
     /**
@@ -71,7 +76,14 @@ class OSServicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'valorServico' => 'required'
+        ]);
+
+        $osServico = OSServico::find($id);
+        $osServico->update($request->all());
+
+        return redirect('osServicos');
     }
 
     /**
@@ -85,6 +97,6 @@ class OSServicoController extends Controller
         $osServico = OSServico::find($id);
         $osServico->delete();
 
-        return redirect('/osServicos')->with('success', 'Excluído com sucesso!!!');
+        return redirect('osServicos');
     }
 }

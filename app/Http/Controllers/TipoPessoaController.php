@@ -14,9 +14,9 @@ class TipoPessoaController extends Controller
      */
     public function index()
     {
-        $tipoPessoas = TipoPessoa::all();
-
-        return view('tipoPessoas.listTipoPessoa', compact('tipoPessoas'));
+        $lista = TipoPessoa::all();
+        //dd($lista);
+        return view('tipoPessoas.listTipoPessoa', ['lista'=>$lista]);
     }
 
     /**
@@ -38,16 +38,12 @@ class TipoPessoaController extends Controller
     public function store(Request $request)
     {
         $request->validate ([
-            'tipo' => 'required'
+            'tipo' => 'required|max:30'
         ]);
 
-        $tipoPessoa = new TipoPessoa([
-            'tipo' => $request->get('tipo'),
-            'descricao'=> $request->get('descricao')
-        ]);
-
-        $tipoPessoa->save();
-        return redirect('/tipoPessoas')->with('success', 'Tipo Pessoa Inserido!!!');
+        TipoPessoa::create($request->all());
+        return redirect('tipoPessoa');
+        // dd($request);
     }
 
     /**
@@ -70,7 +66,8 @@ class TipoPessoaController extends Controller
     public function edit($id)
     {
         $tipoPessoa = TipoPessoa::find($id);
-        return view('tipoPessoas.editTipoPessoa', compact('tipoPessoa'));
+        //dd($tipoPessoa);
+        return view('tipoPessoas.editTipoPessoa', ['registro'=>$tipoPessoa]);
     }
 
     /**
@@ -83,15 +80,12 @@ class TipoPessoaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'tipo' => 'required'
+            'tipo' => 'required|max:30'
         ]);
 
-        $tipoPessoa->TipoPessoa::find($id);
-        $tipoPessoa->tipo = $request->get('tipo');
-        $tipoPessoa->descricao = $request->get('descricao');
-        $tipoPessoa->save();
-
-        return redirect('/tipoPessoas')->with('success', 'Tipo Pessoa Alterado!!');
+        $tipoPessoa = TipoPessoa::find($id);
+        $tipoPessoa->update($request->all());
+        return redirect('tipoPessoas');
     }
 
     /**
@@ -102,9 +96,11 @@ class TipoPessoaController extends Controller
      */
     public function destroy($id)
     {
+        //encontra o tipo de pessoa passando o id
         $tipoPessoa = TipoPessoa::find($id);
+        //remove ele
         $tipoPessoa->delete();
-
-        return redirect('/tipoPessoas')->with('success', 'Tipo Pessoa Excluído!!');
+        //redireciona o fluxo
+        return redirect('tipoPessoas');
     }
 }

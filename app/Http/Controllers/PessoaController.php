@@ -14,8 +14,8 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        $pessoas = Pessoa::all();
-        return view('pessoas.listPessoa', compact('pessoas');)
+        $lista = Pessoa::all();
+        return view('pessoas.listPessoa', ['lista'=>$lista]);
     }
 
     /**
@@ -36,7 +36,21 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required|max:250',
+            'cpf' => 'required|max:14',
+            'rg' => 'required|max:10',
+            'dataNascimento' => 'required',
+            'sexo' => 'required|max:20',
+            'logradouro' => 'required|max:300',
+            'bairro' => 'required|max:100',
+            'cidade' => 'required|max:50',
+            'telefone' => 'required|max:25',
+            'tipoPessoa_id' => 'required'
+        ]);
+
+        Pessoa::create($request->all());
+        return redirect('pessoas');
     }
 
     /**
@@ -59,7 +73,7 @@ class PessoaController extends Controller
     public function edit($id)
     {
         $pessoa = Pessoa::find($id);
-        return view('pessoas.editPessoa', compact('pessoa'));
+        return view('pessoas.editPessoa', ['registro'=>$pessoa]);
     }
 
     /**
@@ -71,7 +85,22 @@ class PessoaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nome' => 'required|max:250',
+            'cpf' => 'required|max:14',
+            'rg' => 'required|max:10',
+            'dataNascimento' => 'required',
+            'sexo' => 'required|max:20',
+            'logradouro' => 'required|max:300',
+            'bairro' => 'required|max:100',
+            'cidade' => 'required|max:50',
+            'telefone' => 'required|max:25',
+            'tipoPessoa_id' => 'required'
+        ]);
+
+        $pessoa = Pessoa::find($id);
+        $pessoa->update($request->all());
+        return redirect('pessoas');
     }
 
     /**
@@ -85,6 +114,6 @@ class PessoaController extends Controller
         $pessoa = Pessoa::find($id);
         $pessoa->delete();
 
-        return redirect('/pessoas')->with('success', 'Pessoa excluída com sucesso!!');
+        return redirect('pessoas');
     }
 }

@@ -14,9 +14,8 @@ class ServicoController extends Controller
      */
     public function index()
     {
-        $servicos = Servico::all();
-
-        return view('servicos.listServico', compact('servicos'));
+        $lista = Servico::all();
+        return view('servicos.listServico', ['lista'=>$lista]);
     }
 
     /**
@@ -42,14 +41,8 @@ class ServicoController extends Controller
             'valor' => 'required'
         ]);
 
-        $servico = new Servico ([
-            'servico' => $request->get('servico'),
-            'valor' => $request->get('valor'),
-            'desconto' => $request->get('desconto')
-        ]);
-
-        $servico->save();
-        return redirect('/servicos')->with('success', 'Serviço inserido!!!');
+        Servico::create($request->all());
+        return redirect('servicos');
     }
 
     /**
@@ -72,7 +65,7 @@ class ServicoController extends Controller
     public function edit($id)
     {
         $servico = Servico::find($id);
-        return view('servicos.editServico', compact('servico'));
+        return view('servicos.editServico', ['registro'=>$servico]);
     }
 
     /**
@@ -89,13 +82,10 @@ class ServicoController extends Controller
             'valor' => 'required'
         ]);
 
-        $servico->Servico::find($id);
-        $servico->servico = $request->get('servico');
-        $servico->valor = $request->get('valor');
-        $servico->desconto = $request->get('desconto');
-        $servico->save();
+        $servico = Servico::find($id);
+        $servico->update($request->all());
 
-        return redirect('/servicos')->with('success', 'Serviço alterado com sucesso!!');
+        return redirect('servicos');
     }
 
     /**
@@ -109,6 +99,6 @@ class ServicoController extends Controller
         $servico = Servico::find($id);
         $servico->delete();
 
-        return redirect('/servicos')->with('success', 'Serviço excluído com sucesso!!!');
+        return redirect('servicos');
     }
 }

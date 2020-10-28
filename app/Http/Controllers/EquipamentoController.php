@@ -16,8 +16,8 @@ class EquipamentoController extends Controller
      */
     public function index()
     {
-        $equipamentos = Equipamento::all();
-        return view('equipamentos.listEquipamento', compact('equipamentos'));
+        $lista = Equipamento::all();
+        return view('equipamentos.listEquipamento', ['lista'=>$lista]);
     }
 
     /**
@@ -38,7 +38,12 @@ class EquipamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nomeEquipamento' => 'required|max:45'
+        ]);
+
+        Equipamento::create($request->all());
+        return redirect('equipamentos');
     }
 
     /**
@@ -61,7 +66,7 @@ class EquipamentoController extends Controller
     public function edit($id)
     {
         $equipamento = Equipamento::find($id);
-        return view('equipamentos.editEquipamento', compact('equipamento'));
+        return view('equipamentos.editEquipamento', ['registro'=>$equipamento]);
     }
 
     /**
@@ -73,7 +78,14 @@ class EquipamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nomeEquipamento' => 'required|max:45'
+        ]);
+
+        $equipamento = Equipamento::find($id);
+        $equipamento->update($request->all());
+
+        return redirect('equipamentos');
     }
 
     /**
@@ -87,6 +99,6 @@ class EquipamentoController extends Controller
         $equipamento = Equipamento::find($id);
         $equipamento->delete();
 
-        return redirect('/equipamentos')->with('success', 'Equipamento excluído com sucesso');
+        return redirect('equipamentos');
     }
 }

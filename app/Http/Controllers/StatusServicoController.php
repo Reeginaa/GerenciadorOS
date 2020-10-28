@@ -14,9 +14,8 @@ class StatusServicoController extends Controller
      */
     public function index()
     {
-        $statusServicos = StatusServico::all();
-
-        return view('statusServicos.listStatusServico', compact('statusServicos'));
+        $lista = StatusServico::all();
+        return view('statusServicos.listStatusServico', ['lista'=>$lista]);
     }
 
     /**
@@ -38,16 +37,11 @@ class StatusServicoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'status' => 'required'
+            'status' => 'required|max:50'
         ]);
 
-        $statusServico = new StatusServico ([
-            'status' => $request->get('status'),
-            'descricaoStatus' => $request->get('descricaoStatus')
-        ]);
-
-        $statusServico->save();
-        return redirect('/statusServicos')->with('success', 'Status inserido!!!');
+        StatusServico::create($request->all());
+        return redirect('statusServicos');
     }
 
     /**
@@ -70,7 +64,7 @@ class StatusServicoController extends Controller
     public function edit($id)
     {
         $statusServico = StatusServico::find($id);
-        return view('statusServicos.editStatusServico', compact('statusServico'));
+        return view('statusServicos.editStatusServico', ['registro'=>$statusServico]);
     }
 
     /**
@@ -83,15 +77,13 @@ class StatusServicoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required'
+            'status' => 'required|max:50'
         ]);
 
-        $statusServico->StatusServico::find($id);
-        $statusServico->status = $request->get('status');
-        $statusServico->descricaoStatus = $request->get('descricaoStatus');
-        $statusServico->save();
+        $statusServico = StatusServico::find($id);
+        $statusServico->update($request->all());
 
-        return redirect('/statusServicos')->with('success', 'Status alterado!!!');
+        return redirect('statusServicos');
     }
 
     /**
@@ -102,9 +94,9 @@ class StatusServicoController extends Controller
      */
     public function destroy($id)
     {
-        $statusServico = StatusServicos::find($id);
+        $statusServico = StatusServico::find($id);
         $statusServico->delete();
 
-        return redirect('/statusServicos')->with('success', 'Status excluido!!!');
+        return redirect('statusServicos');
     }
 }

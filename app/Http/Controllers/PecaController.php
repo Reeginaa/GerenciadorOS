@@ -14,9 +14,8 @@ class PecaController extends Controller
      */
     public function index()
     {
-        $pecas = Peca::all();
-
-        return view('pecas.listPeca', compact('pecas'));
+        $lista = Peca::all();
+        return view('pecas.listPeca', ['lista'=>$lista]);
     }
 
     /**
@@ -38,22 +37,14 @@ class PecaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'item' => 'required',
+            'item' => 'required|max:100',
             'quantidade' => 'required',
             'valorCompra' => 'required',
             'valorVenda' => 'required'
         ]);
 
-        $peca = new Peca([
-            'item' => $request->get('item'),
-            'quantidade' => $request->get('quantidade'),
-            'valorCompra' => $request->get('valorCompra'),
-            'valorVenda' => $request->get('valorVenda'),
-            'desconto' => $request->get('desconto')
-        ]);
-
-        $peca->save();
-        return redirect('/pecas')->with('success', 'Peça inserida com sucesso!!!');
+        Peca::create($request->all());
+        return redirect('pecas');
     }
 
     /**
@@ -76,7 +67,7 @@ class PecaController extends Controller
     public function edit($id)
     {
         $peca = Peca::find($id);
-        return view('pecas.editPeca', compact('peca'));
+        return view('pecas.editPeca', ['registro'=>$peca]);
     }
 
     /**
@@ -89,21 +80,16 @@ class PecaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'item' => 'required',
+            'item' => 'required|max:100',
             'quantidade' => 'required',
             'valorCompra' => 'required',
             'valorVenda' => 'required'
         ]);
 
-        $peca->Peca::find($id);
-        $peca->item = $request->get('item');
-        $peca->quantidade = $request->get('quantidade');
-        $peca->valorCompra = $request->get('valorCompra');
-        $peca->valorVenda = $request->get('valorVenda');
-        $peca->desconto = $request->get('desconto');
-        $peca->save();
+        $peca = Peca::find($id);
+        $peca->update($request->all());
 
-        return redirect('/pecas')->with('success', 'Peça alterada com sucesso!!!');
+        return redirect('pecas');
     }
 
     /**
@@ -117,6 +103,6 @@ class PecaController extends Controller
         $peca = Peca::find($id);
         $peca->delete();
 
-        return redirect('/pecas')->with('success', 'Peça excluída com sucesso!!!');
+        return redirect('pecas');
     }
 }

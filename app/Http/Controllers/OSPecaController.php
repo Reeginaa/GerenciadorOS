@@ -14,8 +14,8 @@ class OSPecaController extends Controller
      */
     public function index()
     {
-        $osPecas = OSPeca::all();
-        return view('osPecas.listOSPeca', compact('osPecas'));
+        $lista = OSPeca::all();
+        return view('osPecas.listOSPeca', ['lista'=>$lista]);
     }
 
     /**
@@ -25,7 +25,7 @@ class OSPecaController extends Controller
      */
     public function create()
     {
-        return view(('osPecas.formOSPeca'));
+        return view('osPecas.formOSPeca');
     }
 
     /**
@@ -36,7 +36,12 @@ class OSPecaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'valorPeca' => 'required'
+        ]);
+
+        OSPeca::create($request->all());
+        return redirect('osPecas');
     }
 
     /**
@@ -59,7 +64,7 @@ class OSPecaController extends Controller
     public function edit($id)
     {
         $osPeca = OSPeca::find($id);
-        return view('osPecas.editOSPeca', compact('osPeca'));
+        return view('osPecas.editOSPeca', ['registro'=>$osPeca]);
     }
 
     /**
@@ -71,7 +76,14 @@ class OSPecaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'valorPeca' => 'required'
+        ]);
+
+        $osPeca = OSPeca::find($id);
+        $osPeca->update($request->all());
+
+        return redirect('osPecas');
     }
 
     /**
@@ -85,6 +97,6 @@ class OSPecaController extends Controller
         $osPeca = OSPeca::find($id);
         $osPeca->delete();
 
-        return redirect('/osPecas')->with('success', 'Excluído com sucesso!!!');
+        return redirect('osPecas');
     }
 }
