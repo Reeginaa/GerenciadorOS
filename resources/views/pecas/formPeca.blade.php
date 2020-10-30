@@ -1,10 +1,13 @@
 @extends('admin')
 
 @section('main')
+<br><br><br><br>
 <div class="row">
-    <div class="col-sm-8 offset-sm-2">
-        <h1 class="display-3">Adicionar Peça</h1>
-        <div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div id="ui">
+            <h1 class="text-center">Adicionar Peça</h1>
+            <hr class="hr-light">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -15,32 +18,40 @@
                 </div>
             @endif
 
-            <form action="{{ route('pecas.store') }}" method="post">
+            <form action="{{ route('pecas.store') }}" method="post" class="form-group text-center">
                 @csrf
-                <div class="form-group">
-                    <label for="item">Item</label>
-                    <input type="text" class="form-control" name="item">
+                <div class="row">
+                    <div class="form-group col-lg-9">
+                        <label for="item">Item: *</label>
+                        <input id="item" type="text" class="form-control" name="item"
+                         required placeholder="Informe o nome do item">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <label for="quantidade">Quantidade: *</label>
+                        <input type="number" class="form-control" name="quantidade" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="quantidade">Quantidade</label>
-                    <input type="number" class="form-control" name="quantidade">
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label for="valorCompra">Valor Compra: *</label>
+                        <input type="real" class="form-control" name="valorCompra" required>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="valorVenda">Valor Venda: *</label>
+                        <input type="real" class="form-control" name="valorVenda" required>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="desconto">Desconto: </label>
+                        <input type="number" class="form-control" name="desconto">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="valorCompra">Valor Compra</label>
-                    <input type="number" class="form-control" name="valorCompra">
-                </div>
-                <div class="form-group">
-                    <label for="valorVenda">Valor Venda</label>
-                    <input type="number" class="form-control" name="valorVenda">
-                </div>
-                <div class="form-group">
-                    <label for="desconto">Desconto</label>
-                    <input type="number" class="form-control" name="desconto">
-                </div>
+                <hr class="hr-light">
                 <button type="submit" class="btn btn-success">Salvar</button>
                 <button type="reset" class="btn btn-warning">Limpar</button>
             </form>
         </div>
     </div>
+    <div class="col-lg-2"></div>
 </div>
+<br><br><br>
 @endsection

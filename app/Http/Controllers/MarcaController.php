@@ -36,12 +36,10 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ([
-            'nomeMarca' => 'required|max:40'
-        ]);
+        $request->validate ($this->getValidate());
 
         Marca::create($request->all());
-        return redirect('marcas');
+        return redirect('marcas')->with('success', 'Marca incluida!!!');
     }
 
     /**
@@ -63,8 +61,8 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        $marca = Marca::find($id);
-        return view('marcas.editMarca', ['registro'=>$marca]);
+        $registro = Marca::find($id);
+        return view('marcas.editMarca', ['registro'=>$registro]);
     }
 
     /**
@@ -76,14 +74,12 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validade([
-            'nomeMarca' => 'required|max:40'
-        ]);
+        $request->validate($this->getValidate());
 
         $marca = Marca::find($id);
         $marca->update($request->all());
 
-        return redirect('marcas');
+        return redirect('marcas')->with('success', 'Marca alterada!!!');
     }
 
     /**
@@ -97,6 +93,12 @@ class MarcaController extends Controller
         $marca = Marca::find($id);
         $marca->delete();
 
-        return redirect('marcas');
+        return redirect('marcas')->with('success', 'Marca excluída!!!');
+    }
+
+    //Método das validações
+    private function getValidate()
+    {
+        return ['nomeMarca' => 'required|max:40'];
     }
 }

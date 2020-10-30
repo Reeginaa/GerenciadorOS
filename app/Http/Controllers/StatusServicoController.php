@@ -36,12 +36,10 @@ class StatusServicoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'status' => 'required|max:50'
-        ]);
+        $request->validate($this->getValidate());
 
         StatusServico::create($request->all());
-        return redirect('statusServicos');
+        return redirect('statusServicos')->with('success', 'Status inserido!!!');
     }
 
     /**
@@ -63,8 +61,8 @@ class StatusServicoController extends Controller
      */
     public function edit($id)
     {
-        $statusServico = StatusServico::find($id);
-        return view('statusServicos.editStatusServico', ['registro'=>$statusServico]);
+        $registro = StatusServico::find($id);
+        return view('statusServicos.editStatusServico', ['registro'=>$registro]);
     }
 
     /**
@@ -76,14 +74,12 @@ class StatusServicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'status' => 'required|max:50'
-        ]);
+        $request->validate($this->getValidate());
 
         $statusServico = StatusServico::find($id);
         $statusServico->update($request->all());
 
-        return redirect('statusServicos');
+        return redirect('statusServicos')->with('success', 'Status alterado!!!');
     }
 
     /**
@@ -97,6 +93,12 @@ class StatusServicoController extends Controller
         $statusServico = StatusServico::find($id);
         $statusServico->delete();
 
-        return redirect('statusServicos');
+        return redirect('statusServicos')->with('success', 'Status excluído!!!');
+    }
+
+    //Método das validações
+    private function getValidate()
+    {
+        return ['status' => 'required|max:50'];
     }
 }

@@ -21,6 +21,9 @@ Route::resource('tipoPessoas', 'App\Http\Controllers\TipoPessoaController');
 Route::resource('statusServicos', 'App\Http\Controllers\StatusServicoController');
 Route::resource('servicos', 'App\Http\Controllers\ServicoController');
 Route::resource('pecas', 'App\Http\Controllers\PecaController');
+Route::resource('equipamentos', 'App\Http\Controllers\EquipamentoController');
+Route::resource('pessoas', 'App\Http\Controllers\PessoaController');
+
 Route::resource('login', 'App\Http\Controllers\Auth\LoginController');
 Route::resource('home', 'App\Http\Controllers\HomeController');
 Route::resource('sobre', 'App\Http\Controllers\SobreController');

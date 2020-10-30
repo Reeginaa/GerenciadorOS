@@ -32,19 +32,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($pecas as $peca)
+                    @foreach ($lista as $item)
                         <tr>
-                            <td>{{ $peca->id }}</td>
-                            <td>{{ $peca->item }}</td>
-                            <td>{{ $peca->quantidade }}</td>
-                            <td>{{ $peca->valorCompra }}</td>
-                            <td>{{ $peca->valorVenda }}</td>
-                            <td>{{ $peca->desconto }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->item }}</td>
+                            <td>{{ $item->quantidade }}</td>
+                            <td>{{ $item->valorCompra }}</td>
+                            <td>{{ $item->valorVenda }}</td>
+                            <td>{{ $item->desconto }}</td>
                             <td>
-                                <a href="{{ route('pecas.edit', $peca->id) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('pecas.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                     <i class="far fa-edit"></i> Editar
                                 </a>
-                                <form action="{{ route('pecas.destroy', $peca->id) }}" method="post">
+                                <form action="{{ route('pecas.destroy', $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm" type="submit">

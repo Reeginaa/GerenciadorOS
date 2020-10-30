@@ -36,15 +36,10 @@ class PecaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'item' => 'required|max:100',
-            'quantidade' => 'required',
-            'valorCompra' => 'required',
-            'valorVenda' => 'required'
-        ]);
+        $request->validate($this->getValidate());
 
         Peca::create($request->all());
-        return redirect('pecas');
+        return redirect('pecas')->with('success', 'Peça inserida!!!');
     }
 
     /**
@@ -66,8 +61,8 @@ class PecaController extends Controller
      */
     public function edit($id)
     {
-        $peca = Peca::find($id);
-        return view('pecas.editPeca', ['registro'=>$peca]);
+        $registro = Peca::find($id);
+        return view('pecas.editPeca', ['registro'=>$registro]);
     }
 
     /**
@@ -79,17 +74,12 @@ class PecaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'item' => 'required|max:100',
-            'quantidade' => 'required',
-            'valorCompra' => 'required',
-            'valorVenda' => 'required'
-        ]);
+        $request->validate($this->getValidate());
 
         $peca = Peca::find($id);
         $peca->update($request->all());
 
-        return redirect('pecas');
+        return redirect('pecas')->with('success', 'Peça alterada!!!');
     }
 
     /**
@@ -103,6 +93,15 @@ class PecaController extends Controller
         $peca = Peca::find($id);
         $peca->delete();
 
-        return redirect('pecas');
+        return redirect('pecas')->with('success', 'Peça excluida!!!');
+    }
+
+    //Método com validações
+    private function getValidate()
+    {
+        return ['item' => 'required|max:100',
+        'quantidade' => 'required',
+        'valorCompra' => 'required',
+        'valorVenda' => 'required'];
     }
 }

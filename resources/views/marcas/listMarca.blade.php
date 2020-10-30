@@ -28,17 +28,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($marcas as $marca)
+                    @foreach ($lista as $item)
                         <tr>
-                            <td>{{ $marca->id }}</td>
-                            <td>{{ $marca->nomeMarca }}</td>
-                            <td>{{ $marca->observacaoMarca }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->nomeMarca }}</td>
+                            <td>{{ $item->observacaoMarca }}</td>
                             <td>
-                                <a href="{{ route('marcas.edit', $marca->id) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('marcas.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                     <i class="far fa-edit"></i> Editar
                                 </a>
 
-                                <form action="{{ route('marcas.destroy', $marca->id) }}" method="post">
+                                <form action="{{ route('marcas.destroy', $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm" type="submit">

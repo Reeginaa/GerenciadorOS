@@ -22,14 +22,15 @@
                 @csrf
                 <div class="form-group">
                     <label for="nomeMarca">Marca: *</label>
-                    <input type="text" class="form-control" name="nomeMarca" required
+                    <input id="nomeMarca" type="text" class="form-control" name="nomeMarca" required
                      placeholder="Escreva o nome da marca">
                 </div>
                 <div class="form-group">
                     <label for="observacaoMarca">Observações: </label>
-                    <textarea name="observacaoMarca" type="text" class="form-control"
+                    <textarea id="observacaoMarca" name="observacaoMarca" type="text" class="form-control"
                      placeholder="Escreva as observações da marca se necessário"></textarea>
                 </div>
+                <hr class="hr-light">
                 <button type="submit" class="btn btn-success">Salvar</button>
                 <button type="reset" class="btn btn-warning">Limpar</button>
             </form>

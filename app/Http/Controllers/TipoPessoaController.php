@@ -37,12 +37,10 @@ class TipoPessoaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ([
-            'tipo' => 'required|max:30'
-        ]);
+        $request->validate ($this->getValidate());
 
         TipoPessoa::create($request->all());
-        return redirect('tipoPessoa');
+        return redirect('tipoPessoas')->with('success', 'Tipo Pessoa incluído!!!');
         // dd($request);
     }
 
@@ -65,9 +63,9 @@ class TipoPessoaController extends Controller
      */
     public function edit($id)
     {
-        $tipoPessoa = TipoPessoa::find($id);
+        $registro = TipoPessoa::find($id);
         //dd($tipoPessoa);
-        return view('tipoPessoas.editTipoPessoa', ['registro'=>$tipoPessoa]);
+        return view('tipoPessoas.editTipoPessoa', ['registro'=>$registro]);
     }
 
     /**
@@ -79,13 +77,11 @@ class TipoPessoaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'tipo' => 'required|max:30'
-        ]);
+        $request->validate($this->getValidate());
 
         $tipoPessoa = TipoPessoa::find($id);
         $tipoPessoa->update($request->all());
-        return redirect('tipoPessoas');
+        return redirect('tipoPessoas')->with('success', 'Tipo Pessoa alterado!!!');
     }
 
     /**
@@ -101,6 +97,12 @@ class TipoPessoaController extends Controller
         //remove ele
         $tipoPessoa->delete();
         //redireciona o fluxo
-        return redirect('tipoPessoas');
+        return redirect('tipoPessoas')->with('success', 'Tipo Pessoa excluído!!!!');
+    }
+
+    //Método das validações
+    private function getValidate()
+    {
+        return ['tipo' => 'required|max:30'];
     }
 }

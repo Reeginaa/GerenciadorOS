@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pessoa;
+use App\Models\TipoPessoa;
 
 class PessoaController extends Controller
 {
@@ -14,7 +15,7 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        $lista = Pessoa::all();
+        $lista = Pessoa::with('tipoPessoa')->get();
         return view('pessoas.listPessoa', ['lista'=>$lista]);
     }
 
@@ -25,7 +26,9 @@ class PessoaController extends Controller
      */
     public function create()
     {
-        return view('pessoas.formPessoa');
+        //lista para o select
+        $listaTipoPessoa = TipoPessoa::all();
+        return view('pessoas.formPessoa', ['listaTipoPessoa'=>$listaTipoPessoa]);
     }
 
     /**
@@ -36,21 +39,10 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|max:250',
-            'cpf' => 'required|max:14',
-            'rg' => 'required|max:10',
-            'dataNascimento' => 'required',
-            'sexo' => 'required|max:20',
-            'logradouro' => 'required|max:300',
-            'bairro' => 'required|max:100',
-            'cidade' => 'required|max:50',
-            'telefone' => 'required|max:25',
-            'tipoPessoa_id' => 'required'
-        ]);
+        $request->validate($this->getValidate());
 
         Pessoa::create($request->all());
-        return redirect('pessoas');
+        return redirect('pessoas')->with('success', 'Pessoa inserida!!!');
     }
 
     /**
@@ -72,8 +64,9 @@ class PessoaController extends Controller
      */
     public function edit($id)
     {
-        $pessoa = Pessoa::find($id);
-        return view('pessoas.editPessoa', ['registro'=>$pessoa]);
+        $registro = Pessoa::find($id);
+        $listaTipoPessoa = TipoPessoa::all();
+        return view('pessoas.editPessoa', compact('registro', 'listaTipoPessoa'));
     }
 
     /**
@@ -85,22 +78,11 @@ class PessoaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nome' => 'required|max:250',
-            'cpf' => 'required|max:14',
-            'rg' => 'required|max:10',
-            'dataNascimento' => 'required',
-            'sexo' => 'required|max:20',
-            'logradouro' => 'required|max:300',
-            'bairro' => 'required|max:100',
-            'cidade' => 'required|max:50',
-            'telefone' => 'required|max:25',
-            'tipoPessoa_id' => 'required'
-        ]);
+        $request->validate($this->getValidate());
 
         $pessoa = Pessoa::find($id);
         $pessoa->update($request->all());
-        return redirect('pessoas');
+        return redirect('pessoas')->with('success', 'Pessoa alterada!!!');
     }
 
     /**
@@ -114,6 +96,21 @@ class PessoaController extends Controller
         $pessoa = Pessoa::find($id);
         $pessoa->delete();
 
-        return redirect('pessoas');
+        return redirect('pessoas')->with('success', 'Pessoa excluída!!!');
+    }
+
+    //Método com as validações
+    private function getValidate()
+    {
+        return ['nome' => 'required|max:250',
+        'cpf' => 'required|max:14|unique:pessoas,cpf',
+        'rg' => 'required|max:10|unique:pessoas,rg',
+        'dataNascimento' => 'required',
+        'sexo' => 'required|max:20',
+        'logradouro' => 'required|max:300',
+        'bairro' => 'required|max:100',
+        'cidade' => 'required|max:50',
+        'telefone' => 'required|max:25',
+        'tipoPessoa_id' => 'required'];
     }
 }

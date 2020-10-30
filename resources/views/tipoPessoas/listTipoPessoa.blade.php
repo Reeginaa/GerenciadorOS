@@ -29,16 +29,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tipoPessoas as $tipoPessoa)
+                    @foreach ($lista as $item)
                         <tr>
-                            <td>{{ $tipoPessoa->id }}</td>
-                            <td>{{ $tipoPessoa->tipo }}</td>
-                            <td>{{ $tipoPessoa->descricao }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->tipo }}</td>
+                            <td>{{ $item->descricao }}</td>
                             <td>
-                                <a href="{{ route('tipoPessoas.edit', $tipoPessoa->id) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('tipoPessoas.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                     <i class="far fa-edit"></i> Editar
                                 </a>
-                                <form action="{{ route('tipoPessoas.destroy', $tipoPessoa->id) }}" method="post">
+                                <form action="{{ route('tipoPessoas.destroy', $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">

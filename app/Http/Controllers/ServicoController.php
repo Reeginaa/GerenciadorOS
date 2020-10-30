@@ -36,13 +36,10 @@ class ServicoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ([
-            'servico' => 'required',
-            'valor' => 'required'
-        ]);
+        $request->validate ($this->getValidate());
 
         Servico::create($request->all());
-        return redirect('servicos');
+        return redirect('servicos')->with('success', 'Serviço inserido!!!');
     }
 
     /**
@@ -64,8 +61,8 @@ class ServicoController extends Controller
      */
     public function edit($id)
     {
-        $servico = Servico::find($id);
-        return view('servicos.editServico', ['registro'=>$servico]);
+        $registro = Servico::find($id);
+        return view('servicos.editServico', ['registro'=>$registro]);
     }
 
     /**
@@ -77,15 +74,12 @@ class ServicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'servico' => 'required',
-            'valor' => 'required'
-        ]);
+        $request->validate($this->getValidate());
 
         $servico = Servico::find($id);
         $servico->update($request->all());
 
-        return redirect('servicos');
+        return redirect('servicos')->with('success', 'Serviço alterado!!!');
     }
 
     /**
@@ -99,6 +93,13 @@ class ServicoController extends Controller
         $servico = Servico::find($id);
         $servico->delete();
 
-        return redirect('servicos');
+        return redirect('servicos')->with('success', 'Serviço excluído!!!');
+    }
+
+    //Método com validações
+    private function getValidate()
+    {
+        return ['servico' => 'required|max:200',
+        'valor' => 'required'];
     }
 }

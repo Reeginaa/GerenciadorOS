@@ -30,17 +30,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($servicos as $servico)
+                    @foreach ($lista as $item)
                         <tr>
-                            <td>{{ $servico->id }}</td>
-                            <td>{{ $servico->servico }}</td>
-                            <td>{{ $servico->valor }}</td>
-                            <td>{{ $servico->desconto }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->servico }}</td>
+                            <td>{{ $item->valor }}</td>
+                            <td>{{ $item->desconto }}</td>
                             <td>
-                                <a href="{{ route('servicos.edit', $servico->id) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('servicos.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                     <i class="far fa-edit"></i> Editar
                                 </a>
-                                <form action="{{ route('servicos.destroy', $servico->id) }}" method="post">
+                                <form action="{{ route('servicos.destroy', $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm" type="submit">

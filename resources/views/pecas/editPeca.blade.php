@@ -1,45 +1,62 @@
 @extends('admin')
 
 @section('main')
+<br><br><br><br>
 <div class="row">
-    <div class="col-sm-8 offset-2">
-        <h1 class="display-3">Alterar Peça</h1>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div id="ui">
+            <h1 class="text-center">Editar Peça</h1>
+            <hr class="hr-light">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form action="{{ route ('pecas.update', $peca->id) }}">
-            @method('PATCH')
-            @csrf
-            <div class="form-group">
-                <label for="item">Item</label>
-                <input type="text" name="item" class="form-control" value={{$peca->item}}>
-            </div>
-            <div class="form-control">
-                <label for="quantidade">Quantidade</label>
-                <input type="number" name="quantidade" class="form-control" value={{$peca->quantidade}}>
-            </div>
-            <div class="form-control">
-                <label for="valorCompra">Valor Compra</label>
-                <input type="number" name="valorCompra" class="form-control" value={{$peca->valorCompra}}>
-            </div>
-            <div class="form-control">
-                <label for="valorVenda">Valor Venda</label>
-                <input type="number" name="valorVenda" class="form-control" value={{$peca->valorVenda}}>
-            </div>
-            <div class="form-control">
-                <label for="desconto">Desconto</label>
-                <input type="number" name="desconto" class="form-control" value={{$peca->desconto}}>
-            </div>
-            <button type="submit" class="btn btn-success">Salvar</button>
-        </form>
+            <form action="{{ route('pecas.update', $registro->id) }}" method="post" class="form-group text-center">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                    <div class="form-group col-lg-9">
+                        <label for="item">Item: *</label>
+                        <input id="item" type="text" class="form-control" name="item"
+                         required placeholder="Informe o nome do item"
+                         value="{{ $registro->item }}">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <label for="quantidade">Quantidade: *</label>
+                        <input type="number" class="form-control" name="quantidade"
+                         required value="{{ $registro->quantidade }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label for="valorCompra">Valor Compra: *</label>
+                        <input type="real" class="form-control" name="valorCompra"
+                         required value="{{ $registro->valorCompra }}">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="valorVenda">Valor Venda: *</label>
+                        <input type="real" class="form-control" name="valorVenda"
+                         required value="{{ $registro->valorVenda }}">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="desconto">Desconto: </label>
+                        <input type="number" class="form-control" name="desconto"
+                         value="{{ $registro->desconto }}">
+                    </div>
+                </div>
+                <hr class="hr-light">
+                <button type="submit" class="btn btn-success">Salvar</button>
+            </form>
+        </div>
     </div>
+    <div class="col-lg-2"></div>
 </div>
+<br><br><br>
 @endsection

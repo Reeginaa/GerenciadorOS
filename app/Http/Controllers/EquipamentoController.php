@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Equipamento;
+use App\Models\Marca;
 
 use function Ramsey\Uuid\v1;
 
@@ -16,7 +17,7 @@ class EquipamentoController extends Controller
      */
     public function index()
     {
-        $lista = Equipamento::all();
+        $lista = Equipamento::with('marca')->get();
         return view('equipamentos.listEquipamento', ['lista'=>$lista]);
     }
 
@@ -27,7 +28,9 @@ class EquipamentoController extends Controller
      */
     public function create()
     {
-        return view('equipamentos.formEquipamento');
+        //lista para o select
+        $listaMarca = Marca::all();
+        return view('equipamentos.formEquipamento', ['listaMarca'=>$listaMarca]);
     }
 
     /**
@@ -38,12 +41,10 @@ class EquipamentoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nomeEquipamento' => 'required|max:45'
-        ]);
+        $request->validate($this->getValidate());
 
         Equipamento::create($request->all());
-        return redirect('equipamentos');
+        return redirect('equipamentos')->with('success', 'Equipamento inserido!!!');
     }
 
     /**
@@ -65,8 +66,9 @@ class EquipamentoController extends Controller
      */
     public function edit($id)
     {
-        $equipamento = Equipamento::find($id);
-        return view('equipamentos.editEquipamento', ['registro'=>$equipamento]);
+        $registro = Equipamento::find($id);
+        $listaMarca = Marca::all();
+        return view('equipamentos.editEquipamento', compact('registro', 'listaMarca'));
     }
 
     /**
@@ -78,14 +80,12 @@ class EquipamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nomeEquipamento' => 'required|max:45'
-        ]);
+        $request->validate($this->getValidate());
 
         $equipamento = Equipamento::find($id);
         $equipamento->update($request->all());
 
-        return redirect('equipamentos');
+        return redirect('equipamentos')->with('success', 'Equipamento Alterado!!!');
     }
 
     /**
@@ -99,6 +99,13 @@ class EquipamentoController extends Controller
         $equipamento = Equipamento::find($id);
         $equipamento->delete();
 
-        return redirect('equipamentos');
+        return redirect('equipamentos')->with('success', 'Equipamento excluído!!!');
+    }
+
+    //Método das validações
+    private function getValidate()
+    {
+        return ['nomeEquipamento' => 'required|max:45',
+        'marca_id' => 'required'];
     }
 }

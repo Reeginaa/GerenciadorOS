@@ -36,6 +36,7 @@
                             <input type="number" name="desconto" class="form-control">
                         </div>
                     </div>
+                    <hr class="hr-light">
                     <button type="submit" class="btn btn-success">Salvar</button>
                     <button type="reset" class="btn btn-warning">Limpar</button>
                 </form>

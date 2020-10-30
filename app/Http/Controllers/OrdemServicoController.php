@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\OrdemServico;
+use App\Models\Pessoa;
+use App\Models\Equipamento;
+use App\Models\StatusServico;
 
 class OrdemServicoController extends Controller
 {
@@ -14,7 +17,7 @@ class OrdemServicoController extends Controller
      */
     public function index()
     {
-        $lista = OrdemServico::all();
+        $lista = OrdemServico::with('pessoa')->with('equipamento')->with('statusServico')->get();
         return view('ordemServicos.listOS', ['lista'=>$lista]);
     }
 
@@ -25,7 +28,10 @@ class OrdemServicoController extends Controller
      */
     public function create()
     {
-        return view('ordemServicos.formOS');
+        $listaPessoa = Pessoa::all();
+        $listaStatusServico = StatusServico::all();
+        $listaEquipamento = Equipamento::all();
+        return view('ordemServicos.formOS', ['listaPessoa'=>$listaPessoa], ['listaEquipamento'=>$listaEquipamento], ['listaStatusServico'=>$listaStatusServico]);
     }
 
     /**
@@ -36,14 +42,10 @@ class OrdemServicoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'dataInicio' => 'required',
-            'defeito' => 'required'
-
-        ]);
+        $request->validate($this->getValidate());
 
         OrdemServico::create($request->all());
-        return redirect('ordemServicos');
+        return redirect('ordemServicos')->with('success', 'O.S. inserida!!!');
     }
 
     /**
@@ -65,8 +67,11 @@ class OrdemServicoController extends Controller
      */
     public function edit($id)
     {
-        $ordemServico = OrdemServico::find($id);
-        return view('ordemServicos.editOS', ['registro'=>$ordemServico]);
+        $registro = OrdemServico::find($id);
+        $listaEquipamento = Equipamento::all();
+        $listaPessoa = Pessoa::all();
+        $listaStatusServico = StatusServico::all();
+        return view('ordemServicos.editOS', compact('registro', 'listaEquipamento', 'listaPessoa', 'listaStatusServico'));
     }
 
     /**
@@ -78,16 +83,12 @@ class OrdemServicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'dataInicio' => 'required',
-            'defeito' => 'required'
-
-        ]);
+        $request->validate($this->getValidate());
 
         $ordemServico = OrdemServico::find($id);
         $ordemServico->update($request->all());
 
-        return redirect('ordemServicos');
+        return redirect('ordemServicos')->with('success', 'O.S. alterada!!!');
     }
 
     /**
@@ -101,6 +102,16 @@ class OrdemServicoController extends Controller
         $ordemServico = OrdemServico::find($id);
         $ordemServico->delete();
 
-        return redirect('ordemServicos');
+        return redirect('ordemServicos')->with('success', 'O.S. excluída!!!');
+    }
+
+    //Método com as validações
+    private function getValidate()
+    {
+        return ['dataInicio' => 'required',
+        'defeito' => 'required',
+        'statusServico_id' => 'required',
+        'pessoa_id' => 'required',
+        'equipamento_id' => 'required'];
     }
 }
