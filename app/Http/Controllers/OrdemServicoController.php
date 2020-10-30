@@ -31,7 +31,7 @@ class OrdemServicoController extends Controller
         $listaPessoa = Pessoa::all();
         $listaStatusServico = StatusServico::all();
         $listaEquipamento = Equipamento::all();
-        return view('ordemServicos.formOS', ['listaPessoa'=>$listaPessoa], ['listaEquipamento'=>$listaEquipamento], ['listaStatusServico'=>$listaStatusServico]);
+        return view('ordemServicos.formOS', compact('listaPessoa', 'listaStatusServico', 'listaEquipamento'));
     }
 
     /**

@@ -26,7 +26,11 @@
                      placeholder="Escreva o nome do equipamento">
                 </div>
                 <div class="form-group">
-                    <label for="marca">Marca: *</label>
+                    <label for="marca">Marca: * |
+                        <a href="{{ route('marcas.create') }}">
+                            <i class="fas fa-plus"></i> Adicionar Marca
+                        </a>
+                    </label>
                     <select class="form-control" name="marca_id" id="marca" required>
                         <option value="">Selecione uma Marca</option>
                         @foreach ($listaMarca as $item)

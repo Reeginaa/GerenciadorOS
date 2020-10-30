@@ -19,7 +19,11 @@
             <form action="{{ route('pessoas.store') }}" method="post" class="form-group text-center">
                 @csrf
                 <div class="form-group">
-                    <label for="tipo">Tipo Pessoa: *</label>
+                    <label for="tipo">Tipo Pessoa: * |
+                        <a href="{{ route('tipoPessoas.create') }}">
+                            <i class="fas fa-plus"></i> Adicionar Tipo Pessoa
+                        </a>
+                    </label>
                     <select name="tipoPessoa_id" id="tipo" class="form-control" required>
                         <option value="">Selecione um tipo de pessoa</option>
                         @foreach ($listaTipoPessoa as $item)

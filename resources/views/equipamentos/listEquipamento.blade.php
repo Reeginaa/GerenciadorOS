@@ -10,6 +10,7 @@
                 {{ session()->get('success') }}
             </div>
         @endif
+
         <div id="ui">
             <h1 class="text-center">Lista de Equipamentos</h1>
             <hr class="hr-light">
