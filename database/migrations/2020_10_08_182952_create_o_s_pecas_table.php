@@ -16,6 +16,7 @@ class CreateOSPecasTable extends Migration
         Schema::create('o_s_pecas', function (Blueprint $table) {
             $table->id();
             $table->decimal('valorPeca', 8, 2)->nullable(false);
+            $table->integer('quantidade');
             $table->unsignedBigInteger('ordemServico_id')->nullable(false);
             $table->unsignedBigInteger('peca_id')->nullable(false);
             $table->timestamps();

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\OSPeca;
+use App\Models\Peca;
+use App\Models\OrdemServico;
 
 class OSPecaController extends Controller
 {
@@ -14,7 +16,7 @@ class OSPecaController extends Controller
      */
     public function index()
     {
-        $lista = OSPeca::all();
+        $lista = OSPeca::with('peca')->with('ordemServico')->get();
         return view('osPecas.listOSPeca', ['lista'=>$lista]);
     }
 
@@ -25,7 +27,9 @@ class OSPecaController extends Controller
      */
     public function create()
     {
-        return view('osPecas.formOSPeca');
+        $listaOrdemServico = OrdemServico::all();
+        $listaPeca = Peca::all();
+        return view('osPecas.formOSPeca', compact('listaOrdemServico', 'listaPeca'));
     }
 
     /**
@@ -36,9 +40,7 @@ class OSPecaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'valorPeca' => 'required'
-        ]);
+        $request->validate($this->getValidate());
 
         OSPeca::create($request->all());
         return redirect('osPecas');
@@ -63,8 +65,10 @@ class OSPecaController extends Controller
      */
     public function edit($id)
     {
-        $osPeca = OSPeca::find($id);
-        return view('osPecas.editOSPeca', ['registro'=>$osPeca]);
+        $registro = OSPeca::find($id);
+        $listaOrdemServico = OrdemServico::all();
+        $listaPeca = Peca::all();
+        return view('osPecas.editOSPeca', compact('registro', 'listaOrdemServico', 'listaPeca'));
     }
 
     /**
@@ -76,9 +80,7 @@ class OSPecaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'valorPeca' => 'required'
-        ]);
+        $request->validate($this->getValidate());
 
         $osPeca = OSPeca::find($id);
         $osPeca->update($request->all());
@@ -98,5 +100,16 @@ class OSPecaController extends Controller
         $osPeca->delete();
 
         return redirect('osPecas');
+    }
+
+    //Método com validações
+    private function getValidate()
+    {
+        return [
+            'quantidade' => 'required',
+            'valorPeca' => 'required',
+            'peca_id' => 'required',
+            'ordemServico_id' => 'required'
+        ];
     }
 }

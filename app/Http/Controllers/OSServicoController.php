@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\OSServico;
+use App\Models\OrdemServico;
+use App\Models\Servico;
 
 class OSServicoController extends Controller
 {
@@ -14,7 +16,7 @@ class OSServicoController extends Controller
      */
     public function index()
     {
-        $lista = OSServico::all();
+        $lista = OSServico::with('servico')->with('ordemServico')->get();
         return view('osServicos.listOSServico', ['lista'=>$lista]);
     }
 
@@ -25,7 +27,9 @@ class OSServicoController extends Controller
      */
     public function create()
     {
-        return view('osServicos.formOSServico');
+        $listaOrdemServico = OrdemServico::all();
+        $listaServico = Servico::all();
+        return view('osServicos.formOSServico', compact('listaOrdemServico', 'listaServico'));
     }
 
     /**
@@ -36,9 +40,7 @@ class OSServicoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'valorServico' => 'required'
-        ]);
+        $request->validate($this->getValidate());
 
         OSServico::create($request->all());
         return redirect('osServicos');
@@ -63,8 +65,10 @@ class OSServicoController extends Controller
      */
     public function edit($id)
     {
-        $osServico = OSServico::find($id);
-        return view('osServicos.editOSServico', ['registro'=>$osServico]);
+        $registro = OSServico::find($id);
+        $listaOrdemServico = OrdemServico::all();
+        $listaServico = Servico::all();
+        return view('osServicos.editOSServico', compact('registro', 'listaOrdemServico', 'listaServico'));
     }
 
     /**
@@ -76,9 +80,7 @@ class OSServicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'valorServico' => 'required'
-        ]);
+        $request->validate($this->getValidate());
 
         $osServico = OSServico::find($id);
         $osServico->update($request->all());
@@ -98,5 +100,15 @@ class OSServicoController extends Controller
         $osServico->delete();
 
         return redirect('osServicos');
+    }
+
+    //Método com validações
+    private function getValidate()
+    {
+        return [
+            'valorServico' => 'required',
+            'servico_id' => 'required',
+            'ordemServico_id' => 'required'
+        ];
     }
 }

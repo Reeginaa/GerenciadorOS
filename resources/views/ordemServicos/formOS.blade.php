@@ -87,13 +87,20 @@
 
                 <hr class="hr-light">
                 <h4 class="text-center text-white"><u>Serviço</u></h4>
+                <div class="container">
+                    @yield('servicos')
+                </div>
 
                 {{-- Tabela Serviço --}}
 
                 <hr class="hr-light">
                 <h4 class="text-center text-white"><u>Peças</u></h4>
+                <div class="container">
+                    @yield('pecas')
+                </div>
 
                 {{-- Tabela peças --}}
+
                 {{-- <div class="col-lg-4"></div>
                 <div class="col-lg-4">
                     <div class="form-group">

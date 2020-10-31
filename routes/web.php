@@ -24,6 +24,8 @@ Route::resource('pecas', 'App\Http\Controllers\PecaController');
 Route::resource('equipamentos', 'App\Http\Controllers\EquipamentoController');
 Route::resource('pessoas', 'App\Http\Controllers\PessoaController');
 Route::resource('ordemServicos', 'App\Http\Controllers\OrdemServicoController');
+Route::resource('osPecas', 'App\Http\Controllers\OSPecaController');
+Route::resource('osServicos', 'App\Http\Controllers\OSServicoController');
 
 Route::resource('login', 'App\Http\Controllers\Auth\LoginController');
 Route::resource('home', 'App\Http\Controllers\HomeController');
