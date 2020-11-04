@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label for="marca">Marca: * |
                         <a href="{{ route('marcas.create') }}">
-                            <i class="fas fa-plus"></i> Adicionar Marca
+                            <i class="fas fa-plus"></i> Cadastrar Marca
                         </a>
                     </label>
                     <select class="form-control" name="marca_id" id="marca" required>

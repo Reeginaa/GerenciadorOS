@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label for="tipo">Tipo Pessoa: * |
                         <a href="{{ route('tipoPessoas.create') }}">
-                            <i class="fas fa-plus"></i> Adicionar Tipo Pessoa
+                            <i class="fas fa-plus"></i> Cadastrar Tipo Pessoa
                         </a>
                     </label>
                     <select name="tipoPessoa_id" id="tipo" class="form-control" required>

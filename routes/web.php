@@ -21,8 +21,9 @@ Route::resource('login', 'App\Http\Controllers\Auth\LoginController');
 Route::resource('home', 'App\Http\Controllers\HomeController');
 Route::resource('sobre', 'App\Http\Controllers\SobreController');
 
+Auth::routes();
 
-
+Route::group(['middleware' => 'auth'], function () {
     Route::resource('marcas', 'App\Http\Controllers\MarcaController');
     Route::resource('tipoPessoas', 'App\Http\Controllers\TipoPessoaController');
     Route::resource('statusServicos', 'App\Http\Controllers\StatusServicoController');
@@ -33,9 +34,7 @@ Route::resource('sobre', 'App\Http\Controllers\SobreController');
     Route::resource('ordemServicos', 'App\Http\Controllers\OrdemServicoController');
     Route::resource('osPecas', 'App\Http\Controllers\OSPecaController');
     Route::resource('osServicos', 'App\Http\Controllers\OSServicoController');
-    Route::resource('admin', 'App\Http\Controllers\AdminController');;
+    //Route::resource('admin', 'App\Http\Controllers\AdminController');
+});
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
