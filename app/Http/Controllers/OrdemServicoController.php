@@ -114,4 +114,12 @@ class OrdemServicoController extends Controller
         'pessoa_id' => 'required',
         'equipamento_id' => 'required'];
     }
+
+    public function fechar($id)
+    {
+        $os = array('statusServico_id'=>StatusServico::getStatusConcluido(), 'dataTermino'=>date('Y-m-d'));
+        OrdemServico::find($id)->update($os);
+
+        return redirect('ordemServicos')->with('success', 'O.S. Fechada!!!');
+    }
 }

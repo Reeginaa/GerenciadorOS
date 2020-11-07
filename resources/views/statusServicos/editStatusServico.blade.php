@@ -30,7 +30,9 @@
                 <div class="form-group">
                     <label for="descricaoStatus">Descrição: </label>
                     <textarea name="descricaoStatus" id="descricaoStatus" type="text" class="form-control"
-                     placeholder="Escrevas as observações desse estatus se desejar" value="{{ $registro->descricaoStatus }}"></textarea>
+                     placeholder="Escrevas as observações desse estatus se desejar">
+                     {{ $registro->descricaoStatus }}
+                    </textarea>
                 </div>
                 <hr class="hr-light">
                 <button type="submit" class="btn btn-success">Salvar</button>

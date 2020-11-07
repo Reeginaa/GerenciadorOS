@@ -9,6 +9,7 @@ class StatusServico extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'status',
         'descricaoStatus'
@@ -18,5 +19,10 @@ class StatusServico extends Model
     public function ordemServico()
     {
         return $this->hasMany(OrdemServico::class, 'statusServico_id');
+    }
+
+    static function getStatusConcluido()
+    {
+        return 3;
     }
 }

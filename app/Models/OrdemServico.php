@@ -50,4 +50,11 @@ class OrdemServico extends Model
     {
         return $this->belongsTo(Equipamento::class, 'equipamento_id', 'id');
     }
+
+    //botão fechar OS
+    public function fecharOS($id)
+    {
+        $os = array('statusServico_id'=>3, 'dataTermino'=>date('Y-m-d'));
+        return $this->find($id)->update($os);
+    }
 }

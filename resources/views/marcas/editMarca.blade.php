@@ -29,7 +29,9 @@
                 <div class="form-group">
                     <label for="observacaoMarca">Observações: </label>
                     <textarea id="observacaoMarca" name="observacaoMarca" class="form-control" type="text"
-                     placeholder="Escreva as observações de marca se necessário" value="{{ $registro->observacaoMarca }}"></textarea>
+                     placeholder="Escreva as observações de marca se necessário">
+                     {{ $registro->observacaoMarca }}
+                    </textarea>
                 </div>
                 <hr class="hr-light">
                 <button type="submit" class="btn btn-success">Salvar</button>

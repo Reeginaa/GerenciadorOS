@@ -1,4 +1,5 @@
 @extends('admin')
+@extends('osServicos.listOSServico')
 
 @section('main')
 <br><br><br><br>
@@ -49,8 +50,8 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="defeito">Defeito: *</label>
-                        <textarea name="defeito" id="defeito" cols="30" rows="1" class="form-control"
-                         type="text" placeholder="Escreva os defeitos do equipamento" required></textarea>
+                        <input type="text" name="defeito" id="defeito" class="form-control" required
+                         placeholder="Escreva o problema/defeito do equipamento">
                     </div>
                 </div>
                 <div class="row">
@@ -61,8 +62,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="dataTermino">Data Término: </label>
-                        <input type="date" name="dataTermino" id="dataTermino" class="form-control"
-                         required>
+                        <input type="date" name="dataTermino" id="dataTermino" class="form-control">
                     </div>
                 </div>
                 <div class="row">
@@ -76,9 +76,9 @@
                         </select>
                     </div>
                     <div class="form-group col-lg-6">
-                        <label for="observacoesOS">Observações: *</label>
+                        <label for="observacoesOS">Observações:</label>
                         <textarea name="observacoesOS" id="observacoesOS" cols="30" rows="1" class="form-control"
-                         type="text" placeholder="Escreva as observações do equipamento" required></textarea>
+                         type="text" placeholder="Escreva as observações do equipamento"></textarea>
                     </div>
                 </div>
                 <hr class="hr-light">

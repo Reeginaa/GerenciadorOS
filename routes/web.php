@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('ordemServicos', 'App\Http\Controllers\OrdemServicoController');
     Route::resource('osPecas', 'App\Http\Controllers\OSPecaController');
     Route::resource('osServicos', 'App\Http\Controllers\OSServicoController');
+    Route::get('fecharOS/{id}', 'App\Http\Controllers\OrdemServicoController@fechar')->name('fecharOS');
     //Route::resource('admin', 'App\Http\Controllers\AdminController');
 });
 
