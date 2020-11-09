@@ -16,7 +16,8 @@ class OrdemServico extends Model
         'observacoesOS',
         'valorTotal',
         'termos',
-        'assinatura',
+        'nome_arquivo',
+        'url_arquivo',
         'statusServico_id',
         'pessoa_id',
         'equipamento_id'
@@ -54,7 +55,7 @@ class OrdemServico extends Model
     //botão fechar OS
     public function fecharOS($id)
     {
-        $os = array('statusServico_id'=>3, 'dataTermino'=>date('Y-m-d'));
+        $os = array('statusServico_id'=>6, 'dataTermino'=>date('Y-m-d'));
         return $this->find($id)->update($os);
     }
 }

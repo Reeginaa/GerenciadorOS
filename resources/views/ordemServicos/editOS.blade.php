@@ -3,8 +3,8 @@
 @section('main')
 <br><br><br><br>
 <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
+    <div class="col-lg-0"></div>
+    <div class="col-lg-12">
         <div id="ui">
             <h1 class="text-center">Editar Ordem de Serviço</h1>
             <hr class="hr-light">
@@ -78,24 +78,48 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="observacoesOS">Observações:</label>
-                        <textarea name="observacoesOS" id="observacoesOS" class="form-control"
+                        <textarea name="observacoesOS" id="observacoesOS" cols="30" rows="1" class="form-control"
                          type="text" placeholder="Escreva as observações do equipament">
                          {{ $registro->observacoesOS }}
                         </textarea>
                     </div>
                 </div>
                 <hr class="hr-light">
-                <button type="submit" class="btn btn-success">Enviar</button>
-                @if ($registro->statusServico_id != 3)
-                    <a href="{{ route('fecharOS', $registro->id) }}" class="btn btn-warning">Fechar O.S.</a>
+                <h4 class="text-center text-white"><u>Orçamento</u></h4>
+                {{-- Orçamento --}}
+
+                <hr class="hr-light">
+                <h4 class="text-center text-white"><u>Serviço</u></h4>
+                <div class="container">
+                    @yield('servicos')
+                </div>
+
+                {{-- Tabela Serviço --}}
+
+                <hr class="hr-light">
+                <h4 class="text-center text-white"><u>Peças</u></h4>
+                <div class="container">
+                    @yield('pecas')
+                </div>
+
+                <hr class="hr-light">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                @if ($registro->statusServico_id != 6 && $registro->statusServico_id != 3)
+                    <a href="{{ route('fecharOS', $registro->id) }}" class="btn btn-primary">Fechar O.S.</a>
                 @endif
-                @if ($registro->statusServico_id == 3)
-                    <a href="{{ route('fecharOS', $registro->id) }}" class="btn btn-warning">Reabir O.S.</a>
+                @if ($registro->statusServico_id == 6 || $registro->statusServico_id == 3)
+                    <a href="{{ route('reabrirOS', $registro->id) }}" class="btn btn-primary">Reabir O.S.</a>
                 @endif
+                @if ($registro->statusServico_id != 3 && $registro->statusServico_id != 6)
+                    <a href="{{ route('faturarOS', $registro->id) }}" class="btn btn-primary">Faturar O.S.</a>
+                @endif
+                <a href="#" class="btn btn-primary">Imprimir O.S.</a>
+                <a href="#" class="btn btn-primary">Imprimir Nº</a>
+                <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">Voltar</a>
             </form>
         </div>
     </div>
-    <div class="col-lg-1"></div>
+    <div class="col-lg-0"></div>
 </div>
 <br><br><br><br>
 @endsection

@@ -115,11 +115,30 @@ class OrdemServicoController extends Controller
         'equipamento_id' => 'required'];
     }
 
+    //Método para botão fechar
     public function fechar($id)
+    {
+        $os = array('statusServico_id'=>StatusServico::getStatusFechado(), 'dataTermino'=>date('Y-m-d'));
+        OrdemServico::find($id)->update($os);
+
+        return redirect('ordemServicos')->with('success', 'O.S. Fechada!!!');
+    }
+
+    //Método para botão reabrir
+    public function reabrir($id)
+    {
+        $os = array('statusServico_id'=>StatusServico::getStatusInicio(), 'dataTermino'=>null);
+        OrdemServico::find($id)->update($os);
+
+        return redirect('ordemServicos')->with('success', 'O.S. Reaberta!!!');
+    }
+
+    //Método para botão faturar
+    public function faturar($id)
     {
         $os = array('statusServico_id'=>StatusServico::getStatusConcluido(), 'dataTermino'=>date('Y-m-d'));
         OrdemServico::find($id)->update($os);
 
-        return redirect('ordemServicos')->with('success', 'O.S. Fechada!!!');
+        return redirect('ordemServicos')->with('success', 'O.S. Faturada!!!');
     }
 }

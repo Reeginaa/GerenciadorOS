@@ -1,11 +1,10 @@
 @extends('admin')
-@extends('osServicos.listOSServico')
 
 @section('main')
 <br><br><br><br>
 <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
+    <div class="col-lg-0"></div>
+    <div class="col-lg-12">
         <div id="ui">
             <h1 class="text-center">Adicionar Ordem de Serviço</h1>
             <hr class="hr-light">
@@ -86,37 +85,13 @@
                 {{-- Orçamento --}}
 
                 <hr class="hr-light">
-                <h4 class="text-center text-white"><u>Serviço</u></h4>
-                <div class="container">
-                    @yield('servicos')
-                </div>
-
-                {{-- Tabela Serviço --}}
-
-                <hr class="hr-light">
-                <h4 class="text-center text-white"><u>Peças</u></h4>
-                <div class="container">
-                    @yield('pecas')
-                </div>
-
-                {{-- Tabela peças --}}
-
-                {{-- <div class="col-lg-4"></div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="valorTotal">Valor Total: </label>
-                        <input type="real" id="valorTotal" name="valorTotal" class="form-control" disabled>
-                    </div>
-                </div>
-                <div class="col-lg-4"></div> --}}
-
-                <hr class="hr-light">
-                <button type="submit" class="btn btn-success">Enviar</button>
+                <button type="submit" class="btn btn-success">Salvar</button>
                 <button type="reset" class="btn btn-warning">Limpar</button>
+                <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">Voltar</a>
             </form>
         </div>
     </div>
-    <div class="col-lg-1"></div>
+    <div class="col-lg-0"></div>
 </div>
 <br><br><br><br>
 @endsection

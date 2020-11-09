@@ -21,8 +21,18 @@ class StatusServico extends Model
         return $this->hasMany(OrdemServico::class, 'statusServico_id');
     }
 
+    static function getStatusFechado()
+    {
+        return 6;
+    }
+
     static function getStatusConcluido()
     {
         return 3;
+    }
+
+    static function getStatusInicio()
+    {
+        return 1;
     }
 }

@@ -21,7 +21,8 @@ class CreateOrdemServicosTable extends Migration
             $table->string('observacoesOS', 350);
             $table->decimal('valorTotal', 8, 2);
             $table->boolean('termos')->nullable(false);
-            $table->boolean('assinatura');
+            $table->string('nome_arquivo', 40);
+            $table->string('url_arquivo', 80);
             $table->unsignedBigInteger('statusServico_id')->nullable(false);
             $table->unsignedBigInteger('pessoa_id')->nullable(false);
             $table->unsignedBigInteger('equipamento_id')->nullable(false);

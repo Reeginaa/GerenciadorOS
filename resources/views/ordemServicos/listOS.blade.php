@@ -24,6 +24,7 @@
                     <tr>
                         <td>#</td>
                         <td>Cliente</td>
+                        <td>Status</td>
                         <td>Data Início</td>
                         <td>Data Termino</td>
                         <td>Equipamento</td>
@@ -37,6 +38,7 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->pessoa->nome }}</td>
+                            <td>{{ $item->statusServico->status }}</td>
                             <td>{{ $item->dataInicio }}</td>
                             <td>{{ $item->dataTermino }}</td>
                             <td>{{ $item->equipamento->nomeEquipamento }}</td>
