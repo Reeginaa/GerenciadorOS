@@ -1,5 +1,7 @@
 @extends('admin')
 
+<title>Adicionar Ordem Serviço</title>
+
 @section('main')
 <br><br><br><br>
 <div class="row">
@@ -80,10 +82,33 @@
                          type="text" placeholder="Escreva as observações do equipamento"></textarea>
                     </div>
                 </div>
+
+                {{-- Orçamento --}}
                 <hr class="hr-light">
                 <h4 class="text-center text-white"><u>Orçamento</u></h4>
-                {{-- Orçamento --}}
+                <div class="form-group">
+                    <input type="file" name="arquivo" id="arquivo" class="form-control">
+                </div>
 
+                {{-- Termos checkbox --}}
+                <hr class="hr-light">
+                <h4 class="text-center text-white"><b>Termos</b></h4>
+                <p class="font-weight-light text-justify text-white">
+                    <li class="text-center text-white">Todo serviço realizado tem <b>garantia de 3 meses</b>,
+                        apartir da data de término aqui constada.
+                    </li>
+                    <li class="text-center text-white">Após o decorrer de <b>3 meses</b> e <b>3 tentativas</b> de entrar em
+                        contato com o cliente, e o equipamento permanecer nos aposentos da loja, a <b>loja tem
+                        total liberdade para realizar o descarte, venda, doação ou leilão do mesmo.</b>
+                    </li>
+                    <li class="text-center text-white">Se por acaso o cliente comparecer ao estabelecimento
+                        para a retirada do equipamento e o mesmo estiver ainda no estabelecimento, <b>após o
+                        decorrer de 3 meses, o cliente deverá pagar uma multa.</b>
+                    </li>
+                    <br>
+                    <input type="checkbox" name="termos" id="termos" class="form-check-input">
+                    <label for="termos"><b><u>Li, concordo e estou ciente dos termos.</u></b></label>
+                </p>
                 <hr class="hr-light">
                 <button type="submit" class="btn btn-success">Salvar</button>
                 <button type="reset" class="btn btn-warning">Limpar</button>

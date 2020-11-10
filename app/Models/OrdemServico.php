@@ -16,8 +16,7 @@ class OrdemServico extends Model
         'observacoesOS',
         'valorTotal',
         'termos',
-        'nome_arquivo',
-        'url_arquivo',
+        'arquivo',
         'statusServico_id',
         'pessoa_id',
         'equipamento_id'

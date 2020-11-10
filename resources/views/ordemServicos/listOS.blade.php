@@ -1,5 +1,7 @@
 @extends('admin')
 
+<title>Lista de Ordem de Serviço</title>
+
 @section('main')
 <br><br><br>
 <div class="row">

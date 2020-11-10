@@ -1,5 +1,6 @@
 @extends('admin')
 
+<title>Lista de Status de Serviço</title>
 @section('main')
 <br><br><br>
 <div class="row">

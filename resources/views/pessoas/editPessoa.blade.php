@@ -1,5 +1,7 @@
 @extends('admin')
 
+<title>Editar Pessoa</title>
+
 @section('main')
 <br><br><br><br>
 <div class="row">

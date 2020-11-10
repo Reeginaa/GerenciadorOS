@@ -1,5 +1,7 @@
 @extends('admin')
 
+<title>Adicionar Serviço</title>
+
 @section('main')
 <br><br><br><br>
 <div class="row">
@@ -39,6 +41,7 @@
                     <hr class="hr-light">
                     <button type="submit" class="btn btn-success">Salvar</button>
                     <button type="reset" class="btn btn-warning">Limpar</button>
+                    <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">Voltar</a>
                 </form>
             </div>
 

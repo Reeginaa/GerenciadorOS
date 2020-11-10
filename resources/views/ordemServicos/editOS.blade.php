@@ -1,5 +1,7 @@
 @extends('admin')
 
+<title>Editar Ordem Serviço</title>
+
 @section('main')
 <br><br><br><br>
 <div class="row">
@@ -84,22 +86,66 @@
                         </textarea>
                     </div>
                 </div>
+
+                {{-- Orçamento --}}
                 <hr class="hr-light">
                 <h4 class="text-center text-white"><u>Orçamento</u></h4>
-                {{-- Orçamento --}}
-
-                <hr class="hr-light">
-                <h4 class="text-center text-white"><u>Serviço</u></h4>
-                <div class="container">
-                    @yield('servicos')
+                <div class="form-group">
+                    <input type="file" name="arquivo" id="arquivo" class="form-control" value="{{ $registro->arquivo }}">
                 </div>
 
                 {{-- Tabela Serviço --}}
+                <hr class="hr-light">
+                <h4 class="text-center text-white"><u>Serviço</u></h4>
+                <div class="container">
+                    {{-- <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-10">
+                            <div>
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <i class="far fa-file-alt"></i> Adicionar Serviço</a>
+                            </div>
+                            <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td>Serviço</td>
+                                        <td>Valor</td>
+                                        <td>Ações</td>
+                                    </tr>
+                                </thead>
 
+                            </table>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div> --}}
+                </div>
+
+                {{-- Tabela Peças --}}
                 <hr class="hr-light">
                 <h4 class="text-center text-white"><u>Peças</u></h4>
                 <div class="container">
-                    @yield('pecas')
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-10">
+                            <div>
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <i class="far fa-file-alt"></i> Adicionar Peça</a>
+                            </div>
+                            <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td>QTD</td>
+                                        <td>Peça</td>
+                                        <td>Valor Unitário</td>
+                                        <td>Ações</td>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+
                 </div>
 
                 <hr class="hr-light">
@@ -113,6 +159,7 @@
                 @if ($registro->statusServico_id != 3 && $registro->statusServico_id != 6)
                     <a href="{{ route('faturarOS', $registro->id) }}" class="btn btn-primary">Faturar O.S.</a>
                 @endif
+
                 <a href="#" class="btn btn-primary">Imprimir O.S.</a>
                 <a href="#" class="btn btn-primary">Imprimir Nº</a>
                 <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">Voltar</a>
