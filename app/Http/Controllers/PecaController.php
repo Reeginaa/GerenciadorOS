@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Peca;
+use App\Models\Pecas;
 
 class PecaController extends Controller
 {
@@ -14,7 +14,7 @@ class PecaController extends Controller
      */
     public function index()
     {
-        $lista = Peca::all();
+        $lista = Pecas::all();
         return view('pecas.listPeca', ['lista'=>$lista]);
     }
 
@@ -38,7 +38,7 @@ class PecaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        Peca::create($request->all());
+        Pecas::create($request->all());
         return redirect('pecas')->with('success', 'Peça inserida!!!');
     }
 
@@ -61,7 +61,7 @@ class PecaController extends Controller
      */
     public function edit($id)
     {
-        $registro = Peca::find($id);
+        $registro = Pecas::find($id);
         return view('pecas.editPeca', ['registro'=>$registro]);
     }
 
@@ -76,7 +76,7 @@ class PecaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $peca = Peca::find($id);
+        $peca = Pecas::find($id);
         $peca->update($request->all());
 
         return redirect('pecas')->with('success', 'Peça alterada!!!');
@@ -90,7 +90,7 @@ class PecaController extends Controller
      */
     public function destroy($id)
     {
-        $peca = Peca::find($id);
+        $peca = Pecas::find($id);
         $peca->delete();
 
         return redirect('pecas')->with('success', 'Peça excluida!!!');

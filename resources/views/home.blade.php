@@ -69,25 +69,6 @@
                                 </a>
                             @endif
                         @endguest
-
-                        {{-- <a href="{{ route('admin.index') }}" class="btn btn-outline-white">Entrar
-                            <i class="fa fa-user ml-2"></i>
-                        </a> --}}
-                        {{-- @if (Route::has('login'))
-                            @auth
-                                <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
-                            @else
-                                <a href="{{ route('login') }}" class="btn btn-outline-white">Login
-                                    <i class="fa fa-user ml-2"></i>
-                                </a>
-
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="btn btn-outline-white">Registrar
-                                        <i class="fas fa-user-plus ml-2"></i>
-                                    </a>
-                                @endif
-                            @endif
-                        @endif --}}
                     </div>
                 </div>
           </div>

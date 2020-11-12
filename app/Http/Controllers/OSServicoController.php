@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\OSServico;
-use App\Models\OrdemServico;
-use App\Models\Servico;
+use App\Models\OSServicos;
+use App\Models\OrdemServicos;
+use App\Models\Servicos;
 
 class OSServicoController extends Controller
 {
@@ -16,7 +16,7 @@ class OSServicoController extends Controller
      */
     public function index()
     {
-        $lista = OSServico::with('servico')->with('ordemServico')->get();
+        $lista = OSServicos::with('servico')->with('ordemServico')->get();
         return view('osServicos.listOSServico', ['lista'=>$lista]);
     }
 
@@ -27,8 +27,8 @@ class OSServicoController extends Controller
      */
     public function create()
     {
-        $listaOrdemServico = OrdemServico::all();
-        $listaServico = Servico::all();
+        $listaOrdemServico = OrdemServicos::all();
+        $listaServico = Servicos::all();
         return view('osServicos.formOSServico', compact('listaOrdemServico', 'listaServico'));
     }
 
@@ -42,7 +42,7 @@ class OSServicoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        OSServico::create($request->all());
+        OSServicos::create($request->all());
         return redirect('osServicos');
     }
 
@@ -65,9 +65,9 @@ class OSServicoController extends Controller
      */
     public function edit($id)
     {
-        $registro = OSServico::find($id);
-        $listaOrdemServico = OrdemServico::all();
-        $listaServico = Servico::all();
+        $registro = OSServicos::find($id);
+        $listaOrdemServico = OrdemServicos::all();
+        $listaServico = Servicos::all();
         return view('osServicos.editOSServico', compact('registro', 'listaOrdemServico', 'listaServico'));
     }
 
@@ -82,7 +82,7 @@ class OSServicoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $osServico = OSServico::find($id);
+        $osServico = OSServicos::find($id);
         $osServico->update($request->all());
 
         return redirect('osServicos');
@@ -96,7 +96,7 @@ class OSServicoController extends Controller
      */
     public function destroy($id)
     {
-        $osServico = OSServico::find($id);
+        $osServico = OSServicos::find($id);
         $osServico->delete();
 
         return redirect('osServicos');

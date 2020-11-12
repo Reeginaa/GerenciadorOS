@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TipoPessoas;
 use Illuminate\Http\Request;
-use App\Models\TipoPessoa;
 
 class TipoPessoaController extends Controller
 {
@@ -14,8 +14,7 @@ class TipoPessoaController extends Controller
      */
     public function index()
     {
-        $lista = TipoPessoa::all();
-        //dd($lista);
+        $lista = TipoPessoas::all();
         return view('tipoPessoas.listTipoPessoa', ['lista'=>$lista]);
     }
 
@@ -39,9 +38,8 @@ class TipoPessoaController extends Controller
     {
         $request->validate ($this->getValidate());
 
-        TipoPessoa::create($request->all());
+        TipoPessoas::create($request->all());
         return redirect('tipoPessoas')->with('success', 'Tipo Pessoa incluído!!!');
-        // dd($request);
     }
 
     /**
@@ -63,8 +61,7 @@ class TipoPessoaController extends Controller
      */
     public function edit($id)
     {
-        $registro = TipoPessoa::find($id);
-        //dd($tipoPessoa);
+        $registro = TipoPessoas::find($id);
         return view('tipoPessoas.editTipoPessoa', ['registro'=>$registro]);
     }
 
@@ -79,7 +76,7 @@ class TipoPessoaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $tipoPessoa = TipoPessoa::find($id);
+        $tipoPessoa = TipoPessoas::find($id);
         $tipoPessoa->update($request->all());
         return redirect('tipoPessoas')->with('success', 'Tipo Pessoa alterado!!!');
     }
@@ -93,7 +90,7 @@ class TipoPessoaController extends Controller
     public function destroy($id)
     {
         //encontra o tipo de pessoa passando o id
-        $tipoPessoa = TipoPessoa::find($id);
+        $tipoPessoa = TipoPessoas::find($id);
         //remove ele
         $tipoPessoa->delete();
         //redireciona o fluxo

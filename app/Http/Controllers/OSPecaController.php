@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\OSPeca;
-use App\Models\Peca;
-use App\Models\OrdemServico;
+use App\Models\OrdemServicos;
+use App\Models\OSPecas;
+use App\Models\Pecas;
 
 class OSPecaController extends Controller
 {
@@ -16,7 +16,7 @@ class OSPecaController extends Controller
      */
     public function index()
     {
-        $lista = OSPeca::with('peca')->with('ordemServico')->get();
+        $lista = OSPecas::with('peca')->with('ordemServico')->get();
         return view('osPecas.listOSPeca', ['lista'=>$lista]);
     }
 
@@ -27,8 +27,8 @@ class OSPecaController extends Controller
      */
     public function create()
     {
-        $listaOrdemServico = OrdemServico::all();
-        $listaPeca = Peca::all();
+        $listaOrdemServico = OrdemServicos::all();
+        $listaPeca = Pecas::all();
         return view('osPecas.formOSPeca', compact('listaOrdemServico', 'listaPeca'));
     }
 
@@ -42,7 +42,7 @@ class OSPecaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        OSPeca::create($request->all());
+        OSPecas::create($request->all());
         return redirect('osPecas');
     }
 
@@ -65,9 +65,9 @@ class OSPecaController extends Controller
      */
     public function edit($id)
     {
-        $registro = OSPeca::find($id);
-        $listaOrdemServico = OrdemServico::all();
-        $listaPeca = Peca::all();
+        $registro = OSPecas::find($id);
+        $listaOrdemServico = OrdemServicos::all();
+        $listaPeca = Pecas::all();
         return view('osPecas.editOSPeca', compact('registro', 'listaOrdemServico', 'listaPeca'));
     }
 
@@ -82,7 +82,7 @@ class OSPecaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $osPeca = OSPeca::find($id);
+        $osPeca = OSPecas::find($id);
         $osPeca->update($request->all());
 
         return redirect('osPecas');
@@ -96,7 +96,7 @@ class OSPecaController extends Controller
      */
     public function destroy($id)
     {
-        $osPeca = OSPeca::find($id);
+        $osPeca = OSPecas::find($id);
         $osPeca->delete();
 
         return redirect('osPecas');

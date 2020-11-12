@@ -37,20 +37,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-6">
                         <label for="valorCompra">Valor Compra: *</label>
                         <input type="real" class="form-control" name="valorCompra"
                          required value="{{ $registro->valorCompra }}">
                     </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-lg-6">
                         <label for="valorVenda">Valor Venda: *</label>
                         <input type="real" class="form-control" name="valorVenda"
                          required value="{{ $registro->valorVenda }}">
-                    </div>
-                    <div class="form-group col-lg-4">
-                        <label for="desconto">Desconto: </label>
-                        <input type="number" class="form-control" name="desconto"
-                         value="{{ $registro->desconto }}">
                     </div>
                 </div>
                 <hr class="hr-light">

@@ -43,13 +43,13 @@
                   aria-haspopup="true" aria-expanded="false">
                   <i class="far fa-file-alt"></i>Cadastros Básicos</a>
                 <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{{ route ('marcas.index') }}">Marca</a>
-                  <a class="dropdown-item" href="{{ route ('servicos.index') }}">Serviço</a>
-                  <a class="dropdown-item" href="{{ route ('pecas.index') }}">Peça</a>
-                  <a class="dropdown-item" href="{{ route ('statusServicos.index') }}">Status Serviço</a>
-                  <a class="dropdown-item" href="{{ route ('tipoPessoas.index') }}">Tipo Pessoa</a>
-                  <a class="dropdown-item" href="{{ route ('equipamentos.index') }}">Equipamento</a>
-                  <a class="dropdown-item" href="{{ route ('pessoas.index') }}">Pessoa</a>
+                  <a class="dropdown-item" href="{{ route('marcas.index') }}">Marca</a>
+                  <a class="dropdown-item" href="{{ route('servicos.index') }}">Serviço</a>
+                  <a class="dropdown-item" href="{{ route('pecas.index') }}">Peça</a>
+                  <a class="dropdown-item" href="{{ route('statusServicos.index') }}">Status Serviço</a>
+                  <a class="dropdown-item" href="{{ route('tipoPessoas.index') }}">Tipo Pessoa</a>
+                  <a class="dropdown-item" href="{{ route('equipamentos.index') }}">Equipamento</a>
+                  <a class="dropdown-item" href="{{ route('pessoas.index') }}">Pessoa</a>
                 </div>
               </li>
               <li class="nav-item dropdown">

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StatusServicos;
 use Illuminate\Http\Request;
-use App\Models\StatusServico;
+
 
 class StatusServicoController extends Controller
 {
@@ -14,7 +15,7 @@ class StatusServicoController extends Controller
      */
     public function index()
     {
-        $lista = StatusServico::all();
+        $lista = StatusServicos::all();
         return view('statusServicos.listStatusServico', ['lista'=>$lista]);
     }
 
@@ -38,7 +39,7 @@ class StatusServicoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        StatusServico::create($request->all());
+        StatusServicos::create($request->all());
         return redirect('statusServicos')->with('success', 'Status inserido!!!');
     }
 
@@ -61,7 +62,7 @@ class StatusServicoController extends Controller
      */
     public function edit($id)
     {
-        $registro = StatusServico::find($id);
+        $registro = StatusServicos::find($id);
         return view('statusServicos.editStatusServico', ['registro'=>$registro]);
     }
 
@@ -76,7 +77,7 @@ class StatusServicoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $statusServico = StatusServico::find($id);
+        $statusServico = StatusServicos::find($id);
         $statusServico->update($request->all());
 
         return redirect('statusServicos')->with('success', 'Status alterado!!!');
@@ -90,7 +91,7 @@ class StatusServicoController extends Controller
      */
     public function destroy($id)
     {
-        $statusServico = StatusServico::find($id);
+        $statusServico = StatusServicos::find($id);
         $statusServico->delete();
 
         return redirect('statusServicos')->with('success', 'Status excluído!!!');

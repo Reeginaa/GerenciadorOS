@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pessoa extends Model
+class Pessoas extends Model
 {
     use HasFactory;
 
@@ -28,7 +28,7 @@ class Pessoa extends Model
 
     //Relação 1 para muitos - Uma pessoa pode ter várias ordens de servico
     public function ordemServico()
-    {   
+    {
         return $this->hasMany(OrdemServico::class, 'pessoa_id');
     }
 

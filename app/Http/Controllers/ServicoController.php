@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Servico;
+use App\Models\Servicos;
 
 class ServicoController extends Controller
 {
@@ -14,7 +14,7 @@ class ServicoController extends Controller
      */
     public function index()
     {
-        $lista = Servico::all();
+        $lista = Servicos::all();
         return view('servicos.listServico', ['lista'=>$lista]);
     }
 
@@ -38,7 +38,7 @@ class ServicoController extends Controller
     {
         $request->validate ($this->getValidate());
 
-        Servico::create($request->all());
+        Servicos::create($request->all());
         return redirect('servicos')->with('success', 'Serviço inserido!!!');
     }
 
@@ -61,7 +61,7 @@ class ServicoController extends Controller
      */
     public function edit($id)
     {
-        $registro = Servico::find($id);
+        $registro = Servicos::find($id);
         return view('servicos.editServico', ['registro'=>$registro]);
     }
 
@@ -76,7 +76,7 @@ class ServicoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $servico = Servico::find($id);
+        $servico = Servicos::find($id);
         $servico->update($request->all());
 
         return redirect('servicos')->with('success', 'Serviço alterado!!!');
@@ -90,7 +90,7 @@ class ServicoController extends Controller
      */
     public function destroy($id)
     {
-        $servico = Servico::find($id);
+        $servico = Servicos::find($id);
         $servico->delete();
 
         return redirect('servicos')->with('success', 'Serviço excluído!!!');

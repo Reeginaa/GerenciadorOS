@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,24 +13,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('home');
 });
 
-
-Route::resource('login', 'App\Http\Controllers\Auth\LoginController');
-Route::resource('home', 'App\Http\Controllers\HomeController');
 Route::resource('sobre', 'App\Http\Controllers\SobreController');
+Route::resource('home', 'App\Http\Controllers\HomeController');
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('marcas', 'App\Http\Controllers\MarcaController');
     Route::resource('tipoPessoas', 'App\Http\Controllers\TipoPessoaController');
-    Route::resource('statusServicos', 'App\Http\Controllers\StatusServicoController');
-    Route::resource('servicos', 'App\Http\Controllers\ServicoController');
-    Route::resource('pecas', 'App\Http\Controllers\PecaController');
+    Route::resource('marcas', 'App\Http\Controllers\MarcaController');
     Route::resource('equipamentos', 'App\Http\Controllers\EquipamentoController');
+    Route::resource('pecas', 'App\Http\Controllers\PecaController');
+    Route::resource('servicos', 'App\Http\Controllers\ServicoController');
+    Route::resource('statusServicos', 'App\Http\Controllers\StatusServicoController');
     Route::resource('pessoas', 'App\Http\Controllers\PessoaController');
     Route::resource('ordemServicos', 'App\Http\Controllers\OrdemServicoController');
     Route::resource('osPecas', 'App\Http\Controllers\OSPecaController');
@@ -37,7 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('fecharOS/{id}', 'App\Http\Controllers\OrdemServicoController@fechar')->name('fecharOS');
     Route::get('reabrirOS/{id}', 'App\Http\Controllers\OrdemServicoController@reabrir')->name('reabrirOS');
     Route::get('faturarOS/{id}', 'App\Http\Controllers\OrdemServicoController@faturar')->name('faturarOS');
-    //Route::resource('admin', 'App\Http\Controllers\AdminController');
 });
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');

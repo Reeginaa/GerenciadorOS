@@ -3,23 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Marca;
+use App\Models\Marcas;
 
 class MarcaController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * Mostra uma lista do recurso
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $lista = Marca::all();
+        $lista = Marcas::all();
         return view('marcas.listMarca', ['lista'=>$lista]);
     }
 
     /**
      * Show the form for creating a new resource.
+     * Mostra o formulário de criação de um novo recurso
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,6 +32,7 @@ class MarcaController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Armazena um recurso recém criado no armazenamento.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -38,12 +41,13 @@ class MarcaController extends Controller
     {
         $request->validate ($this->getValidate());
 
-        Marca::create($request->all());
+        Marcas::create($request->all());
         return redirect('marcas')->with('success', 'Marca incluida!!!');
     }
 
     /**
      * Display the specified resource.
+     * Exibe o recurso especificado.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -55,18 +59,20 @@ class MarcaController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * Mostra o formulário para editar o recurso especificado.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $registro = Marca::find($id);
+        $registro = Marcas::find($id);
         return view('marcas.editMarca', ['registro'=>$registro]);
     }
 
     /**
      * Update the specified resource in storage.
+     * Atualiza o recurso especificado no armazenamento.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -76,7 +82,7 @@ class MarcaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $marca = Marca::find($id);
+        $marca = Marcas::find($id);
         $marca->update($request->all());
 
         return redirect('marcas')->with('success', 'Marca alterada!!!');
@@ -84,13 +90,14 @@ class MarcaController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * Remove o recurso especificado do armazenamento.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $marca = Marca::find($id);
+        $marca = Marcas::find($id);
         $marca->delete();
 
         return redirect('marcas')->with('success', 'Marca excluída!!!');

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Peca extends Model
+class Pecas extends Model
 {
     use HasFactory;
 
@@ -14,10 +14,9 @@ class Peca extends Model
         'quantidade',
         'valorCompra',
         'valorVenda',
-        'desconto',
     ];
 
-    //Relação 1 para muitos 
+    //Relação 1 para muitos
     public function osPeca()
     {
         return $this->hasMany(OSPeca::class, 'peca_id');

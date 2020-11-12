@@ -21,14 +21,14 @@ class CreateOrdemServicosTable extends Migration
             $table->string('observacoesOS', 350);
             $table->decimal('valorTotal', 8, 2);
             $table->boolean('termos')->nullable(false);
-            $table->blob('arquivo');
+            $table->string('arquivo');
             $table->unsignedBigInteger('statusServico_id')->nullable(false);
             $table->unsignedBigInteger('pessoa_id')->nullable(false);
             $table->unsignedBigInteger('equipamento_id')->nullable(false);
             $table->timestamps();
 
             $table->foreign('statusServico_id')->references('id')->on('status_servicos')->onDelete('restrict');
-            $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('restrict');
+            $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');
             $table->foreign('equipamento_id')->references('id')->on('equipamentos')->onDelete('restrict');
         });
     }

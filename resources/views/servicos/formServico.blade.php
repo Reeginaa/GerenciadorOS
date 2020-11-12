@@ -33,15 +33,11 @@
                             <label for="valor">Valor: *</label>
                             <input type="real" class="form-control" name="valor" required>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="desconto">Desconto: </label>
-                            <input type="number" name="desconto" class="form-control">
-                        </div>
                     </div>
                     <hr class="hr-light">
                     <button type="submit" class="btn btn-success">Salvar</button>
                     <button type="reset" class="btn btn-warning">Limpar</button>
-                    <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">Voltar</a>
+                    <a href="{{ route('servicos.index') }}" class="btn btn-danger">Voltar</a>
                 </form>
             </div>
 

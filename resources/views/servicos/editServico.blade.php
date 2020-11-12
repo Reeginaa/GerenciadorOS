@@ -34,10 +34,6 @@
                         <label for="valor">Valor: *</label>
                         <input type="real" name="valor" class="form-control" required value={{$registro->valor}}>
                     </div>
-                    <div class="form-group col-lg-6">
-                        <label for="desconto">Desconto: </label>
-                        <input type="number" name="desconto" class="form-control" value={{$registro->desconto}}>
-                    </div>
                 </div>
                 <hr class="hr-light">
                 <button type="submit" class="btn btn-success">Salvar</button>

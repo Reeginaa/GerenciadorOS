@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Equipamento;
-use App\Models\Marca;
-
-use function Ramsey\Uuid\v1;
+use App\Models\Equipamentos;
+use App\Models\Marcas;
 
 class EquipamentoController extends Controller
 {
@@ -17,7 +15,7 @@ class EquipamentoController extends Controller
      */
     public function index()
     {
-        $lista = Equipamento::with('marca')->get();
+        $lista = Equipamentos::with('marca')->get();
         return view('equipamentos.listEquipamento', ['lista'=>$lista]);
     }
 
@@ -29,7 +27,7 @@ class EquipamentoController extends Controller
     public function create()
     {
         //lista para o select
-        $listaMarca = Marca::all();
+        $listaMarca = Marcas::all();
         return view('equipamentos.formEquipamento', ['listaMarca'=>$listaMarca]);
     }
 
@@ -43,7 +41,7 @@ class EquipamentoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        Equipamento::create($request->all());
+        Equipamentos::create($request->all());
         return redirect('equipamentos')->with('success', 'Equipamento inserido!!!');
     }
 
@@ -66,8 +64,8 @@ class EquipamentoController extends Controller
      */
     public function edit($id)
     {
-        $registro = Equipamento::find($id);
-        $listaMarca = Marca::all();
+        $registro = Equipamentos::find($id);
+        $listaMarca = Marcas::all();
         return view('equipamentos.editEquipamento', compact('registro', 'listaMarca'));
     }
 
@@ -82,7 +80,7 @@ class EquipamentoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $equipamento = Equipamento::find($id);
+        $equipamento = Equipamentos::find($id);
         $equipamento->update($request->all());
 
         return redirect('equipamentos')->with('success', 'Equipamento Alterado!!!');
@@ -96,7 +94,7 @@ class EquipamentoController extends Controller
      */
     public function destroy($id)
     {
-        $equipamento = Equipamento::find($id);
+        $equipamento = Equipamentos::find($id);
         $equipamento->delete();
 
         return redirect('equipamentos')->with('success', 'Equipamento excluído!!!');

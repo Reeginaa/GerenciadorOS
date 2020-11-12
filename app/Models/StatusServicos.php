@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StatusServico extends Model
+class StatusServicos extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
+        'identificacao',
         'status',
         'descricaoStatus'
     ];
@@ -23,16 +23,16 @@ class StatusServico extends Model
 
     static function getStatusFechado()
     {
-        return 6;
+        return 5;
     }
 
     static function getStatusConcluido()
     {
-        return 3;
+        return 1;
     }
 
     static function getStatusInicio()
     {
-        return 1;
+        return 3;
     }
 }

@@ -29,7 +29,6 @@
                         <td>Quantidade</td>
                         <td>Valor Compra</td>
                         <td>Valor Venda</td>
-                        <td>Desconto</td>
                         <td>Ações</td>
                     </tr>
                 </thead>
@@ -41,7 +40,6 @@
                             <td>{{ $item->quantidade }}</td>
                             <td>{{ $item->valorCompra }}</td>
                             <td>{{ $item->valorVenda }}</td>
-                            <td>{{ $item->desconto }}</td>
                             <td>
                                 <a href="{{ route('pecas.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                     <i class="far fa-edit"></i> Editar

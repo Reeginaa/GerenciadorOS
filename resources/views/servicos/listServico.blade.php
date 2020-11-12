@@ -27,7 +27,6 @@
                         <td>#</td>
                         <td>Serviço</td>
                         <td>Valor</td>
-                        <td>Desconto</td>
                         <td>Ações</td>
                     </tr>
                 </thead>
@@ -37,7 +36,6 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->servico }}</td>
                             <td>{{ $item->valor }}</td>
-                            <td>{{ $item->desconto }}</td>
                             <td>
                                 <a href="{{ route('servicos.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                     <i class="far fa-edit"></i> Editar

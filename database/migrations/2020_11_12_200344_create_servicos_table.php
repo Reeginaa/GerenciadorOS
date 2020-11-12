@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatusServicosTable extends Migration
+class CreateServicosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateStatusServicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('status_servicos', function (Blueprint $table) {
+        Schema::create('servicos', function (Blueprint $table) {
             $table->id();
-            $table->string('status', 50)->nullable(false)->unique();
-            $table->string('descricaoStatus', 350);
+            $table->string('servico', 200)->nullable(false)->unique();
+            $table->decimal('valor', 8, 2)->nullable(false);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateStatusServicosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status_servicos');
+        Schema::dropIfExists('servicos');
     }
 }

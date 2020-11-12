@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pessoas;
+use App\Models\TipoPessoas;
 use Illuminate\Http\Request;
-use App\Models\Pessoa;
-use App\Models\TipoPessoa;
 
 class PessoaController extends Controller
 {
@@ -15,7 +15,7 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        $lista = Pessoa::with('tipoPessoa')->get();
+        $lista = Pessoas::with('tipoPessoa')->get();
         return view('pessoas.listPessoa', ['lista'=>$lista]);
     }
 
@@ -27,7 +27,7 @@ class PessoaController extends Controller
     public function create()
     {
         //lista para o select
-        $listaTipoPessoa = TipoPessoa::all();
+        $listaTipoPessoa = TipoPessoas::all();
         return view('pessoas.formPessoa', ['listaTipoPessoa'=>$listaTipoPessoa]);
     }
 
@@ -41,7 +41,7 @@ class PessoaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        Pessoa::create($request->all());
+        Pessoas::create($request->all());
         return redirect('pessoas')->with('success', 'Pessoa inserida!!!');
     }
 
@@ -53,7 +53,7 @@ class PessoaController extends Controller
      */
     public function show($id)
     {
-        $pessoa = Pessoa::find($id);
+        $pessoa = Pessoas::find($id);
         return view('pessoas.viewPessoa', ['registro'=>$pessoa]);
     }
 
@@ -65,8 +65,8 @@ class PessoaController extends Controller
      */
     public function edit($id)
     {
-        $registro = Pessoa::find($id);
-        $listaTipoPessoa = TipoPessoa::all();
+        $registro = Pessoas::find($id);
+        $listaTipoPessoa = TipoPessoas::all();
         return view('pessoas.editPessoa', compact('registro', 'listaTipoPessoa'));
     }
 
@@ -81,7 +81,7 @@ class PessoaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $pessoa = Pessoa::find($id);
+        $pessoa = Pessoas::find($id);
         $pessoa->update($request->all());
         return redirect('pessoas')->with('success', 'Pessoa alterada!!!');
     }
@@ -94,7 +94,7 @@ class PessoaController extends Controller
      */
     public function destroy($id)
     {
-        $pessoa = Pessoa::find($id);
+        $pessoa = Pessoas::find($id);
         $pessoa->delete();
 
         return redirect('pessoas')->with('success', 'Pessoa excluída!!!');

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class SobreController extends Controller
 {
-
     /**
      * Show the application dashboard.
      *

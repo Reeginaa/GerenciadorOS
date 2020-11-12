@@ -21,8 +21,8 @@ class CreateOSPecasTable extends Migration
             $table->unsignedBigInteger('peca_id')->nullable(false);
             $table->timestamps();
 
-            $table->foreign('ordemServico_id')->references('id')->on('ordem_servicos')->onDelete('restrict');
-            $table->foreign('peca_id')->references('id')->on('pecas')->onDelete('restrict');
+            $table->foreign('ordemServico_id')->references('id')->on('ordem_servicos')->onDelete('cascade');
+            $table->foreign('peca_id')->references('id')->on('pecas')->onDelete('cascade');
         });
     }
 

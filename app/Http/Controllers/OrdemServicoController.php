@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipamentos;
+use App\Models\OrdemServicos;
+use App\Models\Pessoas;
+use App\Models\StatusServicos;
 use Illuminate\Http\Request;
-use App\Models\OrdemServico;
-use App\Models\Pessoa;
-use App\Models\Equipamento;
-use App\Models\StatusServico;
 
 class OrdemServicoController extends Controller
 {
@@ -17,7 +17,7 @@ class OrdemServicoController extends Controller
      */
     public function index()
     {
-        $lista = OrdemServico::with('pessoa')->with('equipamento')->with('statusServico')->get();
+        $lista = OrdemServicos::with('pessoa')->with('equipamento')->with('statusServico')->get();
         return view('ordemServicos.listOS', ['lista'=>$lista]);
     }
 
@@ -28,9 +28,9 @@ class OrdemServicoController extends Controller
      */
     public function create()
     {
-        $listaPessoa = Pessoa::all();
-        $listaStatusServico = StatusServico::all();
-        $listaEquipamento = Equipamento::all();
+        $listaPessoa = Pessoas::all();
+        $listaStatusServico = StatusServicos::all();
+        $listaEquipamento = Equipamentos::all();
         return view('ordemServicos.formOS', compact('listaPessoa', 'listaStatusServico', 'listaEquipamento'));
     }
 
@@ -44,7 +44,7 @@ class OrdemServicoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        OrdemServico::create($request->all());
+        OrdemServicos::create($request->all());
         return redirect('ordemServicos')->with('success', 'O.S. inserida!!!');
     }
 
@@ -56,7 +56,7 @@ class OrdemServicoController extends Controller
      */
     public function show($id)
     {
-        $ordemServico = OrdemServico::find($id);
+        $ordemServico = OrdemServicos::find($id);
         return view('ordemServicos.viewOS', ['registro'=>$ordemServico]);
     }
 
@@ -68,10 +68,10 @@ class OrdemServicoController extends Controller
      */
     public function edit($id)
     {
-        $registro = OrdemServico::find($id);
-        $listaEquipamento = Equipamento::all();
-        $listaPessoa = Pessoa::all();
-        $listaStatusServico = StatusServico::all();
+        $registro = OrdemServicos::find($id);
+        $listaEquipamento = Equipamentos::all();
+        $listaPessoa = Pessoas::all();
+        $listaStatusServico = StatusServicos::all();
         return view('ordemServicos.editOS', compact('registro', 'listaEquipamento', 'listaPessoa', 'listaStatusServico'));
     }
 
@@ -86,7 +86,7 @@ class OrdemServicoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $ordemServico = OrdemServico::find($id);
+        $ordemServico = OrdemServicos::find($id);
         $ordemServico->update($request->all());
 
         return redirect('ordemServicos')->with('success', 'O.S. alterada!!!');
@@ -100,7 +100,7 @@ class OrdemServicoController extends Controller
      */
     public function destroy($id)
     {
-        $ordemServico = OrdemServico::find($id);
+        $ordemServico = OrdemServicos::find($id);
         $ordemServico->delete();
 
         return redirect('ordemServicos')->with('success', 'O.S. excluída!!!');
@@ -119,8 +119,8 @@ class OrdemServicoController extends Controller
     //Método para botão fechar
     public function fechar($id)
     {
-        $os = array('statusServico_id'=>StatusServico::getStatusFechado(), 'dataTermino'=>date('Y-m-d'));
-        OrdemServico::find($id)->update($os);
+        $os = array('statusServico_id'=>StatusServicos::getStatusFechado(), 'dataTermino'=>date('Y-m-d'));
+        OrdemServicos::find($id)->update($os);
 
         return redirect('ordemServicos')->with('success', 'O.S. Fechada!!!');
     }
@@ -128,8 +128,8 @@ class OrdemServicoController extends Controller
     //Método para botão reabrir
     public function reabrir($id)
     {
-        $os = array('statusServico_id'=>StatusServico::getStatusInicio(), 'dataTermino'=>null);
-        OrdemServico::find($id)->update($os);
+        $os = array('statusServico_id'=>StatusServicos::getStatusInicio(), 'dataTermino'=>null);
+        OrdemServicos::find($id)->update($os);
 
         return redirect('ordemServicos')->with('success', 'O.S. Reaberta!!!');
     }
@@ -137,8 +137,8 @@ class OrdemServicoController extends Controller
     //Método para botão faturar
     public function faturar($id)
     {
-        $os = array('statusServico_id'=>StatusServico::getStatusConcluido(), 'dataTermino'=>date('Y-m-d'));
-        OrdemServico::find($id)->update($os);
+        $os = array('statusServico_id'=>StatusServicos::getStatusConcluido(), 'dataTermino'=>date('Y-m-d'));
+        OrdemServicos::find($id)->update($os);
 
         return redirect('ordemServicos')->with('success', 'O.S. Faturada!!!');
     }

@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Servico extends Model
+class Servicos extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'servico',
         'valor',
-        'desconto',
     ];
 
     //Relação 1 para muitos
