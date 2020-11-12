@@ -56,7 +56,8 @@ class OrdemServicoController extends Controller
      */
     public function show($id)
     {
-        //
+        $ordemServico = OrdemServico::find($id);
+        return view('ordemServicos.viewOS', ['registro'=>$ordemServico]);
     }
 
     /**

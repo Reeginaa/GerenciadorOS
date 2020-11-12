@@ -5,8 +5,8 @@
 @section('main')
 <br><br><br>
 <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
+    <div class="col-lg-0"></div>
+    <div class="col-lg-12">
         @if (session()->get('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -44,6 +44,10 @@
                             <td>{{ $item->telefone }}</td>
                             <td>{{ $item->email }}</td>
                             <td>
+                                <a href="{{ route('pessoas.show', $item->id) }}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalVerPessoa">
+                                    <i class="far fa-eye"></i> Ver
+                                </a>
+                                <br>
                                 <a href="{{ route('pessoas.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                     <i class="far fa-edit"></i> Editar
                                 </a>
@@ -62,7 +66,7 @@
             </table>
         </div>
     </div>
-    <div class="col-lg-1"></div>
+    <div class="col-lg-0"></div>
 </div>
 <br><br><br>
 @endsection

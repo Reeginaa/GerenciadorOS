@@ -47,6 +47,10 @@
                             <td>{{ $item->defeito }}</td>
                             <td>{{ $item->valorTotal }}</td>
                             <td>
+                                <a href="{{ route('ordemServicos.show', $item->id) }}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalVerPessoa">
+                                    <i class="far fa-eye"></i> Ver
+                                </a>
+                                <br>
                                 <a href="{{ route('ordemServicos.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                     <i class="far fa-edit"></i> Editar
                                 </a>

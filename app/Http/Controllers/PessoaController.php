@@ -53,7 +53,8 @@ class PessoaController extends Controller
      */
     public function show($id)
     {
-        //
+        $pessoa = Pessoa::find($id);
+        return view('pessoas.viewPessoa', ['registro'=>$pessoa]);
     }
 
     /**
