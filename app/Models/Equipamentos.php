@@ -20,12 +20,12 @@ class Equipamentos extends Model
     //Relação 1 para muitos com OS - um equipamento pertence a varias OS
     public function ordemServico()
     {
-        return $this->hasMany(OrdemServico::class, 'equipamento_id');
+        return $this->hasMany(OrdemServicos::class, 'equipamento_id');
     }
 
     //Relação MUITOS para 1 - com marca
     public function marca()
     {
-        return $this->belongsTo(Marca::class, 'marca_id', 'id');
+        return $this->belongsTo(Marcas::class, 'marca_id', 'id');
     }
 }

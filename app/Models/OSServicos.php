@@ -18,11 +18,11 @@ class OSServicos extends Model
     //Relação muitos para 1
     public function ordemServico()
     {
-        return $this->belongsTo(OrdemServico::class, 'ordemServico_id', 'id');
+        return $this->belongsTo(OrdemServicos::class, 'ordemServico_id', 'id');
     }
 
     public function servico()
     {
-        return $this->belongsTo(Servico::class, 'servico_id', 'id');
+        return $this->belongsTo(Servicos::class, 'servico_id', 'id');
     }
 }

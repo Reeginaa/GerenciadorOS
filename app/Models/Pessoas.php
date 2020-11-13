@@ -29,12 +29,12 @@ class Pessoas extends Model
     //Relação 1 para muitos - Uma pessoa pode ter várias ordens de servico
     public function ordemServico()
     {
-        return $this->hasMany(OrdemServico::class, 'pessoa_id');
+        return $this->hasMany(OrdemServicos::class, 'pessoa_id');
     }
 
     //Relação MUITOS para 1 - com tipo pessoa
     public function tipoPessoa()
     {
-        return $this->belongsTo(TipoPessoa::class, 'tipoPessoa_id', 'id');
+        return $this->belongsTo(TipoPessoas::class, 'tipoPessoa_id', 'id');
     }
 }

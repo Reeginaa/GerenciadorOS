@@ -19,6 +19,6 @@ class Pecas extends Model
     //Relação 1 para muitos
     public function osPeca()
     {
-        return $this->hasMany(OSPeca::class, 'peca_id');
+        return $this->hasMany(OSPecas::class, 'peca_id');
     }
 }

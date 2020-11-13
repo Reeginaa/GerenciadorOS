@@ -25,30 +25,30 @@ class OrdemServicos extends Model
     //relação 1 para muitos
     public function osServico()
     {
-        return $this->hasMany(OSServico::class, 'ordemServico_id');
+        return $this->hasMany(OSServicos::class, 'ordemServico_id');
     }
 
     public function osPeca()
     {
-        return $this->hasMany(OSPeca::class, 'ordemServico_id');
+        return $this->hasMany(OSPecas::class, 'ordemServico_id');
     }
 
     //Relação muitos para 1 - com status
     public function statusServico()
     {
-        return $this->belongsTo(StatusServico::class, 'statusServico_id', 'id');
+        return $this->belongsTo(StatusServicos::class, 'statusServico_id', 'id');
     }
 
     //Relação muitos para 1 - com pessoa
     public function pessoa()
     {
-        return $this->belongsTo(Pessoa::class, 'pessoa_id', 'id');
+        return $this->belongsTo(Pessoas::class, 'pessoa_id', 'id');
     }
 
     // Relação muitos para 1 - com equipamento
     public function equipamento()
     {
-        return $this->belongsTo(Equipamento::class, 'equipamento_id', 'id');
+        return $this->belongsTo(Equipamentos::class, 'equipamento_id', 'id');
     }
 
     //botão fechar OS

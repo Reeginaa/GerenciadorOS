@@ -18,7 +18,7 @@ class StatusServicos extends Model
     //Relação 1 para muitos - Um status pode pertencer a várias OS
     public function ordemServico()
     {
-        return $this->hasMany(OrdemServico::class, 'statusServico_id');
+        return $this->hasMany(OrdemServicos::class, 'statusServico_id');
     }
 
     static function getStatusFechado()

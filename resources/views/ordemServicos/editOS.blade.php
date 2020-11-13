@@ -150,13 +150,13 @@
 
                 <hr class="hr-light">
                 <button type="submit" class="btn btn-success">Salvar</button>
-                @if ($registro->statusServico_id != 6 && $registro->statusServico_id != 3)
+                @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 1)
                     <a href="{{ route('fecharOS', $registro->id) }}" class="btn btn-primary">Fechar O.S.</a>
                 @endif
-                @if ($registro->statusServico_id == 6 || $registro->statusServico_id == 3)
+                @if ($registro->statusServico_id == 5 || $registro->statusServico_id == 1)
                     <a href="{{ route('reabrirOS', $registro->id) }}" class="btn btn-primary">Reabir O.S.</a>
                 @endif
-                @if ($registro->statusServico_id != 3 && $registro->statusServico_id != 6)
+                @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 1)
                     <a href="{{ route('faturarOS', $registro->id) }}" class="btn btn-primary">Faturar O.S.</a>
                 @endif
 

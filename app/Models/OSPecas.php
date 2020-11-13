@@ -18,11 +18,11 @@ class OSPecas extends Model
     //Relação muitos para 1
     public function ordemServico()
     {
-        return $this->belongsTo(OrdemServico::class, 'ordemServico_id', 'id');
+        return $this->belongsTo(OrdemServicos::class, 'ordemServico_id', 'id');
     }
 
     public function peca()
     {
-        return $this->belongsTo(Peca::class, 'peca_id', 'id');
+        return $this->belongsTo(Pecas::class, 'peca_id', 'id');
     }
 }

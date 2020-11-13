@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Models\Pessoas;
 use App\Models\Equipamentos;
 use App\Models\OrdemServicos;
-use App\Models\Pessoas;
 use App\Models\StatusServicos;
-use Illuminate\Http\Request;
 
 class OrdemServicoController extends Controller
 {
@@ -68,11 +68,11 @@ class OrdemServicoController extends Controller
      */
     public function edit($id)
     {
-        $registro = OrdemServicos::find($id);
-        $listaEquipamento = Equipamentos::all();
-        $listaPessoa = Pessoas::all();
-        $listaStatusServico = StatusServicos::all();
-        return view('ordemServicos.editOS', compact('registro', 'listaEquipamento', 'listaPessoa', 'listaStatusServico'));
+            $registro = OrdemServicos::find($id);
+            $listaEquipamento = Equipamentos::all();
+            $listaPessoa = Pessoas::all();
+            $listaStatusServico = StatusServicos::all();
+            return view('ordemServicos.editOS', compact('registro', 'listaEquipamento', 'listaPessoa', 'listaStatusServico'));
     }
 
     /**

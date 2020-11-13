@@ -17,6 +17,6 @@ class Marcas extends Model
     //Relação 1 para muitos - uma marca pode ter muitos equipamentos
     public function equipamento()
     {
-        return $this->hasMany(Equipamento::class, 'marca_id');
+        return $this->hasMany(Equipamentos::class, 'marca_id');
     }
 }

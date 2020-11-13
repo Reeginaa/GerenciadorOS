@@ -17,6 +17,6 @@ class Servicos extends Model
     //Relação 1 para muitos
     public function osServico()
     {
-        return $this->hasMany(OSServico::class, 'servico_id');
+        return $this->hasMany(OSServicos::class, 'servico_id');
     }
 }
