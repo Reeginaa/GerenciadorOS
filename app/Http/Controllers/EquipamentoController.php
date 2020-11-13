@@ -94,10 +94,15 @@ class EquipamentoController extends Controller
      */
     public function destroy($id)
     {
-        $equipamento = Equipamentos::find($id);
-        $equipamento->delete();
-
-        return redirect('equipamentos')->with('success', 'Equipamento excluído!!!');
+        try {
+            $equipamento = Equipamentos::find($id);
+            $equipamento->delete();
+            return ['status' => 'success'];
+        } catch (\Illuminate\Database\QueryException $qe) {
+            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
+        } catch (\PDOException $e){
+            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
+        }
     }
 
     //Método das validações

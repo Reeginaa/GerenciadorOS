@@ -54,9 +54,31 @@
         <script type="text/javascript">
           // JavaScript para paginação e ordenação de tabelas
           $(document).ready(function () {
-                $('#dtBasicExample').DataTable();
-                $('.dataTables_length').addClass('bs-select');
+                $('#dtBasicExample').DataTable({
+                    "language": {
+                        "sEmptyTable": "Nenhum registro encontrado",
+                        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                        "sLengthMenu": "_MENU_ resultados por página",
+                        "sLoadingRecords": "Carregando...",
+                        "sProcessing": "Processando...",
+                        "sZeroRecords": "Nenhum registro encontrado",
+                        "sSearch": "Pesquisar:",
+                        "oPaginate": {
+                            "sNext": "Próximo",
+                            "sPrevious": "Anterior",
+                            "sFirst": "Primeiro",
+                            "sLast": "Último"
+                        },
+                    }
+                });
+
             });
         </script>
+
+        <!-- Start script for specific page -->
+        @yield('script_pages')
+        <!-- End script for specific page -->
+
     </body>
 </html>

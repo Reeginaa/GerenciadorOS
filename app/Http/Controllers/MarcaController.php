@@ -97,10 +97,15 @@ class MarcaController extends Controller
      */
     public function destroy($id)
     {
-        $marca = Marcas::find($id);
-        $marca->delete();
-
-        return redirect('marcas')->with('success', 'Marca excluída!!!');
+        try {
+            $marca = Marcas::find($id);
+            $marca->delete();
+            return ['status' => 'success'];
+        } catch (\Illuminate\Database\QueryException $qe) {
+            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
+        } catch (\PDOException $e){
+            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
+        }
     }
 
     //Método das validações
