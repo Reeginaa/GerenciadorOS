@@ -109,8 +109,11 @@
                         <div class="col-lg-1"></div>
                         <div class="col-lg-10">
                             <div>
-                                <a href="#" class="btn btn-success btn-sm">
-                                    <i class="far fa-file-alt"></i> Adicionar Peça</a>
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                 data-target="#addModal">
+                                    <i class="far fa-file-alt" data-toggle="tooltip" data-placement="top"
+                                        title="Incluir"></i> Adicionar Peça
+                                </button>
                             </div>
                             <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
                                 <thead>
@@ -126,7 +129,6 @@
                         </div>
                         <div class="col-lg-1"></div>
                     </div>
-
                 </div>
 
                 <hr class="hr-light">
@@ -150,5 +152,71 @@
     </div>
     <div class="col-lg-0"></div>
 </div>
+
+{{-- Start add modal --}}
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            {{-- Cabeça do modal --}}
+            <div class="modal-header bg-success">
+                <h5 class="modal-title text-white font-weight-bold" id="addModalLabel">{{ __('Nova Peça') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {{-- \Cabeça do modal --}}
+            {{-- Corpo do modal --}}
+            <div class="modal-body">
+                <form action="{{ route('osPecas.store') }}" method="POST" id="addForm">
+                    @csrf
+                    <div class="form-group">
+                        <label for="ordemServico">Ordem Serviço: </label>
+                        <select class="form-control" name="ordemServico_id" id="ordemServico_id">
+                            <option value="">Selecione a OS</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-3">
+                            <label for="quantidade">Quantidade:</label>
+                            <input type="number" class="form-control" name="quantidade" id="quantidade">
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label for="peca">Peça: |
+                                <a href="{{ route('pecas.create') }}">
+                                    <i class="fas fa-plus"></i> Cadastrar Peça
+                                </a>
+                            </label>
+                            <select name="peca_id" id="peca_id" class="form-control">
+                                <option value="">Selecione a Peça</option>
+                                {{-- @foreach ($listaPeca as $item)
+                                    <option value="{{ $item->id }}">{{ $item->item }}</option>
+                                @endforeach --}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6"></div>
+                        <div class="form-group col-lg-6">
+                            <label for="valorUnitario">Valor Unitário: </label>
+                            <input type="real" class="form-control" name="valorUnitario" id="valorUnitario">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {{-- \Corpo do modal --}}
+            {{-- Rodapé do modal --}}
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="tooltip" title="Cancelar">
+                    <i class="fas fa-undo-alt mr-1"></i>{{ __('Cancelar') }}
+                </button>
+                <button type="submit" form="addModal" class="btn btn-success" data-toggle="tooltip" title="Salvar">
+                    <i class="fas fa-save mr-1"></i>{{ _('Salvar') }}
+                </button>
+            </div>
+            {{-- \Rodapé do modal --}}
+        </div>
+    </div>
+</div>
+{{-- End add modal --}}
 <br><br><br><br>
 @endsection
