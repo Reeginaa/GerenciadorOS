@@ -98,26 +98,7 @@
                 <hr class="hr-light">
                 <h4 class="text-center text-white"><u>Serviço</u></h4>
                 <div class="container">
-                    {{-- <div class="row">
-                        <div class="col-lg-1"></div>
-                        <div class="col-lg-10">
-                            <div>
-                                <a href="#" class="btn btn-success btn-sm">
-                                    <i class="far fa-file-alt"></i> Adicionar Serviço</a>
-                            </div>
-                            <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <td>Serviço</td>
-                                        <td>Valor</td>
-                                        <td>Ações</td>
-                                    </tr>
-                                </thead>
 
-                            </table>
-                        </div>
-                        <div class="col-lg-1"></div>
-                    </div> --}}
                 </div>
 
                 {{-- Tabela Peças --}}
@@ -158,6 +139,7 @@
                 @endif
                 @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 1)
                     <a href="{{ route('faturarOS', $registro->id) }}" class="btn btn-primary">Faturar O.S.</a>
+                    <a href="{{ route('concertarOS', $registro->id) }}" class="btn btn-primary">Concertada</a>
                 @endif
 
                 <a href="#" class="btn btn-primary">Imprimir O.S.</a>

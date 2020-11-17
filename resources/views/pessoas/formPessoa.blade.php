@@ -41,7 +41,8 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="cpf">CPF: *</label>
-                        <input id="cpf" type="text" class="form-control" name="cpf" required>
+                        <input id="cpf" type="text" class="form-control" name="cpf" required
+                        onkeypress="$(this).mask('000.000.000-00');">
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="rg">RG: *</label>
@@ -105,7 +106,7 @@
                     <div class="form-group col-lg-6">
                         <label for="telefone">Telefone:</label>
                         <input type="text" name="telefone" id="telefone" class="form-control"
-                         placeholder="(99) 9 9999-9999">
+                         placeholder="(99) 9 9999-9999" onkeypress="$(this).mask('(00) 0 0000-0000')">
                     </div>
                 </div>
                 <hr class="hr-light">

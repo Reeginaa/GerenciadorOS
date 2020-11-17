@@ -1,6 +1,24 @@
 @extends('layouts.app')
 
-@section('content')
+<!-- Your custom styles (optional) -->
+<link rel="stylesheet" href=" {{ URL::to('css/style.css')}}">
+<title>Gerenciador de Ordem de Serviço - Esqueceu senha</title>
+
+@section('nav')
+<header>
+    {{-- Navbar --}}
+    <nav class="navbar navbar-expand-lg navbar-dark peach-gradient fixed-top">
+        <div class="container">
+            {{-- Navbar brand --}}
+            <a href="#" class="navbar-brand">
+                <img src="{{ URL::to('img/eletronica_NomeSemBorda.png') }}" alt="mdb logo" height="30">
+            </a>
+        </div>
+    </nav>
+    {{-- \Navbar --}}
+</header>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

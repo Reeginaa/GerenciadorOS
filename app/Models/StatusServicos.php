@@ -35,4 +35,9 @@ class StatusServicos extends Model
     {
         return 3;
     }
+
+    static function getStatusConcertado()
+    {
+        return 2;
+    }
 }

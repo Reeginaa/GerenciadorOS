@@ -50,7 +50,7 @@
                                 <a href="#" class="btn_crud btn btn-danger btn-sm" data-toggle="tooltip"
                                  onclick="return confirmDeletion({{ $item->id }}, '{{ $item->nomeMarca }}', '{{ strtolower(class_basename($item)) }}')"
                                  title="Excluir">
-                                    <i class="fas fa-trash-alt"></i>
+                                    <i class="fas fa-trash-alt"></i> Excluir
                                 </a>
                             </td>
                         </tr>

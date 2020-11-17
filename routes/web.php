@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('fecharOS/{id}', 'App\Http\Controllers\OrdemServicoController@fechar')->name('fecharOS');
     Route::get('reabrirOS/{id}', 'App\Http\Controllers\OrdemServicoController@reabrir')->name('reabrirOS');
     Route::get('faturarOS/{id}', 'App\Http\Controllers\OrdemServicoController@faturar')->name('faturarOS');
+    Route::get('concertarOS/{id}', 'App\Https\Controllers\OrdemServicoController@concertado')->name('concertarOS');
 });
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');

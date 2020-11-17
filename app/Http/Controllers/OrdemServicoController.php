@@ -134,10 +134,19 @@ class OrdemServicoController extends Controller
         return redirect('ordemServicos')->with('success', 'O.S. Reaberta!!!');
     }
 
+
+    public function concertado($id)
+    {
+        $os = array('statusServico_id'=>StatusServicos::getStatusConcertado(), 'dataTermino'=>date('Y-m-d'));
+        OrdemServicos::find($id)->update($os);
+
+        return redirect('ordemServicos')->with('success', 'O.S. Concertada!!!!');
+    }
+
     //Método para botão faturar
     public function faturar($id)
     {
-        $os = array('statusServico_id'=>StatusServicos::getStatusConcluido(), 'dataTermino'=>date('Y-m-d'));
+        $os = array('statusServico_id'=>StatusServicos::getStatusConcluido());
         OrdemServicos::find($id)->update($os);
 
         return redirect('ordemServicos')->with('success', 'O.S. Faturada!!!');
