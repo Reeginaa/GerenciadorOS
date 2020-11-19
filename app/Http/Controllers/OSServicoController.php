@@ -65,10 +65,7 @@ class OSServicoController extends Controller
      */
     public function edit($id)
     {
-        $registro = OSServicos::find($id);
-        $listaOrdemServico = OrdemServicos::all();
-        $listaServico = Servicos::all();
-        return view('osServicos.editOSServico', compact('registro', 'listaOrdemServico', 'listaServico'));
+        //
     }
 
     /**
@@ -80,12 +77,7 @@ class OSServicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidate());
-
-        $osServico = OSServicos::find($id);
-        $osServico->update($request->all());
-
-        return redirect('osServicos');
+       //
     }
 
     /**

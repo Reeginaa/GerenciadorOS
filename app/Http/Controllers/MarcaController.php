@@ -111,6 +111,6 @@ class MarcaController extends Controller
     //Método das validações
     private function getValidate()
     {
-        return ['nomeMarca' => 'required|max:40'];
+        return ['nomeMarca' => 'required|max:40|unique:marcas,nomeMarca'];
     }
 }

@@ -79,7 +79,7 @@ class PessoaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidate());
+        $request->validate($this->getValidateUpdate());
 
         $pessoa = Pessoas::find($id);
         $pessoa->update($request->all());
@@ -106,6 +106,21 @@ class PessoaController extends Controller
         return ['nome' => 'required|max:250',
         'cpf' => 'required|max:14|unique:pessoas,cpf',
         'rg' => 'required|max:10|unique:pessoas,rg',
+        'dataNascimento' => 'required',
+        'sexo' => 'required|max:20',
+        'logradouro' => 'required|max:300',
+        'bairro' => 'required|max:100',
+        'cidade' => 'required|max:50',
+        'telefone' => 'required|max:25',
+        'tipoPessoa_id' => 'required'];
+    }
+
+    //Método com as validações
+    private function getValidateUpdate()
+    {
+        return ['nome' => 'required|max:250',
+        'cpf' => 'required|max:14',
+        'rg' => 'required|max:10',
         'dataNascimento' => 'required',
         'sexo' => 'required|max:20',
         'logradouro' => 'required|max:300',

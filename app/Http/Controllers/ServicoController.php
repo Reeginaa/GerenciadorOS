@@ -99,7 +99,7 @@ class ServicoController extends Controller
     //Método com validações
     private function getValidate()
     {
-        return ['servico' => 'required|max:200',
+        return ['servico' => 'required|max:200|unique:servicos,servico',
         'valor' => 'required'];
     }
 }

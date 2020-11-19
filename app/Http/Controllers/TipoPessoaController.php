@@ -100,6 +100,6 @@ class TipoPessoaController extends Controller
     //Método das validações
     private function getValidate()
     {
-        return ['tipo' => 'required|max:30'];
+        return ['tipo' => 'required|max:30|unique:tipo_pessoas,tipo'];
     }
 }

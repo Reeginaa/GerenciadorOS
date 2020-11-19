@@ -48,7 +48,7 @@
                                         <i class="far fa-eye"></i> Ver
                                     </a> --}}
                                     <a href="#" class="btn_crud btn btn-info btn-sm view"><i class="fas fa-eye"
-                                        data-toggle="tooltip" title="Visualizar"></i>
+                                        data-toggle="tooltip" title="Visualizar"></i> Ver
                                     </a>
                                     <a href="{{ route('pessoas.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="far fa-edit"></i> Editar

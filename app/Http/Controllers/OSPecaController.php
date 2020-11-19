@@ -65,10 +65,7 @@ class OSPecaController extends Controller
      */
     public function edit($id)
     {
-        $registro = OSPecas::find($id);
-        $listaOrdemServico = OrdemServicos::all();
-        $listaPeca = Pecas::all();
-        return view('osPecas.editOSPeca', compact('registro', 'listaOrdemServico', 'listaPeca'));
+        //
     }
 
     /**
@@ -80,12 +77,7 @@ class OSPecaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidate());
-
-        $osPeca = OSPecas::find($id);
-        $osPeca->update($request->all());
-
-        return redirect('osPecas');
+       //
     }
 
     /**
