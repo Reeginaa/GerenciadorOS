@@ -16,8 +16,7 @@ class OSPecaController extends Controller
      */
     public function index()
     {
-        $lista = OSPecas::with('peca')->with('ordemServico')->get();
-        return view('osPecas.listOSPeca', ['lista'=>$lista]);
+        //
     }
 
     /**
@@ -27,9 +26,7 @@ class OSPecaController extends Controller
      */
     public function create()
     {
-        $listaOrdemServico = OrdemServicos::all();
-        $listaPeca = Pecas::all();
-        return view('osPecas.formOSPeca', compact('listaOrdemServico', 'listaPeca'));
+        //
     }
 
     /**
@@ -40,10 +37,11 @@ class OSPecaController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $request->validate($this->getValidate());
 
         OSPecas::create($request->all());
-        return redirect('osPecas');
+        return redirect('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit');
     }
 
     /**
@@ -88,10 +86,11 @@ class OSPecaController extends Controller
      */
     public function destroy($id)
     {
+
         $osPeca = OSPecas::find($id);
         $osPeca->delete();
 
-        return redirect('osPecas');
+        return redirect('ordemServicos');
     }
 
     //Método com validações
@@ -104,4 +103,6 @@ class OSPecaController extends Controller
             'ordemServico_id' => 'required'
         ];
     }
+
+
 }

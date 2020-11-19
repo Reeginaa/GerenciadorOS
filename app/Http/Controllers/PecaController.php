@@ -104,4 +104,11 @@ class PecaController extends Controller
         'valorCompra' => 'required',
         'valorVenda' => 'required'];
     }
+
+    public function getPeca(Request $request)
+    {
+        $peca = Pecas::find($request->all()['id']);
+        return array('valor'=>$peca->valorVenda);
+
+    }
 }

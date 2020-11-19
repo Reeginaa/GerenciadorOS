@@ -124,7 +124,24 @@
                                         <td>Ações</td>
                                     </tr>
                                 </thead>
-
+                                <tbody>
+                                    @foreach ($registro->osPeca as $item)
+                                        <tr>
+                                            <td>{{ $item->quantidade }}</td>
+                                            <td>{{ $item->peca->item }}</td>
+                                            <td>{{ $item->peca->valorVenda }}</td>
+                                            <td>
+                                                <form action="{{ route('osPecas.destroy', $item->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger btn-sm" type="submit">
+                                                        <i class="far fa-trash-alt"></i> Excluir
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                         <div class="col-lg-1"></div>
@@ -169,16 +186,11 @@
             <div class="modal-body">
                 <form action="{{ route('osPecas.store') }}" method="POST" id="addForm">
                     @csrf
-                    <div class="form-group">
-                        <label for="ordemServico">Ordem Serviço: </label>
-                        <select class="form-control" name="ordemServico_id" id="ordemServico_id">
-                            <option value="">Selecione a OS</option>
-                        </select>
-                    </div>
+                    <input type="hidden" name="ordemServico_id" value="{{ $registro->id }}">
                     <div class="row">
                         <div class="form-group col-lg-3">
                             <label for="quantidade">Quantidade:</label>
-                            <input type="number" class="form-control" name="quantidade" id="quantidade">
+                            <input type="integer" class="form-control" name="quantidade" id="quantidade">
                         </div>
                         <div class="form-group col-lg-9">
                             <label for="peca">Peça: |
@@ -188,35 +200,69 @@
                             </label>
                             <select name="peca_id" id="peca_id" class="form-control">
                                 <option value="">Selecione a Peça</option>
-                                {{-- @foreach ($listaPeca as $item)
+                                @foreach ($listaPeca as $item)
                                     <option value="{{ $item->id }}">{{ $item->item }}</option>
-                                @endforeach --}}
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6"></div>
                         <div class="form-group col-lg-6">
-                            <label for="valorUnitario">Valor Unitário: </label>
-                            <input type="real" class="form-control" name="valorUnitario" id="valorUnitario">
+                            <label for="valorPeca">Valor Unitário: </label>
+                            <input type="real" class="form-control" name="valorPeca" id="valorPeca" readonly>
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Salvar">
+                        <i class="fas fa-save mr-1"></i>{{ _('Salvar') }}
+                    </button>
                 </form>
             </div>
             {{-- \Corpo do modal --}}
             {{-- Rodapé do modal --}}
-            <div class="modal-footer bg-light">
+            {{-- <div class="modal-footer bg-light">
                 <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="tooltip" title="Cancelar">
                     <i class="fas fa-undo-alt mr-1"></i>{{ __('Cancelar') }}
                 </button>
                 <button type="submit" form="addModal" class="btn btn-success" data-toggle="tooltip" title="Salvar">
                     <i class="fas fa-save mr-1"></i>{{ _('Salvar') }}
                 </button>
-            </div>
+            </div> --}}
             {{-- \Rodapé do modal --}}
         </div>
     </div>
 </div>
 {{-- End add modal --}}
 <br><br><br><br>
+@endsection
+
+@section('script_pages')
+    <script>
+         //função com método ajax para buscar informações sobre o produto
+        $('#peca_id').on('change', function(event){
+            event.stopPropagation();
+            value = $(this).children("option:selected").val();
+            //alert("hello mundão : " + value);
+            // GET AJAX request
+            $.ajax({
+                type: 'POST',
+                url:  "{{ route('getPeca') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": value
+                },
+                success: function (response) {
+
+                    console.log(response);
+
+                    $('#valorPeca').val(response.valor);
+
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            });
+            //atualizaSubTotal();
+        });
+    </script>
 @endsection

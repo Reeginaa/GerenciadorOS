@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Pessoas;
 use App\Models\Equipamentos;
 use App\Models\OrdemServicos;
+use App\Models\OSPecas;
+use App\Models\Pecas;
 use App\Models\StatusServicos;
 
 class OrdemServicoController extends Controller
@@ -68,11 +70,14 @@ class OrdemServicoController extends Controller
      */
     public function edit($id)
     {
-            $registro = OrdemServicos::find($id);
+            $registro = OrdemServicos::with('osPeca')->find($id);
+            // dd($registro);
             $listaEquipamento = Equipamentos::all();
             $listaPessoa = Pessoas::all();
             $listaStatusServico = StatusServicos::all();
-            return view('ordemServicos.editOS', compact('registro', 'listaEquipamento', 'listaPessoa', 'listaStatusServico'));
+            $listaPeca = Pecas::all();
+            // $listaOSPeca = OSPecas::
+            return view('ordemServicos.editOS', compact('registro', 'listaEquipamento', 'listaPessoa', 'listaStatusServico', 'listaPeca'));
     }
 
     /**
