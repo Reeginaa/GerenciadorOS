@@ -8,6 +8,7 @@ use App\Models\Equipamentos;
 use App\Models\OrdemServicos;
 use App\Models\OSPecas;
 use App\Models\Pecas;
+use App\Models\Servicos;
 use App\Models\StatusServicos;
 
 class OrdemServicoController extends Controller
@@ -70,14 +71,14 @@ class OrdemServicoController extends Controller
      */
     public function edit($id)
     {
-            $registro = OrdemServicos::with('osPeca')->find($id);
+            $registro = OrdemServicos::with('osPeca')->with('osServico')->find($id);
             // dd($registro);
             $listaEquipamento = Equipamentos::all();
             $listaPessoa = Pessoas::all();
             $listaStatusServico = StatusServicos::all();
             $listaPeca = Pecas::all();
-            // $listaOSPeca = OSPecas::
-            return view('ordemServicos.editOS', compact('registro', 'listaEquipamento', 'listaPessoa', 'listaStatusServico', 'listaPeca'));
+            $listaServico = Servicos::all();
+            return view('ordemServicos.editOS', compact('registro', 'listaEquipamento', 'listaPessoa', 'listaStatusServico', 'listaPeca', 'listaServico'));
     }
 
     /**

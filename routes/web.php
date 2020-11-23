@@ -38,7 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('reabrirOS/{id}', 'App\Http\Controllers\OrdemServicoController@reabrir')->name('reabrirOS');
     Route::get('faturarOS/{id}', 'App\Http\Controllers\OrdemServicoController@faturar')->name('faturarOS');
     Route::get('concertarOS/{id}', 'App\Https\Controllers\OrdemServicoController@concertado')->name('concertarOS');
-    Route::post('getPeca', 'App\Http\Controllers\PecaController@getPeca')->name('getPeca');
+    Route::post('postPeca', 'App\Http\Controllers\PecaController@postPeca')->name('postPeca');
+    Route::post('postServico', 'App\Http\Controllers\ServicoController@postServico')->name('postServico');
 });
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');

@@ -102,4 +102,11 @@ class ServicoController extends Controller
         return ['servico' => 'required|max:200|unique:servicos,servico',
         'valor' => 'required'];
     }
+
+    public function postServico(Request $request)
+    {
+        $servico = Servicos::find($request->all()['id']);
+        return array('servicoValor'=>$servico->valor);
+
+    }
 }

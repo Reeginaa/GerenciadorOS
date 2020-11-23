@@ -16,8 +16,7 @@ class OSServicoController extends Controller
      */
     public function index()
     {
-        $lista = OSServicos::with('servico')->with('ordemServico')->get();
-        return view('osServicos.listOSServico', ['lista'=>$lista]);
+        //
     }
 
     /**
@@ -27,9 +26,7 @@ class OSServicoController extends Controller
      */
     public function create()
     {
-        $listaOrdemServico = OrdemServicos::all();
-        $listaServico = Servicos::all();
-        return view('osServicos.formOSServico', compact('listaOrdemServico', 'listaServico'));
+        //
     }
 
     /**
@@ -43,7 +40,7 @@ class OSServicoController extends Controller
         $request->validate($this->getValidate());
 
         OSServicos::create($request->all());
-        return redirect('osServicos');
+        return redirect('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit');
     }
 
     /**
@@ -91,7 +88,7 @@ class OSServicoController extends Controller
         $osServico = OSServicos::find($id);
         $osServico->delete();
 
-        return redirect('osServicos');
+        return redirect('ordemServicos');
     }
 
     //Método com validações

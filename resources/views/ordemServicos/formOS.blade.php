@@ -57,7 +57,7 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
-                        <label for="dataInicio">Data Inicio: *</label>
+                        <label for="dataInicio">Data de Entrada: *</label>
                         <input type="date" name="dataInicio" id="dataInicio" class="form-control"
                          required>
                     </div>
@@ -106,7 +106,7 @@
                         decorrer de 3 meses, o cliente deverá pagar uma multa.</b>
                     </li>
                     <br>
-                    <input type="checkbox" name="termos" id="termos" class="form-check-input">
+                    <input type="checkbox" name="termos" id="termos" class="form-check-input" value="1">
                     <label for="termos"><b><u>Li, concordo e estou ciente dos termos.</u></b></label>
                 </p>
                 <hr class="hr-light">

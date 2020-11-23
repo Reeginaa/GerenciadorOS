@@ -27,7 +27,7 @@
                         <td>#</td>
                         <td>Cliente</td>
                         <td>Status</td>
-                        <td>Data Início</td>
+                        <td>Data de Entrada</td>
                         <td>Data Termino</td>
                         <td>Equipamento</td>
                         <td>Defeito</td>
