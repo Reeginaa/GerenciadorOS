@@ -90,17 +90,24 @@ class ServicoController extends Controller
      */
     public function destroy($id)
     {
-        $servico = Servicos::find($id);
-        $servico->delete();
-
-        return redirect('servicos')->with('success', 'Serviço excluído!!!');
+        try {
+            $servico = Servicos::find($id);
+            $servico->delete();
+            return ['status' => 'success'];
+        } catch (\Illuminate\Database\QueryException $qe) {
+            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
+        } catch (\PDOException $e) {
+            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
+        }
     }
 
     //Método com validações
     private function getValidate()
     {
-        return ['servico' => 'required|max:200|unique:servicos,servico',
-        'valor' => 'required'];
+        return [
+            'servico' => 'required|max:200|unique:servicos,servico',
+            'valor' => 'required'
+        ];
     }
 
     public function postServico(Request $request)

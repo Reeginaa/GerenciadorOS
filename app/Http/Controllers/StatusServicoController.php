@@ -75,7 +75,7 @@ class StatusServicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidate());
+        $request->validate($this->getValidateUpdate());
 
         $statusServico = StatusServicos::find($id);
         $statusServico->update($request->all());
@@ -91,15 +91,30 @@ class StatusServicoController extends Controller
      */
     public function destroy($id)
     {
-        $statusServico = StatusServicos::find($id);
-        $statusServico->delete();
-
-        return redirect('statusServicos')->with('success', 'Status excluído!!!');
+        try {
+            $statusServico = StatusServicos::find($id);
+            $statusServico->delete();
+            return ['status' => 'success'];
+        } catch (\Illuminate\Database\QueryException $qe) {
+            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
+        } catch (\PDOException $e) {
+            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
+        }
     }
 
     //Método das validações
     private function getValidate()
     {
-        return ['status' => 'required|max:50|unique:status_servicos:status'];
+        return [
+            'status' => 'required|max:50|unique:status_servicos:status'
+        ];
+    }
+
+    //Método das validações para Update
+    private function getValidateUpdate()
+    {
+        return [
+            'status' => 'required|max:50'
+        ];
     }
 }

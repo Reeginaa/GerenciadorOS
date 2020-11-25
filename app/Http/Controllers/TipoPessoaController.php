@@ -74,7 +74,9 @@ class TipoPessoaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidate());
+        $request->validate([
+            'tipo' => 'required|max:30'
+        ]);
 
         $tipoPessoa = TipoPessoas::find($id);
         $tipoPessoa->update($request->all());
@@ -89,17 +91,25 @@ class TipoPessoaController extends Controller
      */
     public function destroy($id)
     {
-        //encontra o tipo de pessoa passando o id
+        try {
+            //encontra o tipo de pessoa passando o id
         $tipoPessoa = TipoPessoas::find($id);
         //remove ele
         $tipoPessoa->delete();
         //redireciona o fluxo
-        return redirect('tipoPessoas')->with('success', 'Tipo Pessoa excluído!!!!');
+        return ['status' => 'success'];
+        } catch (\Illuminate\Database\QueryException $qe) {
+            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
+        } catch (\PDOException $e) {
+            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
+        }
     }
 
     //Método das validações
     private function getValidate()
     {
-        return ['tipo' => 'required|max:30|unique:tipo_pessoas,tipo'];
+        return [
+            'tipo' => 'required|max:30|unique:tipo_pessoas,tipo'
+        ];
     }
 }

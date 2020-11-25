@@ -108,7 +108,9 @@ class EquipamentoController extends Controller
     //Método das validações
     private function getValidate()
     {
-        return ['nomeEquipamento' => 'required|max:45',
-        'marca_id' => 'required'];
+        return [
+            'nomeEquipamento' => 'required|max:45',
+            'marca_id' => 'required'
+        ];
     }
 }

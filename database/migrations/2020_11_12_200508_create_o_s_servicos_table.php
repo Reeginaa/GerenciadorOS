@@ -20,8 +20,8 @@ class CreateOSServicosTable extends Migration
             $table->unsignedBigInteger('servico_id')->nullable(false);
             $table->timestamps();
 
-            $table->foreign('ordemServico_id')->references('id')->on('ordem_servicos')->onDelete('cascade');
-            $table->foreign('servico_id')->references('id')->on('servicos')->onDelete('cascade');
+            $table->foreign('ordemServico_id')->references('id')->on('ordem_servicos')->onDelete('restrict');
+            $table->foreign('servico_id')->references('id')->on('servicos')->onDelete('restrict');
         });
     }
 

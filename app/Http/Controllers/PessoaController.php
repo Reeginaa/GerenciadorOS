@@ -94,39 +94,48 @@ class PessoaController extends Controller
      */
     public function destroy($id)
     {
-        $pessoa = Pessoas::find($id);
-        $pessoa->delete();
-
-        return redirect('pessoas')->with('success', 'Pessoa excluída!!!');
+        try {
+            $pessoa = Pessoas::find($id);
+            $pessoa->delete();
+            return ['status' => 'success'];
+        } catch (\Illuminate\Database\QueryException $qe) {
+            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
+        } catch (\PDOException $e) {
+            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
+        }
     }
 
     //Método com as validações
     private function getValidate()
     {
-        return ['nome' => 'required|max:250',
-        'cpf' => 'required|max:14|unique:pessoas,cpf',
-        'rg' => 'required|max:10|unique:pessoas,rg',
-        'dataNascimento' => 'required',
-        'sexo' => 'required|max:20',
-        'logradouro' => 'required|max:300',
-        'bairro' => 'required|max:100',
-        'cidade' => 'required|max:50',
-        'telefone' => 'required|max:25',
-        'tipoPessoa_id' => 'required'];
+        return [
+            'nome' => 'required|max:250',
+            'cpf' => 'required|max:14|unique:pessoas,cpf',
+            'rg' => 'required|max:10|unique:pessoas,rg',
+            'dataNascimento' => 'required',
+            'sexo' => 'required|max:20',
+            'logradouro' => 'required|max:300',
+            'bairro' => 'required|max:100',
+            'cidade' => 'required|max:50',
+            'telefone' => 'required|max:25',
+            'tipoPessoa_id' => 'required'
+        ];
     }
 
     //Método com as validações
     private function getValidateUpdate()
     {
-        return ['nome' => 'required|max:250',
-        'cpf' => 'required|max:14',
-        'rg' => 'required|max:10',
-        'dataNascimento' => 'required',
-        'sexo' => 'required|max:20',
-        'logradouro' => 'required|max:300',
-        'bairro' => 'required|max:100',
-        'cidade' => 'required|max:50',
-        'telefone' => 'required|max:25',
-        'tipoPessoa_id' => 'required'];
+        return [
+            'nome' => 'required|max:250',
+            'cpf' => 'required|max:14',
+            'rg' => 'required|max:10',
+            'dataNascimento' => 'required',
+            'sexo' => 'required|max:20',
+            'logradouro' => 'required|max:300',
+            'bairro' => 'required|max:100',
+            'cidade' => 'required|max:50',
+            'telefone' => 'required|max:25',
+            'tipoPessoa_id' => 'required'
+        ];
     }
 }

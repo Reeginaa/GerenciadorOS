@@ -44,23 +44,29 @@
                                 <td>{{ $item->telefone }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>
-                                    {{-- <a href="{{ route('pessoas.show', $item->id) }}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalVerPessoa">
-                                        <i class="far fa-eye"></i> Ver
-                                    </a> --}}
+                                    {{-- Visualização --}}
                                     <a href="#" class="btn_crud btn btn-info btn-sm view"><i class="fas fa-eye"
                                         data-toggle="tooltip" title="Visualizar"></i> Ver
                                     </a>
+                                    <br>
+                                    {{-- Edição --}}
                                     <a href="{{ route('pessoas.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="far fa-edit"></i> Editar
                                     </a>
+                                    <br>
+                                    {{-- Exclusão --}}
+                                    <a href="#" class="btn_crud btn btn-danger btn-sm"
+                                     onclick="return confirmDeletion({{ $item->id }}, '{{ $item->nome }}', '{{ strtolower(class_basename($item)) }}')">
+                                        <i class="far fa-trash-alt" data-toggle="tooltip" title="Excluir"></i>Excluir
+                                    </a>
 
-                                    <form action="{{ route('pessoas.destroy', $item->id) }}" method="POST">
+                                    {{-- <form action="{{ route('pessoas.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-sm" type="submit">
                                             <i class="far fa-trash-alt"></i> Excluir
                                         </button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -154,16 +160,49 @@
         </div>
     </div>
     {{-- End View Modal --}}
+
+    {{-- Start DELETE Modal --}}
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h5 class="modal-title text-white font-weight-bold" id="deleteModalTitle">{{ __('Excluir Pessoa') }}</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/pessoas" method="post" id="deleteForm">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <div id="delete-modal-body">
+                            {{-- Content Jquery --}}
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">
+                        <i class="fas fa-undo-alt mr-1"></i>{{ __('Não') }}
+                    </button>
+                    <button type="submit" class="btn btn-danger" form="deleteForm">
+                        <i class="fs fa-trash-alt mr-1"></i>{{ __('Sim') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- End DELETE Modal --}}
 @endsection
 
 @section('script_pages')
-<script type="text/javascript">
-    $(document).ready(function(){
-        var table = $('#dtBasicExample').DataTable();
 
-        //Start View
-        table.on('click', '.view', function() {
-                $tr = $(this).closest('tr');
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var table = $('#dtBasicExample').DataTable();
+
+            //Start VIEW Record
+            table.on('click', '.view', function() {
+                $tr =$(this).closest('tr');
                 if ($($tr).hasClass('child')) {
                     $tr = $tr.prev('.parent');
                 }
@@ -190,8 +229,31 @@
                 $('#viewForm').attr('action');
                 $('#viewModal').modal('show');
             });
-            //End View
+            //End VIEW Record
 
-    })
-</script>
+            // Start DELETE Record
+            table.on('click', '.delete', function() {
+                $tr = $(this).closest('tr');
+                if($($tr).hasClass('child')) {
+                    $tr = $tr.prev('.parent');
+                }
+
+                var data = table.row($tr).data();
+                console.log(data);
+
+                var conteudo = $(".modal-body").html();
+
+                $('#delete-modal-body').html(
+                    '<input type="hidden" name="_method" value="DELETE">' +
+                    '<p>Deseja excluir "<strong>' +data[1] + '</strong>"?</p>'
+                );
+                $('#deleteForm').attr('action', '/pessoas/' + data[0]);
+                $('#deleteModal').modal('show');
+            });
+            // End DELETE Record
+
+        })
+    </script>
+
+    @include('scripts.confirmdeletion')
 @endsection

@@ -39,7 +39,8 @@
                                     <a href="{{ route('marcas.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="far fa-edit"></i> Editar
                                     </a>
-                                    <a href="#" class="btn_crud btn btn-danger btn-sm" onclick="return confirmDeletion({{ $item->id }}, '{{ $item->nomeMarca }}', '{{ strtolower(class_basename($item)) }}')">
+                                    <a href="#" class="btn_crud btn btn-danger btn-sm"
+                                     onclick="return confirmDeletion({{ $item->id }}, '{{ $item->nomeMarca }}', '{{ strtolower(class_basename($item)) }}')">
                                         <i class="far fa-trash-alt" data-toggle="tooltip" title="Excluir"></i> Excluir
                                     </a>
                                     {{-- <form action="{{ route('marcas.destroy', $item->id) }}" method="post">
@@ -72,8 +73,8 @@
                 </div>
                 <div class="modal-body">
                     <form action="/marcas" method="POST" id="deleteForm">
-                        @csrf
-                        @method('DELETE')
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
                         <div id="delete-modal-body">
                             {{-- Content Jquery --}}
                         </div>
@@ -81,9 +82,9 @@
                 </div>
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-success" data-dismiss="modal">
-                        <i class="fas fa-undo-alt mr-1">{{ __('Não') }}</i>
+                        <i class="fas fa-undo-alt mr-1"></i>{{ __('Não') }}
                     </button>
-                    <button type="button" class="btn btn-danger" form="deleteForm">
+                    <button type="submit" class="btn btn-danger" form="deleteForm">
                         <i class="fas fa-trash-alt mr-1"></i>{{ __('Sim') }}
                     </button>
                 </div>
@@ -100,7 +101,7 @@
             var table = $('#dtBasicExample').DataTable();
 
             //Start Delete Record
-            table.on('click', 'delete', function() {
+            table.on('click', '.delete', function() {
                 $tr = $(this).closest('tr');
                 if($($tr).hasClass('child')) {
                     $tr = $tr.prev('.parent');
@@ -118,6 +119,7 @@
                 $('#deleteForm').attr('action', '/marcas/' + data[0]);
                 $('#deleteModal').modal('show');
             });
+            // End DELETE Record
         });
     </script>
 

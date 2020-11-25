@@ -151,7 +151,7 @@
                                     </button>
                                 </div>
                                 <br>
-                                <table class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
+                                <table class="datatable table-striped table-bordered table-sm white" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <td>QTD</td>

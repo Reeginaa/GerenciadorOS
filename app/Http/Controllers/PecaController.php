@@ -90,19 +90,26 @@ class PecaController extends Controller
      */
     public function destroy($id)
     {
-        $peca = Pecas::find($id);
-        $peca->delete();
-
-        return redirect('pecas')->with('success', 'Peça excluida!!!');
+        try {
+            $peca = Pecas::find($id);
+            $peca->delete();
+            return ['status' => 'success'];
+        } catch (\Illuminate\Database\QueryException $qe) {
+            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
+        } catch (\PDOException $e) {
+            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
+        }
     }
 
     //Método com validações
     private function getValidate()
     {
-        return ['item' => 'required|max:100',
-        'quantidade' => 'required',
-        'valorCompra' => 'required',
-        'valorVenda' => 'required'];
+        return [
+            'item' => 'required|max:100',
+            'quantidade' => 'required',
+            'valorCompra' => 'required',
+            'valorVenda' => 'required'
+        ];
     }
 
     public function postPeca(Request $request)

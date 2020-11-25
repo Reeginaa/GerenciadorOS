@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Pessoas;
 use App\Models\Equipamentos;
 use App\Models\OrdemServicos;
-use App\Models\OSPecas;
 use App\Models\Pecas;
 use App\Models\Servicos;
 use App\Models\StatusServicos;
@@ -106,10 +105,15 @@ class OrdemServicoController extends Controller
      */
     public function destroy($id)
     {
-        $ordemServico = OrdemServicos::find($id);
-        $ordemServico->delete();
-
-        return redirect('ordemServicos')->with('success', 'O.S. excluída!!!');
+        try {
+            $ordemServico = OrdemServicos::find($id);
+            $ordemServico->delete();
+            return ['status' => 'success'];
+        } catch (\Illuminate\Database\QueryException $qe) {
+            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
+        } catch (\PDOException $e) {
+            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
+        }
     }
 
     //Método com as validações
