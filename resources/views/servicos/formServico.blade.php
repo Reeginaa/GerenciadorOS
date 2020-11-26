@@ -31,8 +31,10 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="valor">Valor: *</label>
-                            <input type="real" class="form-control" name="valor" required>
+                            <input type="real" class="form-control" name="valor" required onkeypress="$(this).mask('R$ #.##0,00')">
                         </div>
+
+                        {{--  --}}
                     </div>
                     <hr class="hr-light">
                     <button type="submit" class="btn btn-success">Salvar</button>

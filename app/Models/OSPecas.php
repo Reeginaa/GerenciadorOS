@@ -10,6 +10,8 @@ class OSPecas extends Model
     use HasFactory;
 
     protected $fillable = [
+        'qtd',
+        'valorTotal',
         'ordemServico_id',
         'peca_id',
         'valorPeca'

@@ -125,7 +125,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit">
-                                                            <i class="fas fa-trash-alt"></i> Excluir
+                                                            <i class="far fa-trash-alt"></i> Excluir
                                                         </button>
                                                     </form>
                                                 </td>
@@ -157,15 +157,17 @@
                                             <td>QTD</td>
                                             <td>Peça</td>
                                             <td>Valor Unitário</td>
+                                            <td>Valor Total</td>
                                             <td>Ações</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($registro->osPeca as $item)
                                             <tr>
-                                                <td>{{ $item->quantidade }}</td>
+                                                <td>{{ $item->qtd }}</td>
                                                 <td>{{ $item->peca->item }}</td>
                                                 <td>{{ $item->peca->valorVenda }}</td>
+                                                <td>{{ $item->valorTotal }}</td>
                                                 <td>
                                                     <form action="{{ route('osPecas.destroy', $item->id) }}" method="POST">
                                                         @csrf
@@ -183,6 +185,18 @@
                             <div class="col-lg-1"></div>
                         </div>
                     </div>
+                    <br>
+                    <div class="col-lg-0"></div>
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="form-group col-lg-9"></div>
+                            <div class="form-group col-lg-3">
+                                <label for="valorTotal">Valor Total:</label>
+                                <input type="real" name="valorTotal" id="valorTotal" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-0"></div>
 
                     <hr class="hr-light">
                     <button type="submit" class="btn btn-success">Salvar</button>
@@ -226,8 +240,8 @@
                         <input type="hidden" name="ordemServico_id" value="{{ $registro->id }}">
                         <div class="row">
                             <div class="form-group col-lg-3">
-                                <label for="quantidade">Quantidade:</label>
-                                <input type="number" class="form-control" name="quantidade" id="quantidade">
+                                <label for="qtd">Quantidade:</label>
+                                <input type="number" class="form-control" name="qtd" id="qtd">
                             </div>
                             <div class="form-group col-lg-9">
                                 <label for="peca">Peça: |

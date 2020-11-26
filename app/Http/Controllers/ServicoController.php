@@ -38,7 +38,11 @@ class ServicoController extends Controller
     {
         $request->validate ($this->getValidate());
 
-        Servicos::create($request->all());
+        $registro = $request->all();
+        $registro['valor'] = str_replace('.', '', $registro['valor']);
+        $registro['valor'] = str_replace(',', '.', $registro['valor']);
+        $registro['valor'] = str_replace('R$', '', $registro['valor']);
+        Servicos::create($registro);
         return redirect('servicos')->with('success', 'Serviço inserido!!!');
     }
 

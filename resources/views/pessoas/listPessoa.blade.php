@@ -27,9 +27,17 @@
                             <td>Tipo</td>
                             <td>Nome</td>
                             <td>CPF</td>
+                            <td class="d-none">RG</td>
+                            <td class="d-none">Data Nascimento</td>
+                            <td class="d-none">Sexo</td>
+                            <td class="d-none">Logradouro</td>
+                            <td class="d-none">Número</td>
+                            <td class="d-none">Complemento</td>
+                            <td class="d-none">Bairro</td>
                             <td>Cidade</td>
-                            <td>Telefone</td>
                             <td>E-mail</td>
+                            <td class="d-none">Senha</td>
+                            <td>Telefone</td>
                             <td>Ações</td>
                         </tr>
                     </thead>
@@ -40,9 +48,17 @@
                                 <td>{{ $item->tipoPessoa->tipo }}</td>
                                 <td>{{ $item->nome }}</td>
                                 <td>{{ $item->cpf }}</td>
+                                <td class="d-none">{{ $item->rg }}</td>
+                                <td class="d-none">{{ $item->dataNascimento }}</td>
+                                <td class="d-none">{{ $item->sexo }}</td>
+                                <td class="d-none">{{ $item->logradouro }}</td>
+                                <td class="d-none">{{ $item->numero }}</td>
+                                <td class="d-none">{{ $item->complemento }}</td>
+                                <td class="d-none">{{ $item->bairro }}</td>
                                 <td>{{ $item->cidade }}</td>
-                                <td>{{ $item->telefone }}</td>
                                 <td>{{ $item->email }}</td>
+                                <td class="d-none">{{ $item->senha }}</td>
+                                <td>{{ $item->telefone }}</td>
                                 <td>
                                     {{-- Visualização --}}
                                     <a href="#" class="btn_crud btn btn-info btn-sm view"><i class="fas fa-eye"

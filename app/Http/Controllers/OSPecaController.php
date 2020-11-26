@@ -45,7 +45,7 @@ class OSPecaController extends Controller
     private function getValidate()
     {
         return [
-            'quantidade' => 'required',
+            'qtd' => 'required',
             'valorPeca' => 'required',
             'peca_id' => 'required',
             'ordemServico_id' => 'required'
