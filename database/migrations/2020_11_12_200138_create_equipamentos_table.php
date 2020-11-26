@@ -22,7 +22,7 @@ class CreateEquipamentosTable extends Migration
             $table->unsignedBigInteger('marca_id')->nullable(false);
             $table->timestamps();
 
-            $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
+            $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('restrict');
         });
     }
 

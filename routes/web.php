@@ -25,8 +25,11 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('tipoPessoas', 'App\Http\Controllers\TipoPessoaController');
+    Route::get('tipoPessoas/{id}/destroy', 'App\Http\Controllers\TipoPessoaController@destroy');
     Route::resource('marcas', 'App\Http\Controllers\MarcaController');
+    Route::get('marcas/{id}/destroy', 'App\Http\Controllers\MarcaController@destroy');
     Route::resource('equipamentos', 'App\Http\Controllers\EquipamentoController');
+    Route::get('equipamentos/{id}/destroy', 'App\Http\Controllers\EquipamentoController@destroy');
     Route::resource('pecas', 'App\Http\Controllers\PecaController');
     Route::resource('servicos', 'App\Http\Controllers\ServicoController');
     Route::resource('statusServicos', 'App\Http\Controllers\StatusServicoController');

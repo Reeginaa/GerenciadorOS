@@ -31,7 +31,7 @@ class CreatePessoasTable extends Migration
             $table->unsignedBigInteger('tipoPessoa_id')->nullable(false);
             $table->timestamps();
 
-            $table->foreign('tipoPessoa_id')->references('id')->on('tipo_pessoas')->onDelete('cascade');
+            $table->foreign('tipoPessoa_id')->references('id')->on('tipo_pessoas')->onDelete('restrict');
         });
     }
 

@@ -16,7 +16,7 @@
         <link href="{{ URL::to('css/mdb.min.css')}}" rel="stylesheet">
         <!-- MDBootstrap Datatables  -->
         <link href="{{ URL::to('css/addons/datatables.min.css')}}" rel="stylesheet">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     </head>
     <body>
         <header>
@@ -40,12 +40,14 @@
 
         <!-- JQuery -->
         <script type="text/javascript" src="{{ URL::to('js/jquery.min.js')}}"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js') }}"></script>
+        {{-- Sweet Alert --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <!-- Mascara -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
         <!-- Bootstrap tooltips -->
         {{-- <script type="text/javascript" src="{{ URL::to('js/popper.mn.js')}}"></script> --}}
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js') }}"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="{{ URL::to('js/mdb.min.js')}}"></script>
         <!-- MDBootstrap Datatables  -->

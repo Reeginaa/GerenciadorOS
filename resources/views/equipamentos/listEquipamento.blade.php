@@ -52,7 +52,7 @@
                                     </a> --}}
 
                                     <a href="#" class="btn_crud btn btn-danger btn-sm" data-toggle="tooltip"
-                                    onclick="return confirmDeletion({{ $item->id }}, '{{ $item->nomeEquipamento }}-{{ $item->marca->nomeMarca }}', '{{ strtolower(class_basename($item)) }}')"
+                                    onclick="return confirmDeletion({{ $item->id }}, '{{ $item->nomeEquipamento }}-{{ $item->marca->nomeMarca }}', '{{ strtolower(class_basename($item)) }}');"
                                     title="Excluir">
                                         <i class="fas fa-trash-alt"></i> Excluir
                                     </a>
