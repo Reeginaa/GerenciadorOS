@@ -38,7 +38,14 @@ class PecaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        Pecas::create($request->all());
+        $registro = $request->all();
+        $registro['valorCompra'] = str_replace('.', '', $registro['valorCompra']);
+        $registro['valorCompra'] = str_replace(',', '.', $registro['valorCompra']);
+        $registro['valorCompra'] = str_replace('R$', '', $registro['valorCompra']);
+        $registro['valorVenda'] = str_replace('.', '', $registro['valorVenda']);
+        $registro['valorVenda'] = str_replace(',', '.', $registro['valorVenda']);
+        $registro['valorVenda'] = str_replace('R$', '', $registro['valorVenda']);
+        Pecas::create($registro);
         return redirect('pecas')->with('success', 'Peça inserida!!!');
     }
 

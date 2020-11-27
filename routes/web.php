@@ -25,18 +25,25 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('tipoPessoas', 'App\Http\Controllers\TipoPessoaController');
-    Route::get('tipoPessoas/{id}/destroy', 'App\Http\Controllers\TipoPessoaController@destroy');
+    Route::get('tipopessoas/{id}/destroy', 'App\Http\Controllers\TipoPessoaController@destroy');
     Route::resource('marcas', 'App\Http\Controllers\MarcaController');
     Route::get('marcas/{id}/destroy', 'App\Http\Controllers\MarcaController@destroy');
     Route::resource('equipamentos', 'App\Http\Controllers\EquipamentoController');
     Route::get('equipamentos/{id}/destroy', 'App\Http\Controllers\EquipamentoController@destroy');
     Route::resource('pecas', 'App\Http\Controllers\PecaController');
+    Route::get('pecas/{id}/destroy', 'App\Http\Controllers\PecaController@destroy');
     Route::resource('servicos', 'App\Http\Controllers\ServicoController');
+    Route::get('servicos/{id}/destroy', 'App\Http\Controllers\ServicoController@destroy');
     Route::resource('statusServicos', 'App\Http\Controllers\StatusServicoController');
+    Route::get('statusservicos/{id}/destroy', 'App\Http\Controllers\StatusServicoController@destroy');
     Route::resource('pessoas', 'App\Http\Controllers\PessoaController');
+    Route::get('pessoas/{id}/destroy', 'App\Http\Controllers\PessoaController@destroy');
     Route::resource('ordemServicos', 'App\Http\Controllers\OrdemServicoController');
+    Route::get('ordemservicos/{id}/destroy', 'App\Http\Controllers\OrdemServicoController@destroy');
     Route::resource('osPecas', 'App\Http\Controllers\OSPecaController');
+    Route::get('ospecas/{id}/destroy', 'App\Http\Controllers\OSPecaController@destroy');
     Route::resource('osServicos', 'App\Http\Controllers\OSServicoController');
+    Route::get('osservicos/{id}/destroy', 'App\Http\Controllers\OSServicoController@destroy');
     Route::get('fecharOS/{id}', 'App\Http\Controllers\OrdemServicoController@fechar')->name('fecharOS');
     Route::get('reabrirOS/{id}', 'App\Http\Controllers\OrdemServicoController@reabrir')->name('reabrirOS');
     Route::get('faturarOS/{id}', 'App\Http\Controllers\OrdemServicoController@faturar')->name('faturarOS');

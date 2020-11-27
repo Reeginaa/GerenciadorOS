@@ -106,7 +106,7 @@ class StatusServicoController extends Controller
     private function getValidate()
     {
         return [
-            'status' => 'required|max:50|unique:status_servicos:status'
+            'status' => 'required|max:50|unique:status_servicos,status'
         ];
     }
 

@@ -43,7 +43,7 @@
                                     </a>
                                     {{-- Exclusão --}}
                                     <a href="#" class="btn_crud btn btn-danger btn-sm"
-                                    onclick="return confirmDeletion({{ $item->id }}, '{{ $item->tipo }}', '{{ strtolower(class_basename($item)) }}')">
+                                    onclick="return confirmDeletion({{ $item->id }}, '{{ $item->tipo }}', '{{ strtolower(class_basename($item)) }}');">
                                         <i class="far fa-trash-alt" data-toggle="tooltop" title="Excluir"></i>Excluir
                                     </a>
                                     {{-- <form action="{{ route('tipoPessoas.destroy', $item->id) }}" method="post">

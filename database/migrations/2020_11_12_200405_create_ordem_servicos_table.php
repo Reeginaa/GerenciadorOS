@@ -28,7 +28,7 @@ class CreateOrdemServicosTable extends Migration
             $table->timestamps();
 
             $table->foreign('statusServico_id')->references('id')->on('status_servicos')->onDelete('restrict');
-            $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');
+            $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('restrict');
             $table->foreign('equipamento_id')->references('id')->on('equipamentos')->onDelete('restrict');
         });
     }
