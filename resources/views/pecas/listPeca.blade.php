@@ -38,8 +38,8 @@
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->item }}</td>
                                 <td>{{ $item->quantidade }}</td>
-                                <td>{{ $item->valorCompra }}</td>
-                                <td>{{ $item->valorVenda }}</td>
+                                <td>R$ {{ $item->valorCompra }}</td>
+                                <td>R$ {{ $item->valorVenda }}</td>
                                 <td>
                                     {{-- Edição --}}
                                     <a href="{{ route('pecas.edit', $item->id) }}" class="btn btn-warning btn-sm">

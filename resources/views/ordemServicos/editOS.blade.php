@@ -11,13 +11,11 @@
                 <h1 class="text-center">Editar Ordem de Serviço</h1>
                 <hr class="hr-light">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 @endif
 
                 <form action="{{ route('ordemServicos.update', $registro->id) }}" method="post" class="form-group text-center">
@@ -30,7 +28,7 @@
                             </a>
                         </label>
                         <select name="pessoa_id" id="pessoa" class="form-control" required>
-                            <option value="">Selecione o cliente</option>
+                            <option value="">Selecione um Cliente</option>
                             @foreach ($listaPessoa as $item)
                                 <option {{ ($registro->pessoa_id==$item->id) ? "selected" : "" }} value="{{ $item->id }}">{{ $item->nome }}</option>
                             @endforeach
@@ -44,7 +42,7 @@
                                 </a>
                             </label>
                             <select name="equipamento_id" id="equipamento" class="form-control" required>
-                                <option value="">Selecione um equipamento</option>
+                                <option value="Selecione um equipamento"></option>
                                 @foreach ($listaEquipamento as $item)
                                     <option {{ ($registro->equipamento_id==$item->id) ? "selected" : "" }} value="{{ $item->id }}">{{ $item->nomeEquipamento }}</option>
                                 @endforeach
@@ -53,24 +51,24 @@
                         <div class="form-group col-lg-6">
                             <label for="defeito">Defeito: *</label>
                             <input type="text" name="defeito" id="defeito" class="form-control" required
-                            placeholder="Escreva o problema/defeito do equipamento" value="{{ $registro->defeito }}">
+                             placeholder="Escreva o problema/defeito do equipamento" value="{{ $registro->defeito }}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="dataInicio">Data de Entrada: *</label>
                             <input type="date" name="dataInicio" id="dataInicio" class="form-control"
-                            required value="{{ $registro->dataInicio }}">
+                             required value="{{ $registro->dataInicio }}">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="dataTermino">Data Término: </label>
                             <input type="date" name="dataTermino" id="dataTermino" class="form-control"
-                            value="{{ $registro->dataTermino }}">
+                             value="{{ $registro->dataTermino }}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <label for="statusServico">Status serviço: *</label>
+                            <label for="statusServico">Status Serviço: *</label>
                             <select name="statusServico_id" id="statusServico" class="form-control" required>
                                 <option value="">Selecione um status</option>
                                 @foreach ($listaStatusServico as $item)
@@ -79,10 +77,10 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
-                            <label for="observacoesOS">Observações:</label>
+                            <label for="observacoesOS">Observações: </label>
                             <textarea name="observacoesOS" id="observacoesOS" cols="30" rows="1" class="form-control"
-                            type="text" placeholder="Escreva as observações do equipament">
-                            {{ $registro->observacoesOS }}
+                             type="text" placeholder="Escreva as observações da O.S.">
+                                {{ $registro->observacoesOS }}
                             </textarea>
                         </div>
                     </div>
@@ -91,10 +89,10 @@
                     <hr class="hr-light">
                     <h4 class="text-center text-white"><u>Orçamento</u></h4>
                     <div class="form-group">
-                        <input type="file" name="arquivo" id="arquivo" class="form-control" value="{{ $registro->arquivo }}">
+                        <input type="file" name="arquivo" id="arquivo" class="form-control-file text-white" value="{{ $registro->arquivo }}">
                     </div>
 
-                    {{-- Tabela Serviço --}}
+                    {{-- Tabela Serviços --}}
                     <hr class="hr-light">
                     <h4 class="text-center text-white"><u>Serviço</u></h4>
                     <div class="container">
@@ -103,11 +101,11 @@
                             <div class="col-lg-10">
                                 <div>
                                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addModalServico">
-                                        <i class="far fa-file-alt" data-toggle="tooltop" data-placement="top" title="Incluir Serviço"></i> Adicionar Serviço
+                                        <i class="far fa-file-alt" data-toggle="tooltip" data-placement="top" title="Incluir Servico"></i> Adicionar Serviço
                                     </button>
                                 </div>
                                 <br>
-                                <table class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
+                                <table class="table table-striped table-bordered table-sm white">
                                     <thead>
                                         <tr>
                                             <td>Serviço</td>
@@ -119,13 +117,17 @@
                                         @foreach ($registro->osServico as $item)
                                             <tr>
                                                 <td>{{ $item->servico->servico }}</td>
-                                                <td>{{ $item->servico->valor }}</td>
+                                                <td>R$ {{ $item->servico->valor }}</td>
                                                 <td>
-                                                    <form action="{{ route('osServicos.destroy', $item->id) }}" method="POST">
+                                                    {{-- Exclusão --}}
+                                                    {{-- <a href="{{ route('osServicos.destroy', $item->id) }}" class="btn btn-danger btn-sm">
+                                                        <i class="far fa-trash-alt"></i>Excluir
+                                                    </a> --}}
+                                                    <form action="{{ route ('osServicos.destroy', $item->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit">
-                                                            <i class="far fa-trash-alt"></i> Excluir
+                                                            <i class="far fa-trash-alt"></i>Excluir
                                                         </button>
                                                     </form>
                                                 </td>
@@ -151,7 +153,7 @@
                                     </button>
                                 </div>
                                 <br>
-                                <table class="datatable table-striped table-bordered table-sm white" cellspacing="0" width="100%">
+                                <table class="table table-striped table-bordered table-sm white">
                                     <thead>
                                         <tr>
                                             <td>QTD</td>
@@ -166,14 +168,15 @@
                                             <tr>
                                                 <td>{{ $item->qtd }}</td>
                                                 <td>{{ $item->peca->item }}</td>
-                                                <td>{{ $item->peca->valorVenda }}</td>
-                                                <td>{{ $item->valorTotal }}</td>
+                                                <td>R$ {{ $item->peca->valorVenda }}</td>
+                                                <td>R$ {{ $item->valorTotal }}</td>
                                                 <td>
-                                                    <form action="{{ route('osPecas.destroy', $item->id) }}" method="POST">
+                                                    {{-- Exclusão --}}
+                                                    <form action="{{ route ('osPecas.destroy', $item->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit">
-                                                            <i class="far fa-trash-alt"></i> Excluir
+                                                            <i class="far fa-trash-alt"></i>Excluir
                                                         </button>
                                                     </form>
                                                 </td>
@@ -384,4 +387,6 @@
             });
         });
     </script>
+
+    @include('scripts.confirmdeletion')
 @endsection

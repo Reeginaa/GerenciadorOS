@@ -59,16 +59,9 @@
                                     <br>
                                     {{-- Exclusão --}}
                                     <a href="#" class="btn_crud btn btn-danger btn-sm"
-                                     onclick="return confirmDeletion({{ $item->id }}, '{{ $item->pessoa->nome }}', '{{ strtolower(class_basename($item)) }}')">
+                                     onclick="return confirmDeletion({{ $item->id }}, '{{ $item->pessoa->nome }}', '{{ strtolower(class_basename($item)) }}');">
                                         <i class="far fa-trash-alt" data-toggle="tooltip" title="Excluir"></i> Excluir
                                     </a>
-                                    {{-- <form action="{{ route('ordemServicos.destroy', $item->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" type="submit">
-                                            <i class="far fa-trash-alt"></i> Excluir
-                                        </button>
-                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach

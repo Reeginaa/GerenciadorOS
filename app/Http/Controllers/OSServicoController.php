@@ -30,17 +30,11 @@ class OSServicoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        try {
-            $osServico = OSServicos::find($id);
-            $osServico->delete();
-            return ['status' => 'success'];
-        } catch (\Illuminate\Database\QueryException $qe) {
-            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
-        } catch (\PDOException $e) {
-            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
-        }
+        $osServico = OSServicos::find($id);
+        $osServico->delete();
+        return redirect('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit');
     }
 
     //Método com validações

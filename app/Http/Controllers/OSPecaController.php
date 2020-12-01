@@ -8,41 +8,36 @@ use App\Models\OSPecas;
 class OSPecaController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //dd($request->all());
         $request->validate($this->getValidate());
 
-        OSPecas::create($request->all());
+        $registro = $request->all();
+        $registro['valorTotal'] = $registro['qtd'] * $registro['valorPeca'];
+        OSPecas::create($registro);
         return redirect('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        try {
-            $osPeca = OSPecas::find($id);
-            $osPeca->delete();
-            return ['status' => 'success'];
-        } catch (\Illuminate\Database\QueryException $qe) {
-            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
-        } catch (\PDOException $e) {
-            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
-        }
+        $osPeca = OSPecas::find($id);
+        $osPeca->delete();
+        return view('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit');
     }
 
-    //Método com validações
-    private function getValidate()
+    // Método de validação
+    public function getValidate()
     {
         return [
             'qtd' => 'required',
@@ -51,6 +46,4 @@ class OSPecaController extends Controller
             'ordemServico_id' => 'required'
         ];
     }
-
-
 }

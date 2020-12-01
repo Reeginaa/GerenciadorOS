@@ -35,7 +35,7 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->servico }}</td>
-                                <td>{{ $item->valor }}</td>
+                                <td>R$ {{ $item->valor }}</td>
                                 <td>
                                     <a href="{{ route('servicos.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="far fa-edit"></i> Editar

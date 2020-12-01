@@ -40,12 +40,12 @@
                     <div class="form-group col-lg-6">
                         <label for="valorCompra">Valor Compra: *</label>
                         <input type="real" class="form-control" name="valorCompra"
-                         required value="{{ $registro->valorCompra }}">
+                         required value="{{ $registro->valorCompra }}" onkeypress="$(this).mask('R$ #.##0,00')">
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="valorVenda">Valor Venda: *</label>
                         <input type="real" class="form-control" name="valorVenda"
-                         required value="{{ $registro->valorVenda }}">
+                         required value="{{ $registro->valorVenda }}" onkeypress="$(this).mask('R$ #.##0,00')">
                     </div>
                 </div>
                 <hr class="hr-light">
