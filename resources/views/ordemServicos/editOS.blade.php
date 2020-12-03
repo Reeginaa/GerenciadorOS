@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label for="cliente">Cliente: * |
                             <a href="{{ route('pessoas.create') }}">
-                                <i class="fas fa-plus"></i> Cadastrar Cliente
+                                <i class="fas fa-plus mr-1"></i>Cadastrar Cliente
                             </a>
                         </label>
                         <select name="pessoa_id" id="pessoa" class="form-control" required>
@@ -38,7 +38,7 @@
                         <div class="form-group col-lg-6">
                             <label for="equipamento">Equipamento: * |
                                 <a href="{{ route('equipamentos.create') }}">
-                                    <i class="fas fa-plus"></i> Cadastrar Equipamento
+                                    <i class="fas fa-plus mr-1"></i>Cadastrar Equipamento
                                 </a>
                             </label>
                             <select name="equipamento_id" id="equipamento" class="form-control" required>
@@ -85,11 +85,54 @@
                         </div>
                     </div>
 
+                    <form action="#"></form>
                     {{-- Orçamento --}}
                     <hr class="hr-light">
                     <h4 class="text-center text-white"><u>Orçamento</u></h4>
-                    <div class="form-group">
-                        <input type="file" name="arquivo" id="arquivo" class="form-control-file text-white" value="{{ $registro->arquivo }}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8">
+                                <div>
+                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addModalOrçamento">
+                                        <i class="fas fa-plus mr-1" data-toggle="tooltip" data-placement="top" title="Incluir Anexo"></i>Adicionar Anexo
+                                    </button>
+                                </div>
+                                <br>
+                                <table class="table table-striped table-bordered table-sm white">
+                                    <thead>
+                                        <tr>
+                                            <td>Nome Anexo</td>
+                                            <td>Arquivo</td>
+                                            <td>Ações</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($registro->anexoOrcamento as $item)
+                                            <tr>
+                                                <td>{{ $item->nome }}</td>
+                                                <td>{{ $item->nome_arquivo }}</td>
+                                                <td>
+                                                    {{-- Download --}}
+                                                    <a href="{{ route('download', $item->id) }}" class="btn btn-blue-grey btn-sm">
+                                                        <i class="fas fa-download mr-1"></i>Download
+                                                    </a>
+                                                    {{-- Exclusão --}}
+                                                    <form action="{{ route ('anexoorcamento.destroy', $item->id) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger btn-sm" type="submit">
+                                                            <i class="far fa-trash-alt mr-1"></i>Excluir
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-2"></div>
+                        </div>
                     </div>
 
                     {{-- Tabela Serviços --}}
@@ -97,11 +140,11 @@
                     <h4 class="text-center text-white"><u>Serviço</u></h4>
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8">
                                 <div>
                                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addModalServico">
-                                        <i class="far fa-file-alt" data-toggle="tooltip" data-placement="top" title="Incluir Servico"></i> Adicionar Serviço
+                                        <i class="fas fa-plus mr-1" data-toggle="tooltip" data-placement="top" title="Incluir Servico"></i>Adicionar Serviço
                                     </button>
                                 </div>
                                 <br>
@@ -120,14 +163,11 @@
                                                 <td>R$ {{ $item->servico->valor }}</td>
                                                 <td>
                                                     {{-- Exclusão --}}
-                                                    {{-- <a href="{{ route('osServicos.destroy', $item->id) }}" class="btn btn-danger btn-sm">
-                                                        <i class="far fa-trash-alt"></i>Excluir
-                                                    </a> --}}
                                                     <form action="{{ route ('osServicos.destroy', $item->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit">
-                                                            <i class="far fa-trash-alt"></i>Excluir
+                                                            <i class="far fa-trash-alt mr-1"></i>Excluir
                                                         </button>
                                                     </form>
                                                 </td>
@@ -136,7 +176,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-1"></div>
+                            <div class="col-lg-2"></div>
                         </div>
                     </div>
 
@@ -145,11 +185,11 @@
                     <h4 class="text-center text-white"><u>Peças</u></h4>
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8">
                                 <div>
                                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addModalPeca">
-                                        <i class="far fa-file-alt" data-toggle="tooltip" data-placement="top" title="Incluir Peça"></i> Adicionar Peça
+                                        <i class="fas fa-plus mr-1" data-toggle="tooltip" data-placement="top" title="Incluir Peça"></i>Adicionar Peça
                                     </button>
                                 </div>
                                 <br>
@@ -165,27 +205,23 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($registro->osPeca as $item)
-                                            <tr>
+                                            <tr id="osPeca_{{ $item->id }}">
                                                 <td>{{ $item->qtd }}</td>
                                                 <td>{{ $item->peca->item }}</td>
                                                 <td>R$ {{ $item->peca->valorVenda }}</td>
                                                 <td>R$ {{ $item->valorTotal }}</td>
                                                 <td>
                                                     {{-- Exclusão --}}
-                                                    <form action="{{ route ('osPecas.destroy', $item->id) }}" method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" type="submit">
-                                                            <i class="far fa-trash-alt"></i>Excluir
-                                                        </button>
-                                                    </form>
+                                                    <button class="btn btn-danger btn-sm" type="submit" onclick="removerOsPeca({{ $item->id }})">
+                                                        <i class="far fa-trash-alt mr-1"></i>Excluir
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-1"></div>
+                            <div class="col-lg-2"></div>
                         </div>
                     </div>
                     <br>
@@ -202,21 +238,36 @@
                     <div class="col-lg-0"></div>
 
                     <hr class="hr-light">
-                    <button type="submit" class="btn btn-success">Salvar</button>
+                    {{-- Botão Salvar --}}
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save mr-1"></i>Salvar
+                    </button>
+                    {{-- Botão Voltar --}}
+                    <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">
+                        <i class="fas fa-undo mr-1"></i>Voltar
+                    </a>
                     @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 1)
-                        <a href="{{ route('fecharOS', $registro->id) }}" class="btn btn-primary">Fechar O.S.</a>
+                        <a href="{{ route('fecharOS', $registro->id) }}" class="btn btn-primary">
+                            <i class="far fa-times-circle mr-1"></i>Fechar O.S.
+                        </a>
                     @endif
                     @if ($registro->statusServico_id == 5 || $registro->statusServico_id == 1)
-                        <a href="{{ route('reabrirOS', $registro->id) }}" class="btn btn-primary">Reabir O.S.</a>
+                        <a href="{{ route('reabrirOS', $registro->id) }}" class="btn btn-primary">
+                            Reabir O.S.
+                        </a>
                     @endif
                     @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 1)
-                        <a href="{{ route('faturarOS', $registro->id) }}" class="btn btn-primary">Faturar O.S.</a>
-                        <a href="{{ route('concertarOS', $registro->id) }}" class="btn btn-primary">Concertada</a>
+                        <a href="{{ route('faturarOS', $registro->id) }}" class="btn btn-primary">
+                            <i class="fas fa-hand-holding-usd mr-1"></i>Faturar O.S.
+                        </a>
+                        <a href="{{ route('concertarOS', $registro->id) }}" class="btn btn-primary">
+                            <i class="fas fa-check mr-1"></i>Concertada
+                        </a>
                     @endif
 
-                    <a href="#" class="btn btn-primary">Imprimir O.S.</a>
-                    <a href="#" class="btn btn-primary">Imprimir Nº</a>
-                    <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">Voltar</a>
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-print mr-1"></i>Imprimir O.S.
+                    </a>
                 </form>
             </div>
         </div>
@@ -318,10 +369,10 @@
                                 <input type="real" class="form-control" name="valorServico" id="valorServico" readonly>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success" data-toggle="tooltop" title="Salvar">
+                        <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Salvar">
                             <i class="fas fa-save mr-1"></i> {{ __('Salvar') }}
                         </button>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="tooltop" title="Cancelar">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="toolt1p" title="Cancelar">
                             <i class="fas fa-undo-alt mr-1"></i>{{ __('Cancelar') }}
                         </button>
                     </form>
@@ -331,6 +382,45 @@
         </div>
     </div>
     {{-- End ADD Serviço Modal --}}
+
+    {{-- Start ADD Orçamento Modal --}}
+    <div class="modal fade" id="addModalOrçamento" tabindex="-1" role="dialog" aria-labelledby="addModalAnexoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                {{-- Cabeça do Modal --}}
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title text-white font-weight-bold" id="addModalAnexoLabel">{{ __('Novo Anexo') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{-- \Cabeça do Modal --}}
+                {{-- Corpo do Modal --}}
+                <div class="modal-body">
+                    <form action="{{ route('anexoorcamento.store') }}" method="post" id="addFormAnexo" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="ordemServico_id" value="{{ $registro->id }}">
+                        <div class="form-group">
+                            <label for="nome">Nome: </label>
+                            <input type="text" name="nome" id="nome" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="arquivo">Arquivo: </label>
+                            <input type="file" name="arquivo" id="arquivo" class="form-control-file">
+                        </div>
+                        <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Salvar">
+                            <i class="fas fa-save mr-1"></i>{{ __('Salvar') }}
+                        </button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="tooltip" title="Cancelar">
+                            <i class="fas fa-undo-alt mr-1"></i>{{ __('Cancelar') }}
+                        </button>
+                    </form>
+                </div>
+                {{-- \Corpo do Modal --}}
+            </div>
+        </div>
+    </div>
+    {{-- End ADD Orçamento Modal --}}
 @endsection
 
 @section('script_pages')
@@ -386,6 +476,27 @@
                 }
             });
         });
+
+        function removerOsPeca(id){
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('removerPecas') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": id
+                },
+                success: function(response) {
+
+                    console.log(response);
+
+                    $('[id*="osPeca_'+id+'"]').remove();
+
+                },
+                error: function(response) {
+                    console.log(response)
+                }
+            });
+        }
     </script>
 
     @include('scripts.confirmdeletion')

@@ -110,9 +110,15 @@
                     </div>
                 </div>
                 <hr class="hr-light">
-                <button type="submit" class="btn btn-success">Salvar</button>
-                <button type="reset" class="btn btn-warning">Limpar</button>
-                <a href="{{ route('pessoas.index') }}" class="btn btn-danger">Voltar</a>
+                <button type="submit" class="btn btn-success">
+                    <i class="far fa-save mr-1"></i>Salvar
+                </button>
+                <button type="reset" class="btn btn-warning">
+                    <i class="fas fa-backspace mr-1"></i>Limpar
+                </button>
+                <a href="{{ route('pessoas.index') }}" class="btn btn-danger">
+                    <i class="fas fa-undo mr-1"></i>Voltar
+                </a>
             </form>
         </div>
     </div>

@@ -34,7 +34,7 @@ class OSServicoController extends Controller
     {
         $osServico = OSServicos::find($id);
         $osServico->delete();
-        return redirect('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit');
+        return ['status' => 'success'];
     }
 
     //Método com validações

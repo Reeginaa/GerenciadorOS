@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnexoOrcamento;
 use Illuminate\Http\Request;
 use App\Models\Pessoas;
 use App\Models\Equipamentos;
@@ -77,6 +78,7 @@ class OrdemServicoController extends Controller
             $listaStatusServico = StatusServicos::all();
             $listaPeca = Pecas::all();
             $listaServico = Servicos::all();
+            $listaAnexos = AnexoOrcamento::all();
             return view('ordemServicos.editOS', compact('registro', 'listaEquipamento', 'listaPessoa', 'listaStatusServico', 'listaPeca', 'listaServico'));
     }
 
@@ -95,25 +97,6 @@ class OrdemServicoController extends Controller
         $ordemServico->update($request->all());
 
         return redirect('ordemServicos')->with('success', 'O.S. alterada!!!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        try {
-            $ordemServico = OrdemServicos::find($id);
-            $ordemServico->delete();
-            return ['status' => 'success'];
-        } catch (\Illuminate\Database\QueryException $qe) {
-            return ['status' => 'errorQuery', 'message' => $qe->getMessage()];
-        } catch (\PDOException $e) {
-            return ['status' => 'errorPDO', 'message' => $e->getMessage()];
-        }
     }
 
     //Método com as validações

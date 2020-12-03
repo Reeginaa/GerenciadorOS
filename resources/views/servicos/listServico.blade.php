@@ -18,7 +18,7 @@
                 <hr class="hr-light">
                 <div>
                     <a href="{{ route ('servicos.create') }}" class="btn btn-success">
-                        <i class="far fa-file-alt"></i> Novo Serviço
+                        <i class="fas fa-plus mr-1"></i> Novo Serviço
                     </a>
                 </div>
                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
@@ -38,11 +38,11 @@
                                 <td>R$ {{ $item->valor }}</td>
                                 <td>
                                     <a href="{{ route('servicos.edit', $item->id) }}" class="btn btn-warning btn-sm">
-                                        <i class="far fa-edit"></i> Editar
+                                        <i class="far fa-edit mr-1"></i>Editar
                                     </a>
                                     <a href="#" class="btn_crud btn btn-danger btn-sm"
                                     onclick="return confirmDeletion({{ $item->id }}, '{{ $item->servico }}', '{{ strtolower(class_basename($item)) }}')">
-                                        <i class="far fa-trash-alt" data-toggle="tooltop" title="Excluir"></i>Excluir
+                                        <i class="far fa-trash-alt mr-1" data-toggle="tooltop" title="Excluir"></i>Excluir
                                     </a>
                                     {{-- <form action="{{ route('servicos.destroy', $item->id) }}" method="post">
                                         @csrf

@@ -32,12 +32,15 @@
                 <div class="form-group">
                     <label for="descricaoStatus">Descrição: </label>
                     <textarea name="descricaoStatus" id="descricaoStatus" type="text" class="form-control"
-                     placeholder="Escrevas as observações desse estatus se desejar">
-                     {{ $registro->descricaoStatus }}
-                    </textarea>
+                     placeholder="Escrevas as observações desse estatus se desejar">{{ $registro->descricaoStatus }}</textarea>
                 </div>
                 <hr class="hr-light">
-                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="submit" class="btn btn-success">
+                    <i class="far fa-save mr-1"></i>Salvar
+                </button>
+                <a href="{{ route('statusServicos.index') }}" class="btn btn-danger">
+                    <i class="fas fa-undo mr-1"></i>Voltar
+                </a>
             </form>
         </div>
     </div>

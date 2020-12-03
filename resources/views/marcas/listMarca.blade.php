@@ -17,7 +17,7 @@
                 <hr class="hr-light">
                 <div>
                     <a href="{{ route ('marcas.create') }}" class="btn btn-success">
-                        <i class="far fa-file-alt"></i> Nova Marca
+                        <i class="fas fa-plus mr-1"></i>Nova Marca
                     </a>
                 </div>
                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
@@ -37,19 +37,12 @@
                                 <td>{{ $item->observacaoMarca }}</td>
                                 <td>
                                     <a href="{{ route('marcas.edit', $item->id) }}" class="btn btn-warning btn-sm">
-                                        <i class="far fa-edit"></i> Editar
+                                        <i class="far fa-edit mr-1"></i>Editar
                                     </a>
                                     <a href="#" class="btn_crud btn btn-danger btn-sm"
                                      onclick="return confirmDeletion({{ $item->id }}, '{{ $item->nomeMarca }}', '{{ strtolower(class_basename($item)) }}');">
-                                        <i class="far fa-trash-alt" data-toggle="tooltip" title="Excluir"></i> Excluir
+                                        <i class="far fa-trash-alt mr-1" data-toggle="tooltip" title="Excluir"></i>Excluir
                                     </a>
-                                    {{-- <form action="{{ route('marcas.destroy', $item->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" type="submit">
-                                            <i class="far fa-trash-alt"></i> Excluir
-                                        </button>
-                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach

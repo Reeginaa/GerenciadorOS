@@ -26,14 +26,14 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="{{ route('admin') }}">
-                  <i class="fas fa-home"></i>Home
+                  <i class="fas fa-home mr-1"></i>Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('ordemServicos.index') }}">
-                  <i class="fas fa-desktop"></i>Ordem de Serviço
+                  <i class="fas fa-desktop mr-1"></i>Ordem de Serviço
                 </a>
               </li>
 
@@ -41,7 +41,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
-                  <i class="far fa-file-alt"></i>Cadastros Básicos</a>
+                  <i class="far fa-file-alt mr-1"></i>Cadastros Básicos</a>
                 <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{{ route('marcas.index') }}">Marca</a>
                   <a class="dropdown-item" href="{{ route('servicos.index') }}">Serviço</a>
@@ -55,7 +55,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
-                  <i class="far fa-file-alt"></i> Relatórios</a>
+                  <i class="far fa-file-alt mr-1"></i> Relatórios</a>
                 <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Gerar Relatórios</a>
                 </div>
@@ -65,7 +65,7 @@
                 <a class="nav-link" href="{{route('logout')}}"
                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                  <i class="fas fa-sign-out-alt"></i>Sair
+                  <i class="fas fa-sign-out-alt mr-1"></i>Sair
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf

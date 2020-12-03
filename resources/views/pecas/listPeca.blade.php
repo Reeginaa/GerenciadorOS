@@ -18,7 +18,7 @@
                 <hr class="hr-light">
                 <div>
                     <a href="{{ route ('pecas.create') }}" class="btn btn-success">
-                        <i class="far fa-file-alt"></i> Nova Peça
+                        <i class="fas fa-plus mr-1"></i>Nova Peça
                     </a>
                 </div>
                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
@@ -43,20 +43,13 @@
                                 <td>
                                     {{-- Edição --}}
                                     <a href="{{ route('pecas.edit', $item->id) }}" class="btn btn-warning btn-sm">
-                                        <i class="far fa-edit"></i> Editar
+                                        <i class="far fa-edit mr-1"></i>Editar
                                     </a>
                                     {{-- Exclusão --}}
                                     <a href="#" class="btn_crud btn btn-danger btn-sm"
                                      onclick="return confirmDeletion({{ $item->id }}, '{{ $item->item }}', '{{ strtolower(class_basename($item)) }}')">
-                                        <i class="far fa-trash-alt" data-toggle="tooltip" title="Excluir"></i> Excluir
+                                        <i class="far fa-trash-alt mr-1" data-toggle="tooltip" title="Excluir"></i>Excluir
                                     </a>
-                                    {{-- <form action="{{ route('pecas.destroy', $item->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" type="submit">
-                                            <i class="far fa-trash-alt"></i> Excluir
-                                        </button>
-                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach

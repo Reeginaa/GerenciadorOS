@@ -52,12 +52,15 @@
                 <div class="form-group">
                     <label for="observacoesEquipamento">Observações: </label>
                     <textarea id="observacoesEquipamento" name="observacoesEquipamento" type="text" class="form-control"
-                     placeholder="Escreva as observações do equipamento se necessário">
-                        {{ $registro->observacoesEquipamento }}
-                    </textarea>
+                     placeholder="Escreva as observações do equipamento se necessário">{{ $registro->observacoesEquipamento }}</textarea>
                 </div>
                 <hr class="hr-light">
-                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="submit" class="btn btn-success">
+                    <i class="far fa-save mr-1"></i>Salvar
+                </button>
+                <a href="{{ route('equipamentos.index') }}" class="btn btn-danger">
+                    <i class="fas fa-undo mr-1"></i>Voltar
+                </a>
             </form>
         </div>
     </div>

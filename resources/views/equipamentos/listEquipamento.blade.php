@@ -18,7 +18,7 @@
                 <hr class="hr-light">
                 <div>
                     <a href="{{ route ('equipamentos.create') }}" class="btn btn-success">
-                        <i class="far fa-file-alt"></i> Novo Equipamento
+                        <i class="fas fa-plus mr-1"></i>Novo Equipamento
                     </a>
                 </div>
                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm white" cellspacing="0" width="100%">
@@ -44,7 +44,7 @@
                                 <td>{{ $item->observacoesEquipamento }}</td>
                                 <td>
                                     <a href="{{ route('equipamentos.edit', $item->id) }}" class="btn btn-warning btn-sm">
-                                        <i class="far fa-edit"></i> Editar
+                                        <i class="far fa-edit mr-1"></i>Editar
                                     </a>
 
                                     {{-- <a href="#" class="btn_crud btn btn-danger btn-sm delete" data-toggle="tooltip" title="Excluir">
@@ -54,7 +54,7 @@
                                     <a href="#" class="btn_crud btn btn-danger btn-sm" data-toggle="tooltip"
                                     onclick="return confirmDeletion({{ $item->id }}, '{{ $item->nomeEquipamento }}-{{ $item->marca->nomeMarca }}', '{{ strtolower(class_basename($item)) }}');"
                                     title="Excluir">
-                                        <i class="fas fa-trash-alt"></i> Excluir
+                                        <i class="fas fa-trash-alt mr-1"></i>Excluir
                                     </a>
 
                                     {{-- <form action="{{ route('equipamentos.destroy', $item->id) }}" method="post">

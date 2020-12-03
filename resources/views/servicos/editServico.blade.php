@@ -30,13 +30,20 @@
                      placeholder="Escreva o serviço" value={{$registro->servico}}>
                 </div>
                 <div class="row">
+                    <div class="col-lg-3"></div>
                     <div class="form-group col-lg-6">
                         <label for="valor">Valor: *</label>
-                        <input type="real" name="valor" class="form-control" required value={{$registro->valor}}>
+                        <input type="real" name="valor" class="form-control" required value={{$registro->valor}} onkeypress="$(this).mask('R$ #.##0,00')">
                     </div>
+                    <div class="col-lg-3"></div>
                 </div>
                 <hr class="hr-light">
-                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="submit" class="btn btn-success">
+                    <i class="far fa-save mr-1"></i>Salvar
+                </button>
+                <a href="{{ route('servicos.index') }}" class="btn btn-danger">
+                    <i class="fas fa-undo mr-1"></i>Voltar
+                </a>
             </form>
         </div>
     </div>

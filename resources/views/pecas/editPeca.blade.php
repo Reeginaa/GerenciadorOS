@@ -49,7 +49,12 @@
                     </div>
                 </div>
                 <hr class="hr-light">
-                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="submit" class="btn btn-success">
+                    <i class="far fa-save mr-1"></i>Salvar
+                </button>
+                <a href="{{ route('pecas.index') }}" class="btn btn-danger">
+                    <i class="fas fa-undo mr-1"></i>Voltar
+                </a>
             </form>
         </div>
     </div>

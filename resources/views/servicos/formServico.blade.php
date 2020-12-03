@@ -29,17 +29,23 @@
                          placeholder="Escreva o serviço">
                     </div>
                     <div class="row">
+                        <div class="col-lg-3"></div>
                         <div class="form-group col-lg-6">
                             <label for="valor">Valor: *</label>
                             <input type="real" class="form-control" name="valor" required onkeypress="$(this).mask('R$ #.##0,00')">
                         </div>
-
-                        {{--  --}}
+                        <div class="col-lg-3"></div>
                     </div>
                     <hr class="hr-light">
-                    <button type="submit" class="btn btn-success">Salvar</button>
-                    <button type="reset" class="btn btn-warning">Limpar</button>
-                    <a href="{{ route('servicos.index') }}" class="btn btn-danger">Voltar</a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="far fa-save mr-1"></i>Salvar
+                    </button>
+                    <button type="reset" class="btn btn-warning">
+                        <i class="fas fa-backspace mr-1"></i>Limpar
+                    </button>
+                    <a href="{{ route('servicos.index') }}" class="btn btn-danger">
+                        <i class="fas fa-undo mr-1"></i>Voltar
+                    </a>
                 </form>
             </div>
 

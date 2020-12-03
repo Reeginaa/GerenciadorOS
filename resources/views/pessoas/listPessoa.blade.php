@@ -17,7 +17,7 @@
                 <hr class="hr-light">
                 <div>
                     <a href="{{ route('pessoas.create') }}" class="btn btn-success">
-                        <i class="far fa-file-alt"> Nova Pessoa</i>
+                        <i class="fas fa-plus mr-1"></i>Nova Pessoa
                     </a>
                 </div>
                 <table id="dtBasicExample" class="table table estriped table-bordered table-sm white" cellspacing="0" width="100%">
@@ -36,7 +36,6 @@
                             <td class="d-none">Bairro</td>
                             <td>Cidade</td>
                             <td>E-mail</td>
-                            <td class="d-none">Senha</td>
                             <td>Telefone</td>
                             <td>Ações</td>
                         </tr>
@@ -57,32 +56,23 @@
                                 <td class="d-none">{{ $item->bairro }}</td>
                                 <td>{{ $item->cidade }}</td>
                                 <td>{{ $item->email }}</td>
-                                <td class="d-none">{{ $item->senha }}</td>
                                 <td>{{ $item->telefone }}</td>
                                 <td>
                                     {{-- Visualização --}}
-                                    <a href="#" class="btn_crud btn btn-info btn-sm view"><i class="fas fa-eye"
-                                        data-toggle="tooltip" title="Visualizar"></i> Ver
+                                    <a href="#" class="btn_crud btn btn-info btn-sm view">
+                                        <i class="fas fa-eye mr-1" data-toggle="tooltip" title="Visualizar"></i>Ver
                                     </a>
                                     <br>
                                     {{-- Edição --}}
                                     <a href="{{ route('pessoas.edit', $item->id) }}" class="btn btn-warning btn-sm">
-                                        <i class="far fa-edit"></i> Editar
+                                        <i class="far fa-edit mr-1"></i>Editar
                                     </a>
                                     <br>
                                     {{-- Exclusão --}}
                                     <a href="#" class="btn_crud btn btn-danger btn-sm"
                                      onclick="return confirmDeletion({{ $item->id }}, '{{ $item->nome }}', '{{ strtolower(class_basename($item)) }}')">
-                                        <i class="far fa-trash-alt" data-toggle="tooltip" title="Excluir"></i>Excluir
+                                        <i class="far fa-trash-alt mr-1" data-toggle="tooltip" title="Excluir"></i>Excluir
                                     </a>
-
-                                    {{-- <form action="{{ route('pessoas.destroy', $item->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" type="submit">
-                                            <i class="far fa-trash-alt"></i> Excluir
-                                        </button>
-                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -157,10 +147,6 @@
                         <div class="form-group">
                             <label for="email" class="md-0">E-mail</label>
                             <input type="text" name="email" id="email" class="form-control" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="senha" class="md-0">Senha</label>
-                            <input type="password" name="senha" id="senha" class="form-control" readonly>
                         </div>
                         <div class="form-group">
                             <label for="telefone" class="md-0">Telefone</label>
@@ -239,8 +225,7 @@
                 $('#viewModal #bairro').val(data[10]);
                 $('#viewModal #cidade').val(data[11]);
                 $('#viewModal #email').val(data[12]);
-                $('#viewModal #senha').val(data[13]);
-                $('#viewModal #telefone').val(data[14]);
+                $('#viewModal #telefone').val(data[13]);
 
                 $('#viewForm').attr('action');
                 $('#viewModal').modal('show');

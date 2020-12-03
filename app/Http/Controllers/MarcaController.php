@@ -80,7 +80,7 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidate());
+        $request->validate($this->getValidateUpdate());
 
         $marca = Marcas::find($id);
         $marca->update($request->all());
@@ -113,6 +113,14 @@ class MarcaController extends Controller
     {
         return [
             'nomeMarca' => 'required|max:40|unique:marcas,nomeMarca'
+        ];
+    }
+
+    //Método das validações
+    private function getValidateUpdate()
+    {
+        return [
+            'nomeMarca' => 'required|max:40'
         ];
     }
 }

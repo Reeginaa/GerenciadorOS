@@ -83,13 +83,6 @@
                     </div>
                 </div>
 
-                {{-- Orçamento --}}
-                <hr class="hr-light">
-                <h4 class="text-center text-white"><u>Orçamento</u></h4>
-                <div class="form-group">
-                    <input type="file" name="arquivo" id="arquivo" class="form-control">
-                </div>
-
                 {{-- Termos checkbox --}}
                 <hr class="hr-light">
                 <h4 class="text-center text-white"><b>Termos</b></h4>
@@ -106,13 +99,19 @@
                         decorrer de 3 meses, o cliente deverá pagar uma multa.</b>
                     </li>
                     <br>
-                    <input type="checkbox" name="termos" id="termos" class="form-check-input" value="1">
+                    <input type="checkbox" name="termos" id="termos" class="form-check-input" value="1" required>
                     <label for="termos"><b><u>Li, concordo e estou ciente dos termos.</u></b></label>
                 </p>
                 <hr class="hr-light">
-                <button type="submit" class="btn btn-success">Salvar</button>
-                <button type="reset" class="btn btn-warning">Limpar</button>
-                <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">Voltar</a>
+                <button type="submit" class="btn btn-success">
+                    <i class="far fa-save mr-1"></i>Salvar
+                </button>
+                <button type="reset" class="btn btn-warning">
+                    <i class="fas fa-backspace mr-1"></i>Limpar
+                </button>
+                <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">
+                    <i class="fas fa-undo mr-1"></i>Voltar
+                </a>
             </form>
         </div>
     </div>

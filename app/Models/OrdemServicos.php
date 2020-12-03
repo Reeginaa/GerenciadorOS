@@ -33,6 +33,11 @@ class OrdemServicos extends Model
         return $this->hasMany(OSPecas::class, 'ordemServico_id');
     }
 
+    public function anexoOrcamento()
+    {
+        return $this->hasMany(AnexoOrcamento::class, 'ordemServico_id');
+    }
+
     //Relação muitos para 1 - com status
     public function statusServico()
     {

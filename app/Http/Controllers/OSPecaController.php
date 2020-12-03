@@ -29,11 +29,12 @@ class OSPecaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request)
     {
+        $id = $request->all()['id'];
         $osPeca = OSPecas::find($id);
         $osPeca->delete();
-        return view('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit');
+        return ['status' => 'success'];
     }
 
     // Método de validação
