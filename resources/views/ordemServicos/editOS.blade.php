@@ -109,7 +109,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($registro->anexoOrcamento as $item)
-                                            <tr>
+                                            <tr id="anexoOrcamento_{{ $item->id }}">
                                                 <td>{{ $item->nome }}</td>
                                                 <td>{{ $item->nome_arquivo }}</td>
                                                 <td>
@@ -118,13 +118,9 @@
                                                         <i class="fas fa-download mr-1"></i>Download
                                                     </a>
                                                     {{-- Exclusão --}}
-                                                    <form action="{{ route ('anexoorcamento.destroy', $item->id) }}" method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" type="submit">
-                                                            <i class="far fa-trash-alt mr-1"></i>Excluir
-                                                        </button>
-                                                    </form>
+                                                    <button class="btn btn-danger btn-sm" type="submit" onclick="removerAnexoOrcamento({{ $item->id }})">
+                                                        <i class="far fa-trash-alt mr-1"></i>Excluir
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -158,18 +154,14 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($registro->osServico as $item)
-                                            <tr>
+                                            <tr id="osServico_{{ $item->id }}">
                                                 <td>{{ $item->servico->servico }}</td>
                                                 <td>R$ {{ $item->servico->valor }}</td>
                                                 <td>
                                                     {{-- Exclusão --}}
-                                                    <form action="{{ route ('osServicos.destroy', $item->id) }}" method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" type="submit">
-                                                            <i class="far fa-trash-alt mr-1"></i>Excluir
-                                                        </button>
-                                                    </form>
+                                                    <button class="btn btn-danger btn-sm" type="submit" onclick="removerOsServico({{ $item->id }})">
+                                                        <i class="far fa-trash-alt mr-1"></i>Excluir
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -477,10 +469,11 @@
             });
         });
 
+        // Função com método ajax para remover item peça da tabela
         function removerOsPeca(id){
             $.ajax({
                 type: 'POST',
-                url: "{{ route('removerPecas') }}",
+                url: "{{ route('removerOsPecas') }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
                     "id": id
@@ -491,6 +484,49 @@
 
                     $('[id*="osPeca_'+id+'"]').remove();
 
+                },
+                error: function(response) {
+                    console.log(response)
+                }
+            });
+        }
+
+        // Função com método ajax para remover item serviço da tabela
+        function removerOsServico(id){
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('removerOsServicos') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": id
+                },
+                success: function(response) {
+
+                    console.log(response);
+
+                    $('[id*="osServico_'+id+'"]').remove();
+
+                },
+                error: function(response) {
+                    console.log(response)
+                }
+            });
+        }
+
+        // Função com método ajax para remover anexo da tabela
+        function removerAnexoOrcamento(id){
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('removerAnexoOrcamento') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": id
+                },
+                success: function(response) {
+
+                    console.log(response);
+
+                    $('[id*="anexoOrcamento_'+id+'"]').remove();
                 },
                 error: function(response) {
                     console.log(response)

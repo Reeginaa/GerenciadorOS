@@ -52,8 +52,9 @@ class AnexoOrcamentoController extends Controller
      * @param  \App\Models\AnexoOrcamento  $anexoOrcamento
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $id = $request->all()['id'];
         $anexo = AnexoOrcamento::find($id);
         $anexoPath = 'documents/' . $anexo->nome_arquivo_salvo;
         $anexo->delete();

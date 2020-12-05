@@ -30,8 +30,9 @@ class OSServicoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request)
+    public function destroy(Request $request)
     {
+        $id = $request->all()['id'];
         $osServico = OSServicos::find($id);
         $osServico->delete();
         return ['status' => 'success'];

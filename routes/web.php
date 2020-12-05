@@ -40,11 +40,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pessoas/{id}/destroy', 'App\Http\Controllers\PessoaController@destroy');
     Route::resource('ordemServicos', 'App\Http\Controllers\OrdemServicoController');
     Route::resource('osPecas', 'App\Http\Controllers\OSPecaController');
-    Route::post('ospecas/destroy', 'App\Http\Controllers\OSPecaController@destroy')->name('removerPecas');
+    Route::post('ospecas/destroy', 'App\Http\Controllers\OSPecaController@destroy')->name('removerOsPecas');
     Route::resource('osServicos', 'App\Http\Controllers\OSServicoController');
-    Route::get('osservicos/{id}/destroy', 'App\Http\Controllers\OSServicoController@destroy');
+    Route::post('osservicos/destroy', 'App\Http\Controllers\OSServicoController@destroy')->name('removerOsServicos');
     Route::resource('anexoorcamento', 'App\Http\Controllers\AnexoOrcamentoController');
-    Route::get('anexoorcamento/{id}/destroy', 'App\Http\Controllers\AnexoOrcamentoController@destroy');
+    Route::post('anexoorcamento/destroy', 'App\Http\Controllers\AnexoOrcamentoController@destroy')->name('removerAnexoOrcamento');
     Route::get('download/{id}', 'App\Http\Controllers\AnexoOrcamentoController@download')->name('download');
     Route::get('fecharOS/{id}', 'App\Http\Controllers\OrdemServicoController@fechar')->name('fecharOS');
     Route::get('reabrirOS/{id}', 'App\Http\Controllers\OrdemServicoController@reabrir')->name('reabrirOS');
