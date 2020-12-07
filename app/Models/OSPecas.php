@@ -11,7 +11,7 @@ class OSPecas extends Model
 
     protected $fillable = [
         'qtd',
-        'valorTotal',
+        'valor_total',
         'ordemServico_id',
         'peca_id',
         'valorPeca'

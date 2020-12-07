@@ -201,7 +201,7 @@
                                                 <td>{{ $item->qtd }}</td>
                                                 <td>{{ $item->peca->item }}</td>
                                                 <td>R$ {{ $item->peca->valorVenda }}</td>
-                                                <td>R$ {{ $item->valorTotal }}</td>
+                                                <td>R$ {{ $item->valor_total }}</td>
                                                 <td>
                                                     {{-- Exclusão --}}
                                                     <button class="btn btn-danger btn-sm" type="submit" onclick="removerOsPeca({{ $item->id }})">

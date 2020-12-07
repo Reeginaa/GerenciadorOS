@@ -17,7 +17,7 @@ class CreateOSPecasTable extends Migration
             $table->id();
             $table->decimal('valorPeca', 8, 2)->nullable(false);
             $table->integer('qtd');
-            $table->decimal('valorTotal', 8,2);
+            $table->decimal('valor_total', 8,2);
             $table->unsignedBigInteger('ordemServico_id')->nullable(false);
             $table->unsignedBigInteger('peca_id')->nullable(false);
             $table->timestamps();

@@ -18,7 +18,7 @@ class OSPecaController extends Controller
         $request->validate($this->getValidate());
 
         $registro = $request->all();
-        $registro['valorTotal'] = $registro['qtd'] * $registro['valorPeca'];
+        $registro['valor_total'] = $registro['qtd'] * $registro['valorPeca'];
         OSPecas::create($registro);
         return redirect('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit');
     }
