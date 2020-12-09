@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label for="nomeEquipamento">Equipamento: *</label>
                     <input id="nomeEquipamento" type="text" class="form-control" name="nomeEquipamento" required
-                     placeholder="Escreva o nome do equipamento">
+                     placeholder="Escreva o nome do equipamento" max="40">
                 </div>
                 <div class="form-group">
                     <label for="marca">Marca: * |
@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label for="observacoesEquipamento">Observações: </label>
                     <textarea id="observacoesEquipamento" name="observacoesEquipamento" type="text" class="form-control"
-                     placeholder="Escreva as observações do equipamento se necessário"></textarea>
+                     placeholder="Escreva as observações do equipamento se necessário" maxlength="350"></textarea>
                 </div>
                 <hr class="hr-light">
                 <button type="submit" class="btn btn-success">

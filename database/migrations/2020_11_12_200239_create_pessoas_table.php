@@ -26,7 +26,6 @@ class CreatePessoasTable extends Migration
             $table->string('bairro', 100)->nullable(false);
             $table->string('cidade', 50)->nullable(false);
             $table->string('email', 400);
-            $table->string('senha', 20)->nullable(false);
             $table->string('telefone', 25);
             $table->unsignedBigInteger('tipoPessoa_id')->nullable(false);
             $table->timestamps();

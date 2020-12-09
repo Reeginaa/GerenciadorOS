@@ -110,7 +110,8 @@ class EquipamentoController extends Controller
     {
         return [
             'nomeEquipamento' => 'required|max:45',
-            'marca_id' => 'required'
+            'marca_id' => 'required',
+            'observacaoMarca' => 'max:350',
         ];
     }
 }

@@ -257,7 +257,7 @@
                         </a>
                     @endif
 
-                    <a href="#" class="btn btn-primary">
+                    <a href="{{ route('imprimirOS') }}" class="btn btn-primary">
                         <i class="fas fa-print mr-1"></i>Imprimir O.S.
                     </a>
                 </form>

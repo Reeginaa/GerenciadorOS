@@ -47,17 +47,12 @@
                                 <td>{{ $item->defeito }}</td>
                                 <td>{{ $item->valorTotal }}</td>
                                 <td>
-                                    {{-- Visualização --}}
-                                    <a href="{{ route('ordemServicos.show', $item->id) }}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalVerPessoa">
-                                        <i class="far fa-eye mr-1"></i>Ver
-                                    </a>
-                                    <br>
                                     {{-- Edição --}}
                                     <a href="{{ route('ordemServicos.edit', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="far fa-edit mr-1"></i>Editar
                                     </a>
                                     <br>
-                                    <a href="#" class="btn btn-blue-grey btn-sm">
+                                    <a href="{{ route('comprovantepdf') }}" class="btn btn-blue-grey btn-sm">
                                         <i class="fas fa-print mr-1"></i>Imprimir Comprovante e Nº
                                     </a>
                                 </td>

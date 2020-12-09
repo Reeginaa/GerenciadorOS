@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label for="nomeEquipamento">Equipamento: *</label>
                     <input id="nomeEquipamento" type="text" class="form-control" name="nomeEquipamento" required
-                     placeholder="Escreva o nome do equipamento" value="{{ $registro->nomeEquipamento }}">
+                     placeholder="Escreva o nome do equipamento" value="{{ $registro->nomeEquipamento }}" max="40">
                 </div>
                 <div class="form-group">
                     <label for="marca">Marca: </label>
@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <label for="observacoesEquipamento">Observações: </label>
                     <textarea id="observacoesEquipamento" name="observacoesEquipamento" type="text" class="form-control"
-                     placeholder="Escreva as observações do equipamento se necessário">{{ $registro->observacoesEquipamento }}</textarea>
+                     placeholder="Escreva as observações do equipamento se necessário" maxlength="350">{{ $registro->observacoesEquipamento }}</textarea>
                 </div>
                 <hr class="hr-light">
                 <button type="submit" class="btn btn-success">

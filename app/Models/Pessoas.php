@@ -21,7 +21,6 @@ class Pessoas extends Model
         'bairro',
         'cidade',
         'email',
-        'senha',
         'telefone',
         'tipoPessoa_id'
     ];

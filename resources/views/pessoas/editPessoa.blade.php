@@ -92,17 +92,12 @@
                     </div>
                 </div>
                 <hr class="hr-light">
-                <h4 class="text-center text-white"><u>Outras Informações</u></h4>
-                <div class="form-group">
-                    <label for="email">E-mail: </label>
-                    <input type="email" name="email" id="email" class="form-control"
-                     placeholder="example@example.com.br" value="{{ $registro->email }}">
-                </div>
+                <h4 class="text-center text-white"><u>Outras Informações Para Contato</u></h4>
                 <div class="row">
                     <div class="form-group col-lg-6">
-                        <label for="senha">Senha: </label>
-                        <input type="password" name="senha" id="senha" class="form-control"
-                         placeholder="Informe a senha" value="{{ $registro->senha }}">
+                        <label for="email">E-mail: </label>
+                        <input type="email" name="email" id="email" class="form-control"
+                         placeholder="example@example.com.br" value="{{ $registro->email }}">
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="telefone">Telefone:</label>
