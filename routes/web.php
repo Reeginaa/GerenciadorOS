@@ -50,8 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('download/{id}', 'App\Http\Controllers\AnexoOrcamentoController@download')->name('download');
     Route::get('fecharOS/{id}', 'App\Http\Controllers\OrdemServicoController@fechar')->name('fecharOS');
     Route::get('reabrirOS/{id}', 'App\Http\Controllers\OrdemServicoController@reabrir')->name('reabrirOS');
-    Route::get('faturarOS/{id}', 'App\Http\Controllers\OrdemServicoController@faturar')->name('faturarOS');
-    Route::get('concertarOS/{id}', 'App\Https\Controllers\OrdemServicoController@concertado')->name('concertarOS');
+    Route::get('concertarOS/{id}', 'App\Http\Controllers\OrdemServicoController@concertada')->name('concertarOS');
+    Route::get('pagarOS/{id}', 'App\Http\Controllers\OrdemServicoController@pago')->name('pagarOS');
     Route::post('postPeca', 'App\Http\Controllers\PecaController@postPeca')->name('postPeca');
     Route::post('postServico', 'App\Http\Controllers\ServicoController@postServico')->name('postServico');
     Route::get('pdf', 'App\Http\Controllers\PdfController@geraPdf')->name('pdf');

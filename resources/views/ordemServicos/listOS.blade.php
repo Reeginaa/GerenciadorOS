@@ -53,7 +53,7 @@
                                     </a>
                                     <br>
                                     <a href="{{ route('comprovantepdf') }}" class="btn btn-blue-grey btn-sm">
-                                        <i class="fas fa-print mr-1"></i>Imprimir Comprovante e Nº
+                                        <i class="fas fa-print mr-1"></i>Imprimir Comprovante
                                     </a>
                                 </td>
                             </tr>

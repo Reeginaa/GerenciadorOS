@@ -79,9 +79,7 @@
                         <div class="form-group col-lg-6">
                             <label for="observacoesOS">Observações: </label>
                             <textarea name="observacoesOS" id="observacoesOS" cols="30" rows="1" class="form-control"
-                             type="text" placeholder="Escreva as observações da O.S.">
-                                {{ $registro->observacoesOS }}
-                            </textarea>
+                             type="text" placeholder="Escreva as observações da O.S.">{{ $registro->observacoesOS }}</textarea>
                         </div>
                     </div>
 
@@ -238,22 +236,24 @@
                     <a href="{{ route('ordemServicos.index') }}" class="btn btn-danger">
                         <i class="fas fa-undo mr-1"></i>Voltar
                     </a>
-                    @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 1)
+                    @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 1 && $registro->statusServico_id != 2)
                         <a href="{{ route('fecharOS', $registro->id) }}" class="btn btn-primary">
                             <i class="far fa-times-circle mr-1"></i>Fechar O.S.
                         </a>
                     @endif
-                    @if ($registro->statusServico_id == 5 || $registro->statusServico_id == 1)
+                    @if ($registro->statusServico_id == 5 || $registro->statusServico_id == 1 || $registro->statusServico_id == 2)
                         <a href="{{ route('reabrirOS', $registro->id) }}" class="btn btn-primary">
-                            Reabir O.S.
+                            <i class="fas fa-door-open mr-1"></i>Reabir O.S.
                         </a>
                     @endif
-                    @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 1)
-                        <a href="{{ route('faturarOS', $registro->id) }}" class="btn btn-primary">
-                            <i class="fas fa-hand-holding-usd mr-1"></i>Faturar O.S.
+                    @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 2 )
+                        <a href="{{ route('pagarOS', $registro->id) }}" class="btn btn-primary">
+                            <i class="fas fa-hand-holding-usd mr-1"></i>Pagar O.S.
                         </a>
+                    @endif
+                    @if ($registro->statusServico_id != 5 && $registro->statusServico_id != 1 && $registro->statusServico_id != 2 )
                         <a href="{{ route('concertarOS', $registro->id) }}" class="btn btn-primary">
-                            <i class="fas fa-check mr-1"></i>Concertada
+                            <i class="fas fa-check mr-1"></i>Concertar O.S.
                         </a>
                     @endif
 
