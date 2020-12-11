@@ -39,8 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('pessoas', 'App\Http\Controllers\PessoaController');
     Route::get('pessoas/{id}/destroy', 'App\Http\Controllers\PessoaController@destroy');
     Route::resource('ordemServicos', 'App\Http\Controllers\OrdemServicoController');
-    Route::get('comprovantepdf', 'App\Http\Controllers\PdfController@comprovante')->name('comprovantepdf');
-    Route::get('imprimirOS', 'App\Http\Controllers\PdfController@imprimirOS')->name('imprimirOS');
+    Route::get('comprovantepdf/{id}', 'App\Http\Controllers\PdfController@comprovante')->name('comprovantepdf');
+    Route::get('imprimirOS/{id}', 'App\Http\Controllers\PdfController@imprimirOS')->name('imprimirOS');
     Route::resource('osPecas', 'App\Http\Controllers\OSPecaController');
     Route::post('ospecas/destroy', 'App\Http\Controllers\OSPecaController@destroy')->name('removerOsPecas');
     Route::resource('osServicos', 'App\Http\Controllers\OSServicoController');

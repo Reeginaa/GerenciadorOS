@@ -22,18 +22,18 @@ class PdfController extends Controller
     * Gerando PDF do comprovante
     * @param int $id
     */
-    public function comprovante()
+    public function comprovante($id)
     {
-        $ordemServico = OrdemServicos::all();
+        $ordemServico = OrdemServicos::with('pessoa')->with('equipamento')->find($id);
 
         $pdf = PDF::loadView('ordemServicos.comprovante', compact('ordemServico'));
 
         return $pdf->setPaper('a4')->stream('Comprovante_entrada.pdf');
     }
 
-    public function imprimirOS()
+    public function imprimirOS($id)
     {
-        $ordemServico = OrdemServicos::all();
+        $ordemServico = OrdemServicos::with('osPeca')->with('osServico')->with('pessoa')->with('equipamento')->with('statusServico')->find($id);
 
         $pdf = PDF::loadView('ordemServicos.imprimirOS', compact('ordemServico'));
 

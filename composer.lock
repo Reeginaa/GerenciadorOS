@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e8da79d28bb35354f23dd715bcee128",
+    "content-hash": "5e241e40880b15a1a2721ab280176aa4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -171,6 +171,60 @@
                 }
             ],
             "time": "2020-08-18T23:57:15+00:00"
+        },
+        {
+            "name": "copam/phpjasper",
+            "version": "v1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/copam/phpjasper.git",
+                "reference": "37b67803e1185c3744b35763bfc911c9eebfeb23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/copam/phpjasper/zipball/37b67803e1185c3744b35763bfc911c9eebfeb23",
+                "reference": "37b67803e1185c3744b35763bfc911c9eebfeb23",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JasperPHP": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leandro Bitencourt",
+                    "email": "leandrocintrabitencourt@gmail.com",
+                    "homepage": "http://www.leandrobitencourt.zz.mu",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Daniel Rodrigues",
+                    "email": "danielrodrigues-ti@hotmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Create Reports in PHP/Laravel with JasperReports",
+            "homepage": "https://github.com/copam/phpjasper",
+            "keywords": [
+                "jasper",
+                "jasperreports",
+                "java",
+                "json",
+                "pdf",
+                "php",
+                "reports",
+                "xml"
+            ],
+            "time": "2019-11-22T19:58:00+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1308,50 +1362,6 @@
                 "ui"
             ],
             "time": "2020-11-03T19:51:21+00:00"
-        },
-        {
-            "name": "lavela/phpjasper",
-            "version": "v3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lavela/phpjasper.git",
-                "reference": "d3d7bbc7d1d78766dd5c554189ba1680b9b0517a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lavela/phpjasper/zipball/d3d7bbc7d1d78766dd5c554189ba1680b9b0517a",
-                "reference": "d3d7bbc7d1d78766dd5c554189ba1680b9b0517a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PHPJasper\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Leandro Cintra Bitencourt",
-                    "email": "leandrobitencourt.ti@gmail.com",
-                    "role": "lead"
-                }
-            ],
-            "description": "Gerador de relatórios PHP",
-            "keywords": [
-                "pdf",
-                "relatórios"
-            ],
-            "time": "2018-03-07T17:22:33+00:00"
         },
         {
             "name": "league/commonmark",
@@ -5135,6 +5145,47 @@
     ],
     "packages-dev": [
         {
+            "name": "cossou/jasperphp",
+            "version": "2.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cossou/JasperPHP.git",
+                "reference": "d24bc69aaaf55beb2a76a0db2a572e81f6baee09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cossou/JasperPHP/zipball/d24bc69aaaf55beb2a76a0db2a572e81f6baee09",
+                "reference": "d24bc69aaaf55beb2a76a0db2a572e81f6baee09",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JasperPHP": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hélder Duarte",
+                    "email": "cossou@gmail.com"
+                }
+            ],
+            "description": "Create Reports in PHP with JasperReports",
+            "homepage": "https://github.com/cossou/JasperPHP",
+            "keywords": [
+                "jasper",
+                "jasperreports",
+                "java",
+                "pdf",
+                "reports"
+            ],
+            "time": "2018-11-16T11:45:31+00:00"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.4.0",
             "source": {
@@ -5535,6 +5586,50 @@
                 "test"
             ],
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "lavela/phpjasper",
+            "version": "v3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lavela/phpjasper.git",
+                "reference": "d3d7bbc7d1d78766dd5c554189ba1680b9b0517a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lavela/phpjasper/zipball/d3d7bbc7d1d78766dd5c554189ba1680b9b0517a",
+                "reference": "d3d7bbc7d1d78766dd5c554189ba1680b9b0517a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPJasper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leandro Cintra Bitencourt",
+                    "email": "leandrobitencourt.ti@gmail.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "Gerador de relatórios PHP",
+            "keywords": [
+                "pdf",
+                "relatórios"
+            ],
+            "time": "2018-03-07T17:22:33+00:00"
         },
         {
             "name": "mockery/mockery",

@@ -52,7 +52,7 @@
                                         <i class="far fa-edit mr-1"></i>Editar
                                     </a>
                                     <br>
-                                    <a href="{{ route('comprovantepdf') }}" class="btn btn-blue-grey btn-sm">
+                                    <a href="{{ route('comprovantepdf', $item->id) }}" class="btn btn-blue-grey btn-sm">
                                         <i class="fas fa-print mr-1"></i>Imprimir Comprovante
                                     </a>
                                 </td>

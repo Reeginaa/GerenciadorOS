@@ -14,31 +14,19 @@
     <br>
     <form>
         <label><b>Cliente: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->pessoa->nome }}">
-        @endforeach
+        <label>{{ $ordemServico->pessoa->nome }}</label>
         <label><b>Data Entrada: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->dataInicio }}">
-        @endforeach
-        <br> <br>
+        <label>{{ $ordemServico->dataInicio }}</label>
         <label><b>CPF: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->pessoa->cpf }}">
-        @endforeach
-        <label><b>Equipamento: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->equipamento->nomeEquipamento }}">
-        @endforeach
+        <label>{{ $ordemServico->pessoa->cpf }}</label>
         <br><br>
+        <label><b>Equipamento: </b></label>
+        <label>{{ $ordemServico->equipamento->nomeEquipamento }}</label>
         <label><b>Defeito: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->defeito }}">
-        @endforeach
+        <label>{{ $ordemServico->defeito }}</label>
+        <br><br>
         <label><b>Observações: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->observacoesOS }}">
-        @endforeach
+        <label>{{ $ordemServico->observacoesOS }}</label>
     </form>
     <br>
     <hr>
@@ -57,6 +45,7 @@
     <p>____________________________________________________</p>
     <p>Assinatura do cliente</p>
     <br><br><br>
+    <hr>
     <p><b>OBSERVAÇÃO:</b> Este comprovante deve ser apresentado na retirada do equipamento, ele serve
     para comprovar que você deixou seu equipamento conosco, não o <b>perca</b> e nem <b>esqueça</b>
     de leva-lo consigo na retirada. Somente devolvemos seu equipamento com a apresentação do mesmo.</p>

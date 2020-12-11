@@ -14,57 +14,41 @@
     <br>
     <form>
         <label><b>Cliente: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->pessoa->nome }}">
-        @endforeach
+            <input type="text" value="{{ $ordemServico->pessoa->nome }}">
         <label><b>CPF: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->pessoa->cpf }}">
-        @endforeach
+            <input type="text" value="{{ $ordemServico->pessoa->cpf }}">
         <br><br>
         <label><b>Data Entrada: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->dataInicio }}">
-        @endforeach
+            <input type="text" value="{{ $ordemServico->dataInicio }}">
         <label><b>Data Término: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->dataTermino }}">
-        @endforeach
+            <input type="text" value="{{ $ordemServico->dataTermino }}">
         <br><br>
         <label><b>Equipamento: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->equipamento->nomeEquipamento }}">
-        @endforeach
+            <input type="text" value="{{ $ordemServico->equipamento->nomeEquipamento }}">
         <label><b>Defeito: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->defeito }}">
-        @endforeach
+            <input type="text" value="{{ $ordemServico->defeito }}">
         <br><br>
         <label><b>Observacoes: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->observacoesOS }}">
-        @endforeach
+            <input type="text" value="{{ $ordemServico->observacoesOS }}">
         <label><b>Status: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->statusServico->status }}">
-        @endforeach
+            <input type="text" value="{{ $ordemServico->statusServico->status }}">
     </form>
     <hr>
     <h3><u>Serviço</u></h3>
     <table>
         <thead>
             <tr>
-                <td>Serviço</td>
-                <td>Valor</td>
+                <td>|Serviço|</td>
+                <td>Valor|</td>
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($ordemServico as $item)
+            @foreach ($ordemServico->osServico as $item)
                 <tr>
-                    <td>{{ $item->servico }}</td>
-                    <td>{{  }}</td>
+                    <td>|{{ $item->servico->servico }}|</td>
+                    <td>R$ {{ $item->servico->valor }}|</td>
                 </tr>
-            @endforeach --}}
+            @endforeach
         </tbody>
     </table>
     <hr>
@@ -79,16 +63,21 @@
             </tr>
         </thead>
         <tbody>
-
+            @foreach ($ordemServico->osPeca as $item)
+                <tr>
+                    <td>{{ $item->qtd }}</td>
+                    <td>{{ $item->peca->item }}</td>
+                    <td>R$ {{ $item->peca->valorVenda }}</td>
+                    <td>R$ {{ $item->valor_total }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
     <hr>
     <br>
     <form>
         <label><b>Valor Total: </b></label>
-        @foreach ($ordemServico as $item)
-            <input type="text" value="{{ $item->valorTotal }}">
-        @endforeach
+            <input type="text" value="R$ {{ $ordemServico->valorTotal }}">
     </form>
     <hr>
     <h4><u>Observações: </u></h4>

@@ -83,7 +83,6 @@
                         </div>
                     </div>
 
-                    <form action="#"></form>
                     {{-- Orçamento --}}
                     <hr class="hr-light">
                     <h4 class="text-center text-white"><u>Orçamento</u></h4>
@@ -221,7 +220,7 @@
                             <div class="form-group col-lg-9"></div>
                             <div class="form-group col-lg-3">
                                 <label for="valorTotal">Valor Total:</label>
-                                <input type="real" name="valorTotal" id="valorTotal" class="form-control" readonly>
+                                <input type="real" name="valorTotal" id="valorTotal" class="form-control" value="{{ $registro->valorTotal }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -257,7 +256,7 @@
                         </a>
                     @endif
 
-                    <a href="{{ route('imprimirOS') }}" class="btn btn-primary">
+                    <a href="{{ route('imprimirOS', $registro->id) }}" class="btn btn-primary">
                         <i class="fas fa-print mr-1"></i>Imprimir O.S.
                     </a>
                 </form>

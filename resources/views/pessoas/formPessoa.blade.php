@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="rg">RG: *</label>
-                        <input id="rg" type="text" class="form-control" name="rg" required>
+                        <input id="rg" type="text" class="form-control" name="rg" required max="10">
                     </div>
                 </div>
                 <div class="row">
