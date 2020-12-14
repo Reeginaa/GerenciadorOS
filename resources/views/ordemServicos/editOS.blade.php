@@ -212,7 +212,7 @@
                             <div class="form-group col-lg-9"></div>
                             <div class="form-group col-lg-3">
                                 <label for="valorTotal">Valor Total:</label>
-                                <input type="real" name="valorTotal" id="valorTotal" class="form-control" value="{{ $registro->valorTotal }}" readonly>
+                                <input type="real" name="valorTotal" id="valorTotal" class="form-control" value="R$ {{ $registro->valorTotal }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -263,7 +263,7 @@
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 {{-- Cabeça do modal --}}
-                <div class="modal-header bg-success">
+                <div class="modal-header peach-gradient">
                     <h5 class="modal-title text-white font-weight-bold" id="addModalPecaLabel">{{ __('Nova Peça') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -319,7 +319,7 @@
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 {{-- Cabeça do Modal --}}
-                <div class="modal-header bg-success">
+                <div class="modal-header peach-gradient">
                     <h5 class="modal-title text-white font-weight-bold" id="addModalServicoLabel">{{ __('Novo Serviço') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -369,7 +369,7 @@
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 {{-- Cabeça do Modal --}}
-                <div class="modal-header bg-success">
+                <div class="modal-header peach-gradient">
                     <h5 class="modal-title text-white font-weight-bold" id="addModalAnexoLabel">{{ __('Novo Anexo') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -409,7 +409,7 @@
     <div class="modal fade" id="addServico" tabindex="1600" role="dialog" aria-labelledby="addServicoLabel" aria-hidden="true" style="z-index: 1600 !important">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-success">
+                <div class="modal-header peach-gradient">
                     <h5 class="modal-title text-white font-weight-bold" id="addServicoLabel">
                         {{ __('Novo Serviço') }}
                     </h5>
@@ -450,7 +450,7 @@
     <div class="modal fade" id="addPeca" tabindex="1600" role="dialog" aria-labelledby="addPecaLabel" aria-hidden="true" style="z-index: 1600 !important">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-success">
+                <div class="modal-header peach-gradient">
                     <h5 class="modal-title text-white font-weight-bold" id="addPecaLabel">
                         {{ __('Nova Peça') }}
                     </h5>

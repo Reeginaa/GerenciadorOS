@@ -7,7 +7,10 @@
     <title>Ordem Serviço</title>
 </head>
 <body>
-    <h1>Logo da loja</h1>
+    <h1><u>Eletrônica e Conveniência Cerbaro</u></h1>
+        <p><b>CPNJ: </b>17.714.555/0001-06</p>
+        <p><b>Endereço: </b>Rua Pe. Aneto Bogni, 333, Loja 1 - Casca/RS</p>
+        <p><b>Telefone: </b>(54)9 9633-5085</p>
     <hr>
     <h3>Ordem de Serviço</h3>
     <hr>

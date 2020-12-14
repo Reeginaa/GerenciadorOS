@@ -60,10 +60,6 @@ class OrdemServicoController extends Controller
 
         OrdemServicos::create($request->all());
 
-        // if ($request->input('ajax')) {
-        //     return json_encode($ordemServicos);
-        // }
-
         return redirect('ordemServicos')->with('success', 'O.S. inserida!!!');
     }
 
@@ -110,7 +106,10 @@ class OrdemServicoController extends Controller
         $request->validate($this->getValidate());
 
         $ordemServico = OrdemServicos::find($id);
-        $ordemServico->update($request->all());
+        $registro = $request->all();
+        $registro['valorTotal'] = str_replace('R$', '', $registro['valorTotal']);
+
+        $ordemServico->update($registro);
 
         return redirect('ordemServicos')->with('success', 'O.S. alterada!!!');
     }
