@@ -41,11 +41,15 @@
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->pessoa->nome }}</td>
                                 <td>{{ $item->statusServico->status }}</td>
-                                <td>{{ $item->dataInicio }}</td>
-                                <td>{{ $item->dataTermino }}</td>
+                                <td>{{ date('d/m/Y', strtotime($item->dataInicio)) }}</td>
+                                @if ($item->dataTermino != null)
+                                    <td>{{ date('d/m/Y', strtotime($item->dataTermino)) }}</td>
+                                @else
+                                    <td>{{ $item->dataTermino }}</td>
+                                @endif
                                 <td>{{ $item->equipamento->nomeEquipamento }}</td>
                                 <td>{{ $item->defeito }}</td>
-                                <td>{{ $item->valorTotal }}</td>
+                                <td>R$ {{ $item->valorTotal }}</td>
                                 <td>
                                     {{-- Edição --}}
                                     <a href="{{ route('ordemServicos.edit', $item->id) }}" class="btn btn-warning btn-sm">

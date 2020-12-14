@@ -13,6 +13,13 @@ use App\Models\StatusServicos;
 
 class OrdemServicoController extends Controller
 {
+
+    // private $ordemServicos;
+
+    // public function __construct()
+    // {
+    //     $this->ordemServicos = new OrdemServicos();
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +54,12 @@ class OrdemServicoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        OrdemServicos::create($request->all());
+        $ordemServicos = OrdemServicos::create($request->all());
+
+        if ($request->input('ajax')) {
+            return json_encode($ordemServicos);
+        }
+
         return redirect('ordemServicos')->with('success', 'O.S. inserida!!!');
     }
 

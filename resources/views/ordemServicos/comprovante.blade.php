@@ -14,19 +14,19 @@
     <br>
     <form>
         <label><b>Cliente: </b></label>
-        <label>{{ $ordemServico->pessoa->nome }}</label>
+            <label>{{ $ordemServico->pessoa->nome }}</label>
         <label><b>Data Entrada: </b></label>
-        <label>{{ $ordemServico->dataInicio }}</label>
+            <label>{{ date('d/m/Y', strtotime($ordemServico->dataInicio)) }}</label>
         <label><b>CPF: </b></label>
-        <label>{{ $ordemServico->pessoa->cpf }}</label>
+            <label>{{ $ordemServico->pessoa->cpf }}</label>
         <br><br>
         <label><b>Equipamento: </b></label>
-        <label>{{ $ordemServico->equipamento->nomeEquipamento }}</label>
+            <label>{{ $ordemServico->equipamento->nomeEquipamento }}</label>
         <label><b>Defeito: </b></label>
-        <label>{{ $ordemServico->defeito }}</label>
+            <label>{{ $ordemServico->defeito }}</label>
         <br><br>
         <label><b>Observações: </b></label>
-        <label>{{ $ordemServico->observacoesOS }}</label>
+            <label>{{ $ordemServico->observacoesOS }}</label>
     </form>
     <br>
     <hr>

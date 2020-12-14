@@ -1,6 +1,6 @@
 @extends('admin')
 
-<title>Lista de Tipo Pessoa</title>
+{{-- <title>Lista de Tipo Pessoa</title> --}}
 
 @section('main')
     <br><br><br>

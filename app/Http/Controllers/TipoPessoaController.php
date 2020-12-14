@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class TipoPessoaController extends Controller
 {
+    private $tipoPessoas;
+
+    public function __construct()
+    {
+        $this->tipoPessoas = new TipoPessoas();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +44,16 @@ class TipoPessoaController extends Controller
     {
         $request->validate ($this->getValidate());
 
-        TipoPessoas::create($request->all());
+        $tipoPessoas = $this->tipoPessoas;
+        $tipoPessoas->tipo = $request->input('tipo');
+        $tipoPessoas->descricao = $request->input('descricao');
+
+        $tipoPessoas->save();
+        // TipoPessoas::create($request->all());
+
+        if ($request->input('ajax')) {
+            return json_encode($tipoPessoas);
+        }
         return redirect('tipoPessoas')->with('success', 'Tipo Pessoa incluído!!!');
     }
 

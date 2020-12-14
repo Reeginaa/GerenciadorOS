@@ -7,6 +7,12 @@ use App\Models\Marcas;
 
 class MarcaController extends Controller
 {
+    private $marcas;
+
+    public function __construct()
+    {
+        $this->marcas = new Marcas();
+    }
     /**
      * Display a listing of the resource.
      * Mostra uma lista do recurso
@@ -41,7 +47,17 @@ class MarcaController extends Controller
     {
         $request->validate ($this->getValidate());
 
-        Marcas::create($request->all());
+        $marcas = $this->marcas;
+        $marcas->nomeMarca = $request->input('nomeMarca');
+        $marcas->observacaoMarca = $request->input('observacaoMarca');
+
+        $marcas->save();
+        //$marcas = Marcas::create($request->all());
+
+        if($request->input('ajax')) {
+            return json_encode($marcas);
+        }
+
         return redirect('marcas')->with('success', 'Marca incluida!!!');
     }
 

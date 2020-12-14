@@ -48,7 +48,7 @@
                                 <td>{{ $item->nome }}</td>
                                 <td>{{ $item->cpf }}</td>
                                 <td class="d-none">{{ $item->rg }}</td>
-                                <td class="d-none">{{ $item->dataNascimento }}</td>
+                                <td class="d-none">{{ date('d/m/Y', strtotime($item->dataNascimento))}}</td>
                                 <td class="d-none">{{ $item->sexo }}</td>
                                 <td class="d-none">{{ $item->logradouro }}</td>
                                 <td class="d-none">{{ $item->numero }}</td>

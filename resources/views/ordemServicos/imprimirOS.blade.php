@@ -14,32 +14,36 @@
     <br>
     <form>
         <label><b>Cliente: </b></label>
-            <input type="text" value="{{ $ordemServico->pessoa->nome }}">
+            <label>{{ $ordemServico->pessoa->nome }}</label>
         <label><b>CPF: </b></label>
-            <input type="text" value="{{ $ordemServico->pessoa->cpf }}">
+            <label>{{ $ordemServico->pessoa->cpf }}</label>
+        <label><b>Status: </b></label>
+            <label>{{ $ordemServico->statusServico->status }}</label>
         <br><br>
         <label><b>Data Entrada: </b></label>
-            <input type="text" value="{{ $ordemServico->dataInicio }}">
+            <label>{{ date('d/m/Y', strtotime($ordemServico->dataInicio)) }}</label>
         <label><b>Data Término: </b></label>
-            <input type="text" value="{{ $ordemServico->dataTermino }}">
+            @if ($ordemServico->dataTermino != null)
+                <label>{{ date('d/m/Y', strtotime($ordemServico->dataTermino)) }}</label>
+            @else
+                <label>{{ $ordemServico->dataTermino }}</label>
+            @endif
+        <label><b>Observacoes: </b></label>
+            <label>{{ $ordemServico->observacoesOS }}</label>
         <br><br>
         <label><b>Equipamento: </b></label>
-            <input type="text" value="{{ $ordemServico->equipamento->nomeEquipamento }}">
+            <label>{{ $ordemServico->equipamento->nomeEquipamento }}</label>
         <label><b>Defeito: </b></label>
-            <input type="text" value="{{ $ordemServico->defeito }}">
+            <label>{{ $ordemServico->defeito }}</label>
         <br><br>
-        <label><b>Observacoes: </b></label>
-            <input type="text" value="{{ $ordemServico->observacoesOS }}">
-        <label><b>Status: </b></label>
-            <input type="text" value="{{ $ordemServico->statusServico->status }}">
     </form>
     <hr>
     <h3><u>Serviço</u></h3>
     <table>
         <thead>
             <tr>
-                <td>|Serviço|</td>
-                <td>Valor|</td>
+                <td>Serviço</td>
+                <td>Valor</td>
             </tr>
         </thead>
         <tbody>
@@ -77,7 +81,7 @@
     <br>
     <form>
         <label><b>Valor Total: </b></label>
-            <input type="text" value="R$ {{ $ordemServico->valorTotal }}">
+            <label>R$ {{ $ordemServico->valorTotal }}</label>
     </form>
     <hr>
     <h4><u>Observações: </u></h4>
