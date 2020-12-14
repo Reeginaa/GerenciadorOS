@@ -41,7 +41,12 @@ class PessoaController extends Controller
     {
         $request->validate($this->getValidate());
 
-        Pessoas::create($request->all());
+        $pessoas = Pessoas::create($request->all());
+
+        if ($request->input('ajax')) {
+             return json_encode($pessoas);
+        }
+
         return redirect('pessoas')->with('success', 'Pessoa inserida!!!');
     }
 

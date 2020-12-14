@@ -27,5 +27,4 @@ class OSPecas extends Model
     {
         return $this->belongsTo(Pecas::class, 'peca_id', 'id');
     }
-
 }

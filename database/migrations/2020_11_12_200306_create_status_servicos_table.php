@@ -15,7 +15,6 @@ class CreateStatusServicosTable extends Migration
     {
         Schema::create('status_servicos', function (Blueprint $table) {
             $table->id();
-            $table->string('identificacao', 30)->unique();
             $table->string('status', 50)->nullable(false)->unique();
             $table->string('descricaoStatus', 350);
             $table->timestamps();

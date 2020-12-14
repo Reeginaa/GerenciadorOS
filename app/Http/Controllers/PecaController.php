@@ -45,7 +45,11 @@ class PecaController extends Controller
         $registro['valorVenda'] = str_replace('.', '', $registro['valorVenda']);
         $registro['valorVenda'] = str_replace(',', '.', $registro['valorVenda']);
         $registro['valorVenda'] = str_replace('R$', '', $registro['valorVenda']);
-        Pecas::create($registro);
+        $pecas = Pecas::create($registro);
+
+        if ($request->input('ajax')) {
+            return json_encode($pecas);
+        }
         return redirect('pecas')->with('success', 'Peça inserida!!!');
     }
 

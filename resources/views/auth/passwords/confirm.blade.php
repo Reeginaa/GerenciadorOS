@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-<!-- Your custom styles (optional) -->
-<link rel="stylesheet" href=" {{ URL::to('css/style.css')}}">
-<title>Gerenciador de Ordem de Serviço - Esqueceu senha</title>
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

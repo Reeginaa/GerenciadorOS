@@ -42,7 +42,12 @@ class ServicoController extends Controller
         $registro['valor'] = str_replace('.', '', $registro['valor']);
         $registro['valor'] = str_replace(',', '.', $registro['valor']);
         $registro['valor'] = str_replace('R$', '', $registro['valor']);
-        Servicos::create($registro);
+        $servicos = Servicos::create($registro);
+
+        if ($request->input('ajax')) {
+            return json_encode($servicos);
+        }
+
         return redirect('servicos')->with('success', 'Serviço inserido!!!');
     }
 

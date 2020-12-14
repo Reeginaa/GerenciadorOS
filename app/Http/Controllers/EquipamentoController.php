@@ -41,7 +41,12 @@ class EquipamentoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        Equipamentos::create($request->all());
+        $equipamentos = Equipamentos::create($request->all());
+
+        if ($request->input('ajax')) {
+            return json_encode($equipamentos);
+        }
+
         return redirect('equipamentos')->with('success', 'Equipamento inserido!!!');
     }
 

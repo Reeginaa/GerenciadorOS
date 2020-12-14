@@ -6,10 +6,12 @@ use App\Models\AnexoOrcamento;
 use Illuminate\Http\Request;
 use App\Models\Pessoas;
 use App\Models\Equipamentos;
+use App\Models\Marcas;
 use App\Models\OrdemServicos;
 use App\Models\Pecas;
 use App\Models\Servicos;
 use App\Models\StatusServicos;
+use App\Models\TipoPessoas;
 
 class OrdemServicoController extends Controller
 {
@@ -41,7 +43,9 @@ class OrdemServicoController extends Controller
         $listaPessoa = Pessoas::all();
         $listaStatusServico = StatusServicos::all();
         $listaEquipamento = Equipamentos::all();
-        return view('ordemServicos.formOS', compact('listaPessoa', 'listaStatusServico', 'listaEquipamento'));
+        $listaMarca = Marcas::all();
+        $listaTipoPessoa = TipoPessoas::all();
+        return view('ordemServicos.formOS', compact('listaPessoa', 'listaStatusServico', 'listaEquipamento', 'listaMarca', 'listaTipoPessoa'));
     }
 
     /**
@@ -54,11 +58,11 @@ class OrdemServicoController extends Controller
     {
         $request->validate($this->getValidate());
 
-        $ordemServicos = OrdemServicos::create($request->all());
+        OrdemServicos::create($request->all());
 
-        if ($request->input('ajax')) {
-            return json_encode($ordemServicos);
-        }
+        // if ($request->input('ajax')) {
+        //     return json_encode($ordemServicos);
+        // }
 
         return redirect('ordemServicos')->with('success', 'O.S. inserida!!!');
     }
