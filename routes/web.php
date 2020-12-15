@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use JasperPHP\JasperPHP  as  JasperPHP ;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('postPeca', 'App\Http\Controllers\PecaController@postPeca')->name('postPeca');
     Route::post('postServico', 'App\Http\Controllers\ServicoController@postServico')->name('postServico');
     Route::get('pdf', 'App\Http\Controllers\PdfController@geraPdf')->name('pdf');
+
+    // Route::get('testando', 'App\Http\Controllers\JasperController@index')->name('testando');
+    Route::get('testeReport', 'App\Http\Controllers\JasperController@generateReport')->name('testeReport');
 });
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');

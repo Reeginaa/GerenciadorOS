@@ -145,11 +145,10 @@
                     // Como o resultado volta em string então da parse para JSON
                     result = JSON.parse(result);
 
-
                     //console.log(result);
 
                     // setando a marca no select
-                    $('[name=id]').map(function(_i, element){
+                    $('#marca').map(function(_i, element){
                         var option = document.createElement("option");
                         option.text = result.nomeMarca;
                         option.value = result.id;

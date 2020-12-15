@@ -193,7 +193,7 @@
                     result = JSON.parse(result);
 
                     // setando o tipo pessoa no select
-                    $('[name=id]').map(function(_i, element){
+                    $('#tipo').map(function(_i, element){
                         var option = document.createElement("option");
                         option.text = result.tipo;
                         option.value = result.id;

@@ -58,7 +58,7 @@
                      aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-file-alt mr-1"></i> Relatórios</a>
                     <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Gera Relatório Teste</a>
+                        <a class="dropdown-item" href="{{ route('testeReport') }}">Gera Relatório Teste</a>
                     </div>
                 </li>
 
