@@ -58,7 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pdf', 'App\Http\Controllers\PdfController@geraPdf')->name('pdf');
 
     // Route::get('testando', 'App\Http\Controllers\JasperController@index')->name('testando');
-    Route::get('testeReport', 'App\Http\Controllers\JasperController@generateReport')->name('testeReport');
+    //Route::get('testeReport', 'App\Http\Controllers\JasperController@generateReport')->name('testeReport');
 });
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');

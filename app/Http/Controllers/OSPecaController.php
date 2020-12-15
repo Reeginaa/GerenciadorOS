@@ -20,7 +20,7 @@ class OSPecaController extends Controller
         $registro = $request->all();
         $registro['valor_total'] = $registro['qtd'] * $registro['valorPeca'];
         OSPecas::create($registro);
-        return redirect('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit');
+        return redirect('ordemServicos/' . $request->all()['ordemServico_id'] . '/edit')->with('Peça incluida com sucesso na OS!');
     }
 
     /**

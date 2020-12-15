@@ -51,7 +51,7 @@ class JasperController extends Controller
             "pt_BR"
         )->execute();
 
-        // $file = $output.'.'.$extensao;
+        $file = $output.'.'.$extensao;
 
         // verifica se tem o arquivo
         if(!file_exists($file)){

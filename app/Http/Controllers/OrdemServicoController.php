@@ -16,12 +16,6 @@ use App\Models\TipoPessoas;
 class OrdemServicoController extends Controller
 {
 
-    // private $ordemServicos;
-
-    // public function __construct()
-    // {
-    //     $this->ordemServicos = new OrdemServicos();
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -71,8 +65,7 @@ class OrdemServicoController extends Controller
      */
     public function show($id)
     {
-        $ordemServico = OrdemServicos::find($id);
-        return view('ordemServicos.viewOS', ['registro'=>$ordemServico]);
+        //
     }
 
     /**

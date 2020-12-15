@@ -53,14 +53,14 @@
                         <a class="dropdown-item" href="{{ route('pessoas.index') }}">Pessoa</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-file-alt mr-1"></i> Relatórios</a>
                     <div class="dropdown-menu dropdown-primary orange accent-2" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{ route('testeReport') }}">Gera Relatório Teste</a>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -85,5 +85,8 @@
           <!-- Collapsible content -->
         </div>
     </nav>
+    @if (Route::current()->getName() =='admin')
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    @endif
 </header>
 @endsection

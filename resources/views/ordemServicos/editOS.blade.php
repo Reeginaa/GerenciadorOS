@@ -18,6 +18,7 @@
                     </ul>
                 @endif
 
+                {{-- START FORMULÁRIO DE EDIÇÃO DA ORDEM DE SERVIÇO --}}
                 <form action="{{ route('ordemServicos.update', $registro->id) }}" method="post" class="form-group text-center">
                     @csrf
                     @method('PUT')
@@ -49,8 +50,9 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="dataInicio">Data de Entrada: *</label>
-                            <input type="date" name="dataInicio" id="dataInicio" class="form-control"
-                             required value="{{ $registro->dataInicio }}">
+                            <input type="text" name="dataInicio" id="dataInicio" class="form-control"
+                             required value="{{ date('d/m/Y', strtotime($registro->dataInicio)) }}"
+                             onkeypress="$(this).mask('00/00/0000')">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="dataTermino">Data Término: </label>
@@ -647,7 +649,7 @@
                     result = JSON.parse(result);
 
                     // setando o serviço no select
-                    $('[name=id]').map(function(_i, element){
+                    $('#servico_id').map(function(_i, element){
                         var option = document.createElement("option");
                         option.text = result.servico;
                         option.value = result.id;
@@ -700,7 +702,7 @@
                     result = JSON.parse(result);
 
                     // setando a peça no select
-                    $('[name=id]').map(function(_i, element){
+                    $('#peca_id').map(function(_i, element){
                         var option = document.createElement("option");
                         option.text = result.item;
                         option.value = result.id;
