@@ -50,8 +50,8 @@
                 <div class="row">
                     <div class="form-group col-lg-5">
                         <label for="dataNascimento">Data Nascimento: *</label>
-                        <input type="date" name="dataNascimento" id="dataNascimento" class="form-control"
-                         required value="{{ $registro->dataNascimento }}">
+                        <input type="text" name="dataNascimento" id="dataNascimento" class="form-control"
+                         required value="{{ date('d/m/Y', strtotime($registro->dataNascimento)) }}">
                     </div>
                     <div class="form-group col-lg-7">
                         <label for="sexo">Sexo: *</label>
