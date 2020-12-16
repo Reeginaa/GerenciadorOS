@@ -56,8 +56,9 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="dataTermino">Data Término: </label>
-                            <input type="date" name="dataTermino" id="dataTermino" class="form-control"
-                             value="{{ $registro->dataTermino }}">
+                            <input type="text" name="dataTermino" id="dataTermino" class="form-control"
+                             value="{{$registro->dataTermino}}"
+                             onkeypress="$(this).mask('00/00/0000')" placeholder="dd/mm/aaaa">
                         </div>
                     </div>
                     <div class="row">

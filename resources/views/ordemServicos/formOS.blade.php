@@ -135,11 +135,11 @@
                     <form action="{{ action('App\Http\Controllers\PessoaController@store') }}" method="post" id="formAddCliente" onsubmit="return false;">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="tipo">Tipo Pessoa: * </label>
+                            <label for="tipo_modal">Tipo Pessoa: * </label>
                                 <a href="#" class="tipoPessoa" data-toggle="modal" data-target="#addTipoPessoa">
                                     <i class="fas fa-plus mr-1" data-toggle="tooltip" title="Novo Tipo Pessoa"></i>Cadastrar Tipo Pessoa
                                 </a>
-                            <select name="tipoPessoa_id_modal" id="tipo" class="form-control" required>
+                            <select name="tipoPessoa_id_modal" id="tipo_modal" class="form-control" required>
                                 <option value="">Selecione um tipo de pessoa</option>
                                 @foreach ($listaTipoPessoa as $item)
                                     <option value="{{ $item->id }}">{{ $item->tipo }}</option>
@@ -252,11 +252,11 @@
                             placeholder="Escreva o nome do equipamento" max="40">
                         </div>
                         <div class="form-group">
-                            <label for="marca">Marca: * </label>
+                            <label for="marca_modal">Marca: * </label>
                                 <a href="#" class="marca" data-toggle="modal" data-target="#addMarca">
                                     <i class="fas fa-plus mr-1" data-toggle="tooltip" title="Nova Marca"></i>Cadastrar Marca
                                 </a>
-                            <select class="form-control" name="marca_id_modal" id="marca" required>
+                            <select class="form-control" name="marca_id_modal" id="marca_modal" required>
                                 <option value="">Selecione uma Marca</option>
                                 @foreach ($listaMarca as $item)
                                     <option value="{{ $item->id }}">{{ $item->nomeMarca }}</option>
@@ -533,7 +533,7 @@
                     result = JSON.parse(result);
 
                     // setando o tipo pessoa no select
-                    $('#tipo').map(function(_i, element){
+                    $('#tipo_modal').map(function(_i, element){
                         var option = document.createElement("option");
                         option.text = result.tipo;
                         option.value = result.id;
@@ -582,7 +582,7 @@
                     result = JSON.parse(result);
 
                     // setando o tipo pessoa no select
-                    $('#marca').map(function(_i, element){
+                    $('#marca_modal').map(function(_i, element){
                         var option = document.createElement("option");
                         option.text = result.nomeMarca;
                         option.value = result.id;
