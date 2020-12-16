@@ -36,7 +36,10 @@ class ServicoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ($this->getValidate());
+        $request->validate ([
+            'servico' => 'required|max:200|unique:servicos,servico',
+            'valor' => 'required'
+        ]);
 
         $registro = $request->all();
         $registro['valor'] = str_replace('.', '', $registro['valor']);
@@ -83,7 +86,10 @@ class ServicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidate());
+        $request->validate([
+            'servico' => 'required|max:200|unique:servicos,servico,'.$id,
+            'valor' => 'required'
+        ]);
 
         $registro = $request->all();
         $registro['valor'] = str_replace('.', '', $registro['valor']);
@@ -112,15 +118,6 @@ class ServicoController extends Controller
         } catch (\PDOException $e) {
             return ['status' => 'errorPDO', 'message' => $e->getMessage()];
         }
-    }
-
-    //Método com validações
-    private function getValidate()
-    {
-        return [
-            'servico' => 'required|max:200|unique:servicos,servico',
-            'valor' => 'required'
-        ];
     }
 
     public function postServico(Request $request)

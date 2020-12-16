@@ -45,7 +45,9 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ($this->getValidate());
+        $request->validate ( [
+            'nomeMarca' => 'required|max:40|unique:marcas,nomeMarca',
+        ]);
 
         $marcas = $this->marcas;
         $marcas->nomeMarca = $request->input('nomeMarca');
@@ -96,7 +98,9 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidateUpdate());
+        $request->validate([
+            'nomeMarca' => 'required|max:40|unique:marcas,nomeMarca,'.$id,
+        ]);
 
         $marca = Marcas::find($id);
         $marca->update($request->all());
@@ -122,21 +126,5 @@ class MarcaController extends Controller
         } catch (\PDOException $e){
             return ['status' => 'errorPDO', 'message' => $e->getMessage()];
         }
-    }
-
-    //Método das validações
-    private function getValidate()
-    {
-        return [
-            'nomeMarca' => 'required|max:40|unique:marcas,nomeMarca'
-        ];
-    }
-
-    //Método das validações
-    private function getValidateUpdate()
-    {
-        return [
-            'nomeMarca' => 'required|max:40'
-        ];
     }
 }

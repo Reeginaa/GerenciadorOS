@@ -52,12 +52,12 @@
                             <label for="dataInicio">Data de Entrada: *</label>
                             <input type="text" name="dataInicio" id="dataInicio" class="form-control"
                              required value="{{ date('d/m/Y', strtotime($registro->dataInicio)) }}"
-                             onkeypress="$(this).mask('00/00/0000')">
+                             readonly>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="dataTermino">Data Término: </label>
                             <input type="text" name="dataTermino" id="dataTermino" class="form-control"
-                             value="{{$registro->dataTermino}}"
+                             value="@if ($registro->dataTermino == null){{ $registro->dataTermino}}@else{{ date('d/m/Y', strtotime($registro->dataTermino)) }}@endif"
                              onkeypress="$(this).mask('00/00/0000')" placeholder="dd/mm/aaaa">
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
 
-                    {{-- Orçamento --}}
+                    {{--Tabela com os Orçamentos --}}
                     <hr class="hr-light">
                     <h4 class="text-center text-white"><u>Orçamento</u></h4>
                     <div class="container">
@@ -110,7 +110,7 @@
                                                         <i class="fas fa-download mr-1"></i>Download
                                                     </a>
                                                     {{-- Exclusão --}}
-                                                    <button class="btn btn-danger btn-sm" type="submit" onclick="removerAnexoOrcamento({{ $item->id }})">
+                                                    <button class="btn btn-danger btn-sm" type="button" onclick="removerAnexoOrcamento({{ $item->id }})">
                                                         <i class="far fa-trash-alt mr-1"></i>Excluir
                                                     </button>
                                                 </td>
@@ -132,7 +132,7 @@
                             <div class="col-lg-8">
                                 <div>
                                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addModalServico">
-                                        <i class="fas fa-plus mr-1" data-toggle="tooltip" data-placement="top" title="Incluir Servico"></i>Adicionar Serviço
+                                        <i class="fas fa-plus mr-1" data-toggle="tooltip" data-placement="top" title="Incluir Servico"></i>Adicionar Serviço a O.S.
                                     </button>
                                 </div>
                                 <br>
@@ -151,7 +151,7 @@
                                                 <td>R$ {{ $item->servico->valor }}</td>
                                                 <td>
                                                     {{-- Exclusão --}}
-                                                    <button class="btn btn-danger btn-sm" type="submit" onclick="removerOsServico({{ $item->id }})">
+                                                    <button class="btn btn-danger btn-sm" type="button" onclick="removerOsServico({{ $item->id }})">
                                                         <i class="far fa-trash-alt mr-1"></i>Excluir
                                                     </button>
                                                 </td>
@@ -173,7 +173,7 @@
                             <div class="col-lg-8">
                                 <div>
                                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addModalPeca">
-                                        <i class="fas fa-plus mr-1" data-toggle="tooltip" data-placement="top" title="Incluir Peça"></i>Adicionar Peça
+                                        <i class="fas fa-plus mr-1" data-toggle="tooltip" data-placement="top" title="Incluir Peça"></i>Adicionar Peça a O.S.
                                     </button>
                                 </div>
                                 <br>
@@ -196,7 +196,7 @@
                                                 <td>R$ {{ $item->valor_total }}</td>
                                                 <td>
                                                     {{-- Exclusão --}}
-                                                    <button class="btn btn-danger btn-sm" type="submit" onclick="removerOsPeca({{ $item->id }})">
+                                                    <button class="btn btn-danger btn-sm" type="button" onclick="removerOsPeca({{ $item->id }})">
                                                         <i class="far fa-trash-alt mr-1"></i>Excluir
                                                     </button>
                                                 </td>
@@ -261,7 +261,7 @@
     </div>
     <br><br><br><br>
 
-    {{-- Start ADD Peça Modal--}}
+    {{-- Start Modal ADD Peça na OS --}}
     <div class="modal fade" id="addModalPeca" tabindex="-1" role="dialog" aria-labelledby="addModalPecaLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -285,9 +285,6 @@
                             </div>
                             <div class="form-group col-lg-9">
                                 <label for="peca">Peça: *</label>
-                                <a href="#" class="peca" data-toggle="modal" data-target="#addPeca">
-                                    <i class="fas fa-plus mr-1" data-toggle="tooltip" title="Nova Peça"></i>Cadastrar Peça
-                                </a>
                                 <select name="peca_id" id="peca_id" class="form-control" required>
                                     <option value="">Selecione a Peça</option>
                                     @foreach ($listaPeca as $item)
@@ -315,9 +312,9 @@
             </div>
         </div>
     </div>
-    {{-- End ADD Peça Modal--}}
+    {{-- End Modal ADD Peça na OS --}}
 
-    {{-- Start ADD Serviço Modal --}}
+    {{-- Start Modal ADD Serviço na OS --}}
     <div class="modal fade" id="addModalServico" tabindex="-1" role="dialog" aria-labelledby="addModalServicoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -336,9 +333,6 @@
                         <input type="hidden" name="ordemServico_id" value="{{ $registro->id }}">
                         <div class="form-group">
                             <label for="servico_id">Servico: </label>
-                            <a href="#" class="servico" data-toggle="modal" data-target="#addServico">
-                                <i class="fas fa-plus mr-1" data-toggle="tooltip" title="Novo Serviço"></i>Cadastrar Serviço
-                            </a>
                             <select name="servico_id" id="servico_id" class="form-control">
                                 <option value="">Selecione o Serviço</option>
                                 @foreach ($listaServico as $item)
@@ -365,9 +359,9 @@
             </div>
         </div>
     </div>
-    {{-- End ADD Serviço Modal --}}
+    {{-- End Modal ADD Serviço na OS --}}
 
-    {{-- Start ADD Orçamento Modal --}}
+    {{-- Start Modal ADD Orçamento na OS --}}
     <div class="modal fade" id="addModalOrçamento" tabindex="-1" role="dialog" aria-labelledby="addModalAnexoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -404,99 +398,7 @@
             </div>
         </div>
     </div>
-    {{-- End ADD Orçamento Modal --}}
-
-    {{-- MODAIS AUXILIARES --}}
-
-    {{-- START Modal ADD Serviço --}}
-    <div class="modal fade" id="addServico" tabindex="1600" role="dialog" aria-labelledby="addServicoLabel" aria-hidden="true" style="z-index: 1600 !important">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header peach-gradient">
-                    <h5 class="modal-title text-white font-weight-bold" id="addServicoLabel">
-                        {{ __('Novo Serviço') }}
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ action('App\Http\Controllers\ServicoController@store') }}" method="post" id="formAddServico" onsubmit="return false;">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="servico_modal">Serviço: *</label>
-                            <input type="text" class="form-control" name="servico_modal" id="servico_modal" required
-                             placeholder="Escreva o serviço">
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="form-group col-lg-6">
-                                <label for="valor_modal">Valor: *</label>
-                                <input type="real" class="form-control" name="valor_modal" id="valor_modal" required onkeypress="$(this).mask('R$ #.##0,00')">
-                            </div>
-                            <div class="col-lg-3"></div>
-                        </div>
-                        <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Salvar" id="addServicoButton">
-                            <i class="fas fa-save mr-1"></i>{{ __('Salvar') }}
-                        </button>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="tooltip" title="Cancelar">
-                            <i class="fas fa-undo-alt mr-1"></i>{{ __('Cancelar') }}
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- END Modal ADD Serviço --}}
-
-    {{-- START Modal ADD Peça --}}
-    <div class="modal fade" id="addPeca" tabindex="1600" role="dialog" aria-labelledby="addPecaLabel" aria-hidden="true" style="z-index: 1600 !important">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header peach-gradient">
-                    <h5 class="modal-title text-white font-weight-bold" id="addPecaLabel">
-                        {{ __('Nova Peça') }}
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ action('App\Http\Controllers\PecaController@store') }}" method="post" id="formAddPeca" onsubmit="return false;">
-                        {{ csrf_field() }}
-                        <div class="row">
-                            <div class="form-group col-lg-9">
-                                <label for="item_modal">Item: *</label>
-                                <input id="item_modal" type="text" class="form-control" name="item_modal"
-                                 required placeholder="Informe o nome do item">
-                            </div>
-                            <div class="form-group col-lg-3">
-                                <label for="quantidade_modal">Quantidade: *</label>
-                                <input type="number" class="form-control" name="quantidade_modal" id="quantidade_modal" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-lg-6">
-                                <label for="valorCompra_modal">Valor Compra: *</label>
-                                <input type="real" class="form-control" name="valorCompra_modal" id="valorCompra_modal" required onkeypress="$(this).mask('R$ #.##0,00')">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="valorVenda_modal">Valor Venda: *</label>
-                                <input type="real" class="form-control" name="valorVenda_modal" id="valorVenda_modal" required onkeypress="$(this).mask('R$ #.##0,00')">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Salvar" id="addPecaButton">
-                            <i class="fas fa-save mr-1"></i>{{ __('Salvar') }}
-                        </button>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="tooltip" title="Cancelar">
-                            <i class="fas fa-undo-alt mr-1"></i>{{ __('Cancelar') }}
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- END Modal ADD Peça --}}
+    {{-- End Modal ADD Orçamento na OS --}}
 @endsection
 
 @section('script_pages')
@@ -526,7 +428,6 @@
                     console.log(response)
                 }
             });
-            //atualizaSubTotal();
         });
 
         //função com método ajax para buscar informações sobre o Serviço
@@ -573,6 +474,8 @@
                     console.log(response)
                 }
             });
+            // após excluir a peça da um reload na página para atualizar o valor total
+            window.location.reload();
         }
 
         // Função com método ajax para remover item serviço da tabela
@@ -595,6 +498,8 @@
                     console.log(response)
                 }
             });
+            // após excluir o serviço da um reload na página para atualizar o valor total
+            window.location.reload();
         }
 
         // Função com método ajax para remover anexo da tabela
@@ -618,112 +523,6 @@
             });
         }
 
-        $(document).ready(function(){
-
-            // Modal de Serviço
-            $('#formAddServico').submit(function(){
-                // Pegando os dados do formulário e pegando o token que valida o request
-                var servico = $("#servico_modal").val();
-                var valor = $("#valor_modal").val();
-                var _token = $("[name='_token']")[0].value;
-
-                // Montando o objeto que será enviado na request
-                var dados = {
-                    servico: servico,
-                    valor: valor,
-                    _token: _token,
-                    ajax: true
-                }
-
-                console.log(dados);
-
-                // Executando o POST para a rota de cadastro de serviço
-                $.ajax({
-                    url: "/servicos",
-                    type: 'POST',
-                    data: dados
-                })
-
-                // Caso der sucesso então adiciona a pessoa no select e fecha o modal
-                .done(function(result){
-                    // Como o resultado volta em string então da parte para JSON
-                    result = JSON.parse(result);
-
-                    // setando o serviço no select
-                    $('#servico_id').map(function(_i, element){
-                        var option = document.createElement("option");
-                        option.text = result.servico;
-                        option.value = result.id;
-                        element.appendChild(option);
-                        element.value = result.id;
-                    });
-
-                    // Fechando o modal
-                    $('#addServico').modal('hide');
-                })
-
-                // Caso der erro então da um aviso
-                .fail(function(err){
-                    console.log(err);
-                    alert("Erro ao tentar cadastrar serviço");
-                })
-
-                return false;
-            });
-
-            // Modal de Peça
-            $('#formAddPeca').submit(function(){
-                // Pegando os dados do formulário e pegando o token que valida o request
-                var item = $("#item_modal").val();
-                var quantidade = $("#quantidade_modal").val();
-                var valorCompra = $("#valorCompra_modal").val();
-                var valorVenda = $("#valorVenda_modal").val();
-                var _token = $("[name='_token']")[0].value;
-
-                // Montando o objeto que será enviado na request
-                var dados = {
-                    item: item,
-                    quantidade: quantidade,
-                    valorCompra: valorCompra,
-                    valorVenda: valorVenda,
-                    _token: _token,
-                    ajax: true
-                }
-
-                // Executando o POST para a rota de cadastro de peças
-                $.ajax({
-                    url:"/pecas",
-                    type: 'POST',
-                    data: dados
-                })
-
-                // Caso der sucesso então adiciona a nova peça no select e fecha o modal
-                .done(function(result){
-                    // Como o resultado volta em string então da parse para JSON
-                    result = JSON.parse(result);
-
-                    // setando a peça no select
-                    $('#peca_id').map(function(_i, element){
-                        var option = document.createElement("option");
-                        option.text = result.item;
-                        option.value = result.id;
-                        element.appendChild(option);
-                        element.value = result.id;
-                    });
-
-                    // Fechando o modal
-                    $('#addPeca').modal('hide');
-                })
-
-                // Caso der erro então da um aviso
-                .fail(function(err){
-                    console.log(err);
-                    alert("Erro ao tentar cadastrar peça.")
-                })
-
-                return false;
-            });
-        });
     </script>
 
     @include('scripts.confirmdeletion')

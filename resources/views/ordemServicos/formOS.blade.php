@@ -119,6 +119,7 @@
 
     {{-- MODAL AUXILIAR --}}
 
+    {{-- MODAL AUXILIAR PARA ADICIONAR CLIENTE --}}
     {{-- START Modal ADD Cliente --}}
     <div class="modal fade" id="addCliente" tabindex="1600" role="dialog" aria-labelledby="addClienteLabel" aria-hidden="true" style="z-index: 1600 !important">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -231,6 +232,46 @@
     </div>
     {{-- END Modal ADD Cliente --}}
 
+    {{-- MODAL AUXILIAR PARA ADICIONAR O TIPO DE PESSOA NA HORA DE CADASTRAR O CLIENTE --}}
+    {{-- START Modal ADD Tipo Pessoa --}}
+    <div class="modal fade" id="addTipoPessoa" tabindex="1600" role="dialog" aria-labelledby="addTipoPessoaLabel" aria-hidden="true" style="z-index: 1600 !important">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header peach-gradient">
+                    <h5 class="modal-title text-white font-weight-bold" id="addTipoPessoaLabel">
+                        {{ __('Novo Tipo Pessoa') }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ action('App\Http\Controllers\TipoPessoaController@store') }}" method="POST" id="formAddTipoPessoa" onsubmit="return false;">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="tipoPessoa_modal" class="md-0">Tipo Pessoa: *</label>
+                            <input type="text" id="tipoPessoa_modal" class="form-control" name="tipoPessoa_modal" required
+                             placeholder="Escreva o tipo de pessoa, ex.: Cliente, Atendente...">
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao_modal">Descrição: </label>
+                            <textarea name="descricao_modal" id="descricao_modal" type="text" class="form-control"
+                             placeholder="Escreva uma descrição se necessário"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Salvar" id="addTipoPessoaButton">
+                            <i class="fas fa-save mr-1"></i>{{ __('Salvar') }}
+                        </button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="tooltip" title="Cancelar">
+                            <i class="fas fa-undo-alt mr-1"></i>{{ __('Cancelar') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- END Modal ADD Tipo Pessoa --}}
+
+    {{-- MODAL AUXILIAR PARA ADICIONAR EQUIPAMENTO --}}
     {{-- START Modal ADD Equipamento --}}
     <div class="modal fade" id="addEquipamento" tabindex="1600" role="dialog" aria-labelledby="addEquipamentoLabel" aria-hidden="true" style="z-index: 1600 !important">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -293,44 +334,7 @@
     </div>
     {{-- END Modal ADD Equipamento --}}
 
-    {{-- START Modal ADD Tipo Pessoa --}}
-    <div class="modal fade" id="addTipoPessoa" tabindex="1600" role="dialog" aria-labelledby="addTipoPessoaLabel" aria-hidden="true" style="z-index: 1600 !important">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header peach-gradient">
-                    <h5 class="modal-title text-white font-weight-bold" id="addTipoPessoaLabel">
-                        {{ __('Novo Tipo Pessoa') }}
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ action('App\Http\Controllers\TipoPessoaController@store') }}" method="POST" id="formAddTipoPessoa" onsubmit="return false;">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="tipoPessoa_modal" class="md-0">Tipo Pessoa: *</label>
-                            <input type="text" id="tipoPessoa_modal" class="form-control" name="tipoPessoa_modal" required
-                             placeholder="Escreva o tipo de pessoa, ex.: Cliente, Atendente...">
-                        </div>
-                        <div class="form-group">
-                            <label for="descricao_modal">Descrição: </label>
-                            <textarea name="descricao_modal" id="descricao_modal" type="text" class="form-control"
-                             placeholder="Escreva uma descrição se necessário"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Salvar" id="addTipoPessoaButton">
-                            <i class="fas fa-save mr-1"></i>{{ __('Salvar') }}
-                        </button>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="tooltip" title="Cancelar">
-                            <i class="fas fa-undo-alt mr-1"></i>{{ __('Cancelar') }}
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- END Modal ADD Tipo Pessoa --}}
-
+    {{-- MODAL AUXILIAR PARA CADASTRAR A MARCA SE NÃO EXISTIR NA HORA DE CADASTRAR O EQUIPAMENTO --}}
     {{--START ADD Modal Marca --}}
     <div class="modal fade" id="addMarca" tabindex="1600" role="dialog" aria-labelledby="addMarcaLabel" aria-hidden="true" style="z-index: 1600 !important;">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">

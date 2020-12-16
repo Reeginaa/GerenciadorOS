@@ -39,7 +39,18 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->getValidate());
+        $request->validate([
+            'nome' => 'required|max:250',
+            'cpf' => 'required|max:14|unique:pessoas,cpf',
+            'rg' => 'required|max:10|unique:pessoas,rg',
+            'dataNascimento' => 'required',
+            'sexo' => 'required|max:20',
+            'logradouro' => 'required|max:300',
+            'bairro' => 'required|max:100',
+            'cidade' => 'required|max:50',
+            'telefone' => 'required|max:25',
+            'tipoPessoa_id' => 'required'
+        ]);
 
         $pessoas = Pessoas::create($request->all());
 
@@ -84,7 +95,18 @@ class PessoaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidateUpdate());
+        $request->validate([
+            'nome' => 'required|max:250',
+            'cpf' => 'required|max:14|unique:pessoas,cpf,'.$id,
+            'rg' => 'required|max:10|unique:pessoas,rg,'.$id,
+            'dataNascimento' => 'required',
+            'sexo' => 'required|max:20',
+            'logradouro' => 'required|max:300',
+            'bairro' => 'required|max:100',
+            'cidade' => 'required|max:50',
+            'telefone' => 'required|max:25',
+            'tipoPessoa_id' => 'required'
+        ]);
 
         $pessoa = Pessoas::find($id);
         $pessoa->update($request->all());
@@ -110,37 +132,4 @@ class PessoaController extends Controller
         }
     }
 
-    //Método com as validações
-    private function getValidate()
-    {
-        return [
-            'nome' => 'required|max:250',
-            'cpf' => 'required|max:14|unique:pessoas,cpf',
-            'rg' => 'required|max:10|unique:pessoas,rg',
-            'dataNascimento' => 'required',
-            'sexo' => 'required|max:20',
-            'logradouro' => 'required|max:300',
-            'bairro' => 'required|max:100',
-            'cidade' => 'required|max:50',
-            'telefone' => 'required|max:25',
-            'tipoPessoa_id' => 'required'
-        ];
-    }
-
-    //Método com as validações
-    private function getValidateUpdate()
-    {
-        return [
-            'nome' => 'required|max:250',
-            'cpf' => 'required|max:14',
-            'rg' => 'required|max:10',
-            'dataNascimento' => 'required',
-            'sexo' => 'required|max:20',
-            'logradouro' => 'required|max:300',
-            'bairro' => 'required|max:100',
-            'cidade' => 'required|max:50',
-            'telefone' => 'required|max:25',
-            'tipoPessoa_id' => 'required'
-        ];
-    }
 }

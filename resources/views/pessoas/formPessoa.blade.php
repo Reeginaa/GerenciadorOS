@@ -123,6 +123,7 @@
 
     {{-- MODAL AUXILIAR --}}
 
+    {{-- MODAL AUXILIAR PARA ADICIONAR O TIPO DE PESSOA --}}
     {{-- START Modal ADD Tipo Pessoa --}}
     <div class="modal fade" id="addTipoPessoa" tabindex="1600" role="dialog" aria-labelledby="addTipoPessoaLabel" aria-hidden="true" style="z-index: 1600 !important">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">

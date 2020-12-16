@@ -37,7 +37,9 @@ class StatusServicoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->getValidate());
+        $request->validate([
+            'status' => 'required|max:50|unique:status_servicos,status'
+        ]);
 
         StatusServicos::create($request->all());
         return redirect('statusServicos')->with('success', 'Status inserido!!!');
@@ -75,7 +77,9 @@ class StatusServicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidateUpdate());
+        $request->validate([
+            'status' => 'required|max:50|unique:status_servicos,status,'.$id
+        ]);
 
         $statusServico = StatusServicos::find($id);
         $statusServico->update($request->all());
@@ -100,21 +104,5 @@ class StatusServicoController extends Controller
         } catch (\PDOException $e) {
             return ['status' => 'errorPDO', 'message' => $e->getMessage()];
         }
-    }
-
-    //Método das validações
-    private function getValidate()
-    {
-        return [
-            'status' => 'required|max:50|unique:status_servicos,status'
-        ];
-    }
-
-    //Método das validações para Update
-    private function getValidateUpdate()
-    {
-        return [
-            'status' => 'required|max:50'
-        ];
     }
 }

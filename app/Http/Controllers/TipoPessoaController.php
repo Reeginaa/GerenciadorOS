@@ -42,14 +42,11 @@ class TipoPessoaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ($this->getValidate());
+        $request->validate ([
+            'tipo' => 'required|max:30|unique:tipo_pessoas,tipo'
+        ]);
 
-        $tipoPessoas = $this->tipoPessoas;
-        $tipoPessoas->tipo = $request->input('tipo');
-        $tipoPessoas->descricao = $request->input('descricao');
-
-        $tipoPessoas->save();
-        // TipoPessoas::create($request->all());
+        $tipoPessoas = TipoPessoas::create($request->all());
 
         if ($request->input('ajax')) {
             return json_encode($tipoPessoas);
@@ -90,7 +87,7 @@ class TipoPessoaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'tipo' => 'required|max:30'
+            'tipo' => 'required|max:30|unique:tipo_pessoas,tipo,'.$id
         ]);
 
         $tipoPessoa = TipoPessoas::find($id);
@@ -120,11 +117,4 @@ class TipoPessoaController extends Controller
         }
     }
 
-    //Método das validações
-    private function getValidate()
-    {
-        return [
-            'tipo' => 'required|max:30|unique:tipo_pessoas,tipo'
-        ];
-    }
 }
