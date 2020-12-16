@@ -75,3 +75,14 @@ AS $$
 		end
 $$;
 
+-- TRIGGER DA O_S_PECA
+CREATE TRIGGER atualiza_pecas_by_item
+   AFTER INSERT OR DELETE ON public.o_s_pecas
+       FOR EACH ROW
+         EXECUTE PROCEDURE public.atualiza_estoque();
+
+-- TRIGGER DA O_S_SERVICO
+CREATE TRIGGER atualiza_valorTotal_byservico
+   AFTER INSERT OR DELETE ON public.o_s_servicos
+       FOR EACH ROW
+         EXECUTE PROCEDURE public.atualiza_estoque();
